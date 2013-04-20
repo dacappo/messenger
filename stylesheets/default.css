@@ -3,15 +3,13 @@
 }
 
 #action_bar {
+	float:left;
 	height: 40px;
 	width: 100%,
 }
 
 #contact_list {
-<<<<<<< HEAD
+	float: left;
 	height: calc(100% - 40px);
 	width: 33%;
-=======
-	height: 
->>>>>>> 3adaeef9f8956af00f04a713a12abdeaefe8dc20
 }
