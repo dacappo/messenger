@@ -1,3 +1,7 @@
 ﻿html, body {
 	
 }
+
+#action_bar {
+	height: 40px;
+}
