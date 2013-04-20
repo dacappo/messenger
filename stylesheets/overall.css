@@ -7,5 +7,6 @@
 }
 
 #action_bar {
+	position: absolute;
 	background-color: #222;
 }
