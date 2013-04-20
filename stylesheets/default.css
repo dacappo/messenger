@@ -4,4 +4,10 @@
 
 #action_bar {
 	height: 40px;
+	width: 100%,
+}
+
+#contact_list {
+	height: calc(100% - 40px);
+	width: 33%;
 }
