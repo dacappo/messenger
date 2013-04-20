@@ -1,0 +1,9 @@
+﻿html, body {
+	position: relative;
+	height: 100%;
+	background-color: #EEE;
+}
+
+#action_bar {
+	background-color: #222;
+}
