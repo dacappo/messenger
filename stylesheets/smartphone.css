@@ -1,3 +1,24 @@
 ﻿html, body {
 	
 }
+
+#action_bar {
+	height: 40px;
+	width: 100%;
+	
+	position: absolute;
+}
+
+#action_bar_title {
+	float:left;
+	padding: 10px;
+	font-weight:800;
+
+}
+
+
+#action_bar_logo {
+	float:left;
+	padding: 10px;
+	font-weight:800;
+}
