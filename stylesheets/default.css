@@ -1,12 +1,12 @@
 ﻿html, body {
-
+	
+	
 }
 
 #action_bar {
 	height: 40px;
 	width: 100%;
 	
-	position: absolute;
 }
 
 #action_bar_title {
@@ -19,23 +19,26 @@
 
 #action_bar_logo {
 	float:left;
-	padding: 10px;
+	padding: 0px 5px;
 	font-weight:800;
 }
 
 
-#contact_list {
-
-	float: left;
-	margin-top: 40px;
-	height: calc(100% - 40px);
-	width: 0	%;
-}
 
 #conversation {
-
-	float: right;
-	margin-top: 40px;
-	height: calc(100% - 40px);
-	width: 100%;
+	
 }
+
+form {
+	padding: 20px;
+	margin: auto;
+	margin-top: 200px;
+	width: 250px; 
+	background-color: #FFF;
+	border: 1px solid #EAEAEA; 
+}
+
+img {
+	margin: 5px;
+}
+
