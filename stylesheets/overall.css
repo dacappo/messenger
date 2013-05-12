@@ -4,6 +4,7 @@
 	margin: 0;	
 	
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background-color: #F0F0F0;
 }
 
 #action_bar {
@@ -17,6 +18,45 @@
 }
 
 #conversation {
-	background-color: #F5F5F5;
+}
 
+.input_text {
+	font-size:15px;
+	border: 0; 
+	border-bottom:1px solid orange;
+	width:200px;
+
+}
+
+.input_text:focus {
+	border: 0; 
+	border-bottom:1px solid orange;
+	outline:none;
+}
+
+.button {
+	 float:right; 
+	 padding: 5px 15px; 
+	 background: orange; 
+	 color: #FFF; 
+	 border-radius: 3px; 
+	 border-style:none
+}
+
+.info_message_warning {
+	background-color:#FF0000;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+	font-size: 11px;
+	color: #eee;
+}
+
+.info_message_success {
+	background-color:#009933;
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+	font-size: 11px;
+	color: #eee;
 }

@@ -5,10 +5,12 @@
 
 	<!-- Meta information -->
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-	<title>Messenger</title>
+	<title>PaXaLu</title>
+	<link rel="icon" type="image/png" href="images/logo.png">
 	
 	<!-- Scripts & libraries -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script
 	
 	<!-- Cascading style sheets -->
 	<link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
@@ -20,37 +22,54 @@
 <body>
 	<div id="action_bar">
 		<div id="action_bar_logo">
-			<span></span>
+			<span><img src="images/logo.png" style="height:30px"></span>
 		</div>
 		<div id="action_bar_title">
 			<span>PaXaLu</span>
 		</div>
 	</div>
-	<div id="contact_list">
-	</div>
+	
 	<div id="conversation">
-	
-	
-		<form action="" style=" width: 300px; margin: 20% 40%; background-color: #FFF; padding:30px; border-radius: 10px; border: 3px solid #999;">
+		
+		<form id="form_login" action="login.php">
+		<div id="login_info_message" class="info_message_warning" style="visibility:hidden; height: 0px"></div>
 		<table>
 			<tr>
-				<td>Mobile number:</td> 
-				<td><input type="text" name="mobile_nubmer"></td>
+				<td><img src="images/phone.png"></td> 
+				<td ><input id="input_mobile_number" class="input_text" type="text" name="mobile_nubmer" placeholder="Mobile number"></td> 
 			</tr>
 			<tr>
-				<td>Password:</td> <td><input type="text" name="password"></td>
+				<td><img src="images/keys.png"></td> 
+				<td><input id="input_password" class="input_text" type="password" name="password" placeholder="Password" ></td>
 			</tr>
 			<tr>
 				<td></td>
- 				<td><input type="submit" value="Submit" style="padding: 5px 15px; background: #4479BA; color: #FFF; border-radius: 3px; border-style:none"></td>
-			</tr>		
-		</table>
- 		 
+ 				<td><input class="button" type="submit" value="Submit"></td>
+			</tr>
+					
+		</table> 		 
  		 
  		</form>
 	
 	
-	</div>	
+	</div>
+	
+<script type="text/javascript">
+	$(document).ready(function(){
+			
+    	$("#form_login").submit(function(e) {
+    		e.preventDefault();
+    		var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
+    		var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
+        	$.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
+            	          	
+        	});
+       		//Important. Stop the normal POST
+        	return false;
+    	});
+	});
+</script>
+	
 </body>
 
 </html>
