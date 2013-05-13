@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="36880803-294a-4a4d-b6ac-2480e95365c9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/initialize_database.php" afterPath="$PROJECT_DIR$/initialize_database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="messenger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -10,7 +11,7 @@
     <file path="/index.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368432255478" ignored="false" />
     <file path="/overall.css" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368435448119" ignored="false" />
     <file path="/logout.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368434682279" ignored="false" />
-    <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368443221378" ignored="false" />
+    <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368451445765" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +61,7 @@
       <file leaf-file-name="initialize_database.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/initialize_database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="456" selection-end="456" vertical-scroll-proportion="0.3125884">
+            <state line="13" column="16" selection-start="326" selection-end="326" vertical-scroll-proportion="0.3125884">
               <folding />
             </state>
           </provider>
@@ -341,7 +342,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/initialize_database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="456" selection-end="456" vertical-scroll-proportion="0.3125884">
+        <state line="13" column="16" selection-start="326" selection-end="326" vertical-scroll-proportion="0.3125884">
           <folding />
         </state>
       </provider>
