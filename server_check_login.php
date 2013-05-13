@@ -1,47 +1,65 @@
 <?php
+
+
 /* 
 * User Login
 */
 
 // Get number and passwort 
-$postNumber = $_POST[$number];
-$postPasswort = $_POST[$password];
+if (isset ($_GET["number"]) && isset ($_GET["password"])) {
+	$postNumber = $_GET["number"];
+	$postPassword = $_GET["password"];
+} else {
+	echo "number or password is missing";
+}
 
 class Controller {
-	private $password;
-	private $number;
+	public $password;
+	public $number;
 
 	public function __consruct() {
 
 	}
 
-	public function encrypt_data($sNumber, $sPasswort) {
+	public function encrypt_data($sNumber, $sPassword) {
 		// noch entschluesselung einbauen
-		this->number = $sNumber;
-		this->password = $sPasswort;
+		$this->number = $sNumber;
+		$this->password = $sPassword;
 	}
 
 }
 
 $controller = new Controller();
-$controller->encrypt_data($postNumber, $postPasswort);
+$controller->encrypt_data($postNumber, $postPassword);
+echo "Number: " . $controller->number . "<br>";
+echo "Password: " . $controller->password . "<br>";
 
 // Connecting, selecting database
-$link = mysql_connect('127.0.0.1', 'client', 'password')
-    or die('Could not connect: ' . mysql_error());
-echo 'Connected successfully';
-mysql_select_db('messenger') or die('Could not select database');
+
+$mysqli = new mysqli("127.0.0.1", "user00", "password", "messenger");
+/* check connection */
+if (mysqli_connect_errno()) {
+	printf("Connect failed: %s\n", mysqli_connect_error());
+	exit ();
+}
 
 // Performing SQL query
-$query = 'SELECT * FROM user WHERE number=$controller->$number AND password=$controller->$password';
-$result = mysql_query($query) or die('Query failed: ' . mysql_error());
+$query = 'SELECT * FROM user WHERE ' . 'number=\'' . $controller->number . '\' AND password=\'' . $controller->password . '\'';
+echo $query . " <br> <br> ";
 
-echo $result;
+if ($result = $mysqli->query($query)) {
 
-// Free resultset
-mysql_free_result($result);
+	/* fetch object array */
+	while ($row = $result->fetch_row()) {
+		echo "Size of row array: " . count($row) . " <br> ";
+		echo $row[0] . " " . $row[1] . " " . $row[2];
+	}
 
-// Closing connection
-mysql_close($link);
+	/* free result set */
+	$result->close();
+}
+
+/* close connection */
+$mysqli->close();
 ?>
 
