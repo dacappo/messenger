@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36880803-294a-4a4d-b6ac-2480e95365c9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/initialize_database.php" afterPath="$PROJECT_DIR$/initialize_database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="messenger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,7 +60,7 @@
       <file leaf-file-name="initialize_database.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/initialize_database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="16" selection-start="326" selection-end="326" vertical-scroll-proportion="0.3125884">
+            <state line="14" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.33663365">
               <folding />
             </state>
           </provider>
@@ -342,7 +341,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/initialize_database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="16" selection-start="326" selection-end="326" vertical-scroll-proportion="0.3125884">
+        <state line="14" column="0" selection-start="327" selection-end="327" vertical-scroll-proportion="0.33663365">
           <folding />
         </state>
       </provider>
