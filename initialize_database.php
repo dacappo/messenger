@@ -6,8 +6,11 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"],1);
 
-mysql_connect($server, $username, $password);
+$connection = mysql_connect($server, $username, $password);
 
+if (!$connection) {
+    die('Verbindung schlug fehl: ' . mysql_error());
+}
 
 mysql_select_db($db);
 
