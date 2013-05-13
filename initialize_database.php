@@ -14,7 +14,7 @@ mysql_select_db($db);
 echo("success");
 
 $sql = <<<SQL
-    CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber int, password CHAR(30))
+    CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))
 SQL;
 
 if(!$result = $db->query($sql)){
