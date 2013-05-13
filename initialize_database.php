@@ -19,7 +19,10 @@ SQL;
 
 if(!$result = $db->query($sql)){
     die('There was an error running the query [' . $db->error . ']');
+} else {
+    echo('Table users created!');
 }
+
 mysqli_close($con);
 
 ?>
