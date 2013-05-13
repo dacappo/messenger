@@ -11,7 +11,7 @@ mysql_connect($server, $username, $password);
 
 mysql_select_db($db);
 
-echo("success");
+
 
 $sql = <<<SQL
     CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))
@@ -19,10 +19,12 @@ SQL;
 
 if(!$result = $db->query($sql)){
     die('There was an error running the query [' . $db->error . ']');
-} else {
+}else{
     echo('Table users created!');
 }
 
 mysqli_close($con);
+
+echo("success");
 
 ?>
