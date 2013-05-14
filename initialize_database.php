@@ -15,10 +15,11 @@ if (!$connection) {
     echo("Connection to database established!<br>");
 }
 
-mysql_select_db($db);
+//mysql_select_db($db);
 
-echo("Database selected<br>");
-
+$selected = mysql_select_db($db,$connection)
+    or die("Could not select examples");
+echo("Database selected!<br>");
 
 
 $sql = 'CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))';
