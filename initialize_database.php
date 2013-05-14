@@ -26,7 +26,7 @@ $result = mysql_query("CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNum
 echo("Table created!<br>");
 
 
-mysqli_close($connection);
+mysql_close($connection);
 echo("Connection closed!");
 
 ?>
