@@ -15,6 +15,9 @@ if (!$connection) {
 
 mysql_select_db($db);
 
+echo("success");
+
+
 
 $sql = 'CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))';
 
@@ -22,7 +25,6 @@ if(!$result = $db->query($sql)){
     die('There was an error running the query [' . $db->error . ']');
 }
 
-echo("success");
 
 mysqli_close($con);
 
