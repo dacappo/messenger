@@ -11,11 +11,13 @@ $connection = mysql_connect($server, $username, $password);
 
 if (!$connection) {
     die('Verbindung schlug fehl: ' . mysql_error());
+} else {
+    echo("Connection to database established!<br>");
 }
 
 mysql_select_db($db);
 
-echo("success");
+echo("Database selected<br>");
 
 
 
