@@ -53,6 +53,6 @@ function check_database($pNumber, $pPassword) {
         return false;
     }
 
-    
+
     mysql_close($connection);
 }
