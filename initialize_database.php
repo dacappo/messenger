@@ -33,13 +33,13 @@ $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('84d898
     or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("SELECT id FROM users WHERE mobileNumber='84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' AND password='050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645'")
+$result = mysql_query("SELECT * FROM users WHERE mobileNumber='84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' AND password='050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645'")
     or die("There was an error running the query !<br>");
 
-while($row = mysqli_fetch_array($result))
+while($row = mysql_fetch_array($result))
 {
     echo("ID matched: ");
-    echo $row['id'];
+    echo $row[0];
     echo "<br>";
 }
 
