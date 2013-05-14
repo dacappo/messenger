@@ -42,10 +42,24 @@ function check_database($pNumber, $pPassword) {
     * Check Server data
     */
     // SQL query
+
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $password . '"')
+        or die("There was an error running the query !<br>");
+    echo("Table dropped!<br>");
+
+    if(sizeOf($result) > 0) {
+        return true;
+    } else {
+        return false;
+    }
+
+
+
+    /*
     $query = 'SELECT * FROM users WHERE ' . 'mobileNumber=\'' . $number . '\' AND password=\'' . $password . '\'';
     if ($result = $connection->query($query)) {
 
-        /* Fetch every entry */
+
         $count = 0;
         while ($row = $result->fetch_row()) {
             $count++;
@@ -56,8 +70,8 @@ function check_database($pNumber, $pPassword) {
             }
         }
 
-        /* free result set */
         $result->close();
+    */
     }
-    $connection->close();
+    mysql_close($connection);
 }

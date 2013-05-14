@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36880803-294a-4a4d-b6ac-2480e95365c9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/check_login.php" afterPath="$PROJECT_DIR$/check_login.php" />
     </list>
     <ignored path="messenger.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -13,6 +12,7 @@
     <file path="/logout.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368434682279" ignored="false" />
     <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368524183875" ignored="false" />
     <file path="/login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368535469081" ignored="false" />
+    <file path="/check_login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368536194707" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,10 +59,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check_login.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="check_login.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/check_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="45" selection-start="168" selection-end="204" vertical-scroll-proportion="-3.9230769">
+            <state line="49" column="29" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.30551627">
               <folding />
             </state>
           </provider>
@@ -71,16 +71,16 @@
       <file leaf-file-name="initialize_database.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/initialize_database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="57" selection-start="1508" selection-end="1508" vertical-scroll-proportion="-17.461538">
+            <state line="48" column="0" selection-start="1620" selection-end="1645" vertical-scroll-proportion="-25.307692">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="42" selection-start="164" selection-end="164" vertical-scroll-proportion="0.24045262">
+            <state line="10" column="42" selection-start="164" selection-end="164" vertical-scroll-proportion="-6.5384617">
               <folding />
             </state>
           </provider>
@@ -118,6 +118,7 @@
         <option value="$PROJECT_DIR$/stylesheets/overall.css" />
         <option value="$PROJECT_DIR$/initialize_database.php" />
         <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/check_login.php" />
       </list>
     </option>
   </component>
@@ -351,23 +352,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/check_login.php">
+    <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="45" selection-start="168" selection-end="204" vertical-scroll-proportion="-3.9230769">
+        <state line="10" column="42" selection-start="164" selection-end="164" vertical-scroll-proportion="-6.5384617">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/initialize_database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="57" selection-start="1508" selection-end="1508" vertical-scroll-proportion="-17.461538">
+        <state line="48" column="0" selection-start="1620" selection-end="1645" vertical-scroll-proportion="-25.307692">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
+    <entry file="file://$PROJECT_DIR$/check_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="42" selection-start="164" selection-end="164" vertical-scroll-proportion="0.24045262">
+        <state line="49" column="29" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.30551627">
           <folding />
         </state>
       </provider>
