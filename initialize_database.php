@@ -21,6 +21,10 @@ $selected = mysql_select_db($db,$connection)
     or die("Could not select examples");
 echo("Database selected!<br>");
 
+$result = mysql_query("DROP TABLE users")
+    or die("There was an error running the query !<br>");
+echo("Table dropped!<br>");
+
 $result = mysql_query("CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))")
     or die("There was an error running the query !<br>");
 echo("Table created!<br>");
