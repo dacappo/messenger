@@ -47,31 +47,12 @@ function check_database($pNumber, $pPassword) {
         or die("There was an error running the query !<br>");
     echo("Table dropped!<br>");
 
-    if(!$result) {
+    if(mysql_num_rows($result) > 0) {
         return true;
     } else {
         return false;
     }
 
-
-
-    /*
-    $query = 'SELECT * FROM users WHERE ' . 'mobileNumber=\'' . $number . '\' AND password=\'' . $password . '\'';
-    if ($result = $connection->query($query)) {
-
-
-        $count = 0;
-        while ($row = $result->fetch_row()) {
-            $count++;
-            if ($count < 2 && $row[1] == $number && $row[2] == $password){
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        $result->close();
-    */
-    }
+    
     mysql_close($connection);
 }

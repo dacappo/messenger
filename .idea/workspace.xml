@@ -12,7 +12,7 @@
     <file path="/logout.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368434682279" ignored="false" />
     <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368524183875" ignored="false" />
     <file path="/login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368535469081" ignored="false" />
-    <file path="/check_login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368536381713" ignored="false" />
+    <file path="/check_login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368536578741" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +62,7 @@
       <file leaf-file-name="check_login.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/check_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="0" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.281471">
+            <state line="55" column="4" selection-start="1378" selection-end="1378" vertical-scroll-proportion="1.2743989">
               <folding />
             </state>
           </provider>
@@ -368,7 +368,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/check_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="0" selection-start="1272" selection-end="1272" vertical-scroll-proportion="0.281471">
+        <state line="55" column="4" selection-start="1378" selection-end="1378" vertical-scroll-proportion="1.2743989">
           <folding />
         </state>
       </provider>
