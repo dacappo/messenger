@@ -10,7 +10,7 @@
     <file path="/index.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368432255478" ignored="false" />
     <file path="/overall.css" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368435448119" ignored="false" />
     <file path="/logout.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368434682279" ignored="false" />
-    <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368518921320" ignored="false" />
+    <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368522531121" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
       <file leaf-file-name="initialize_database.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/initialize_database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="17" selection-start="723" selection-end="723" vertical-scroll-proportion="0.60113156">
+            <state line="31" column="117" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.759366">
               <folding />
             </state>
           </provider>
@@ -69,7 +69,7 @@
       <file leaf-file-name="login.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="167" selection-start="192" selection-end="256" vertical-scroll-proportion="-3.8076923">
+            <state line="6" column="168" selection-start="191" selection-end="257" vertical-scroll-proportion="-3.8076923">
               <folding />
             </state>
           </provider>
@@ -335,14 +335,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="167" selection-start="192" selection-end="256" vertical-scroll-proportion="-3.8076923">
+        <state line="6" column="168" selection-start="191" selection-end="257" vertical-scroll-proportion="-3.8076923">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/initialize_database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="17" selection-start="723" selection-end="723" vertical-scroll-proportion="0.60113156">
+        <state line="31" column="117" selection-start="1054" selection-end="1054" vertical-scroll-proportion="0.759366">
           <folding />
         </state>
       </provider>
