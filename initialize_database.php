@@ -1,23 +1,33 @@
 <?php
-//$url = parse_url(getenv("mysql://bed9db9ba17777:5da87c13@us-cdbr-east-03.cleardb.com/heroku_fe4264edeb6329e?reconnect=true"));
+// mysql://bed9db9ba17777:5da87c13@us-cdbr-east-03.cleardb.com/heroku_fe4264edeb6329e?reconnect=true
+$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
 
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"],1);
 
-$db = new mysqli('us-cdbr-east-03.cleardb.com', 'bed9db9ba17777', '5da87c13', 'heroku_fe4264edeb6329eb');
+$connection = mysql_connect($server, $username, $password);
 
-if($db->connect_errno > 0){
-    die('Unable to connect to database [' . $db->connect_error . ']');
+if (!$connection) {
+    die('Verbindung schlug fehl: ' . mysql_error());
+} else {
+    echo("Connection to database established!<br>");
 }
 
-// Create table
-$sql="CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber int, password CHAR(30))";
+mysql_select_db($db);
+
+echo("Database selected<br>");
 
 
-$sql = <<<SQL
-    CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber int, password CHAR(30))
-SQL;
+
+$sql = 'CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))';
 
 if(!$result = $db->query($sql)){
     die('There was an error running the query [' . $db->error . ']');
 }
+
+
+mysqli_close($con);
 
 ?>
