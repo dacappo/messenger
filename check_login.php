@@ -47,7 +47,7 @@ function check_database($pNumber, $pPassword) {
         or die("There was an error running the query !<br>");
     echo("Table dropped!<br>");
 
-    if(sizeOf($result) > 0) {
+    if(!$result) {
         return true;
     } else {
         return false;
