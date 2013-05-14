@@ -47,6 +47,8 @@ function check_database($pNumber, $pPassword) {
         or die("There was an error running the query !<br>");
     echo("Table dropped!<br>");
 
+
+
     if(mysql_num_rows($result) > 0) {
         return true;
     } else {
@@ -54,5 +56,5 @@ function check_database($pNumber, $pPassword) {
     }
 
 
-    mysql_close($connection);
+
 }
