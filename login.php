@@ -2,12 +2,12 @@
 
     include "check_login.php";
 	
-	$PostNumber = $_POST['number'];
-	$PostPassword = $_POST['password'];
+	$posNumber = $_POST['number'];
+	$posPassword = $_POST['password'];
 	$success = false;
 
 
-    $bool = check_database($PostNumber,$PostPassword);
+    $bool = check_database($posNumber, $posPassword);
 
     if ($bool) {
 		session_start();		
