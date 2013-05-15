@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36880803-294a-4a4d-b6ac-2480e95365c9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/check_login.php" afterPath="$PROJECT_DIR$/check_login.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.php" afterPath="$PROJECT_DIR$/test.php" />
     </list>
     <ignored path="messenger.iws" />
@@ -14,7 +13,7 @@
     <file path="/initialize_database.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368524183875" ignored="false" />
     <file path="/login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368535469081" ignored="false" />
     <file path="/check_login.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368611832087" ignored="false" />
-    <file path="/test.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368611592816" ignored="false" />
+    <file path="/test.php" changelist="36880803-294a-4a4d-b6ac-2480e95365c9" time="1368612013070" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,24 +60,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check_login.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="check_login.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/check_login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="5" selection-start="865" selection-end="865" vertical-scroll-proportion="0.24893919">
+            <state line="34" column="5" selection-start="865" selection-end="865" vertical-scroll-proportion="-6.769231">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="test.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="41" selection-start="467" selection-end="467" vertical-scroll-proportion="-6.5384617">
+            <state line="9" column="39" selection-start="434" selection-end="434" vertical-scroll-proportion="0.21640736">
               <folding>
-                <marker date="1368611840274" expanded="true" signature="248:259" placeholder="..." />
-                <marker date="1368611840274" expanded="true" signature="352:361" placeholder="..." />
-                <marker date="1368611840274" expanded="true" signature="481:492" placeholder="..." />
-                <marker date="1368611840274" expanded="true" signature="583:592" placeholder="..." />
+                <marker date="1368612025380" expanded="true" signature="248:259" placeholder="..." />
+                <marker date="1368612025380" expanded="true" signature="352:361" placeholder="..." />
+                <marker date="1368612025380" expanded="true" signature="490:501" placeholder="..." />
+                <marker date="1368612025380" expanded="true" signature="592:601" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -134,8 +133,8 @@
         <option value="$PROJECT_DIR$/stylesheets/overall.css" />
         <option value="$PROJECT_DIR$/initialize_database.php" />
         <option value="$PROJECT_DIR$/login.php" />
-        <option value="$PROJECT_DIR$/test.php" />
         <option value="$PROJECT_DIR$/check_login.php" />
+        <option value="$PROJECT_DIR$/test.php" />
       </list>
     </option>
   </component>
@@ -383,22 +382,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.php">
+    <entry file="file://$PROJECT_DIR$/check_login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="41" selection-start="467" selection-end="467" vertical-scroll-proportion="-6.5384617">
-          <folding>
-            <marker date="1368611840274" expanded="true" signature="248:259" placeholder="..." />
-            <marker date="1368611840274" expanded="true" signature="352:361" placeholder="..." />
-            <marker date="1368611840274" expanded="true" signature="481:492" placeholder="..." />
-            <marker date="1368611840274" expanded="true" signature="583:592" placeholder="..." />
-          </folding>
+        <state line="34" column="5" selection-start="865" selection-end="865" vertical-scroll-proportion="-6.769231">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/check_login.php">
+    <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="5" selection-start="865" selection-end="865" vertical-scroll-proportion="0.24893919">
-          <folding />
+        <state line="9" column="39" selection-start="434" selection-end="434" vertical-scroll-proportion="0.21640736">
+          <folding>
+            <marker date="1368612025380" expanded="true" signature="248:259" placeholder="..." />
+            <marker date="1368612025380" expanded="true" signature="352:361" placeholder="..." />
+            <marker date="1368612025380" expanded="true" signature="490:501" placeholder="..." />
+            <marker date="1368612025380" expanded="true" signature="592:601" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
