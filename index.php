@@ -19,9 +19,10 @@
 	
 	<!-- Cascading style sheets -->
 	<link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
-	<link rel="stylesheet" type="text/css" media="screen and (min-width: 25cm)" href="stylesheets/default.css">
-	<link rel="stylesheet" type="text/css" media="screen and (min-width: 10cm) and (max-width: 25cm)" href="stylesheets/tablet.css">
+	<link rel="stylesheet" type="text/css" " href="stylesheets/default.css">
+	<!--<link rel="stylesheet" type="text/css" media="screen and (min-width: 10cm) and (max-width: 25cm)" href="stylesheets/tablet.css">
 	<link rel="stylesheet" type="text/css" media="screen and (max-width: 10cm)" href="stylesheets/smartphone.css">
+	media="screen and (min-width: 25cm)-->
 
 </head>	 
 <body>
