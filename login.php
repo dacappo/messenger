@@ -2,11 +2,11 @@
 
     include "check_login.php";
 	
-	$Pnumber = $_POST["number"];
-	$Ppassword = $_POST["password"];
+	$PostNumber = $_POST["number"];
+	$PostPassword = $_POST["password"];
 	$success = false;
 
-    if (check_database($Pnumber, $Ppassword)) {
+    if (check_database($PostNumber, $PostPassword)) {
 		session_start();		
 		$_SESSION['loggedIn']=true;
 		$success = true;
