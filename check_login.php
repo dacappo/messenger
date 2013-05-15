@@ -7,12 +7,11 @@
 * This function checks if the number and password match with the data n the server
 */
 function check_database($pNumber, $pPassword) {
-    $number = "";
-    $password = "";
+    $successful = false;
 
     if (isset($pNumber) && isset($pPassword)) {
         $number = $pNumber;
-        $password = $pPassword;
+        $ClientPassword = $pPassword;
     } else {
         echo "Number or Password is missing!";
     }
@@ -43,18 +42,15 @@ function check_database($pNumber, $pPassword) {
     */
     // SQL query
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $password . '"')
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"')
         or die("There was an error running the query !<br>");
     echo("Query processed!<br>");
 
-
-
     if(mysql_num_rows($result) > 0) {
-        return true;
-    } else {
-        return false;
+        $successful = true;
     }
 
+    mysql_close($connection);
 
-
+    return $successful;
 }
