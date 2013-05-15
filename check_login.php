@@ -45,7 +45,7 @@ function check_database($pNumber, $pPassword) {
 
     $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $password . '"')
         or die("There was an error running the query !<br>");
-    echo("Table dropped!<br>");
+    echo("Query processed!<br>");
 
 
 
