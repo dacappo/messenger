@@ -2,13 +2,11 @@
 
     include "check_login.php";
 	
-	$number = $_POST["number"];
-	$password = $_POST["password"];
+	$Pnumber = $_POST["number"];
+	$Ppassword = $_POST["password"];
 	$success = false;
 
-
-    if ($number == '84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' && $password == '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645') {
-    //if (check_database($number, $password)) {
+    if (check_database($Pnumber, $Ppassword)) {
 		session_start();		
 		$_SESSION['loggedIn']=true;
 		$success = true;
