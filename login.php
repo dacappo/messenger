@@ -21,7 +21,7 @@
 				
  		echo 	'
  		        var message = document.createElement("div");
- 				message.innerHTML = "Succesfully logged in!";
+ 				message.innerHTML = "Successfully logged in!";
  				message.setAttribute("class","info_message_success");
  				message.setAttribute("id","login_info_message");
  				document.getElementById("form_login").innerHTML = "";
@@ -34,7 +34,7 @@
  				    $.ajax({url: "logout.php"});
  				    document.getElementById("action_bar").removeChild(document.getElementById("button_logout"));
  				    var message = document.createElement("div");
- 				    message.innerHTML = "Succesfully logged out!";
+ 				    message.innerHTML = "Successfully logged out!";
  				    message.setAttribute("class","info_message_success");
  				    message.setAttribute("id","login_info_message");
  				    document.getElementById("form_login").innerHTML = "";
