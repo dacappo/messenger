@@ -1,16 +1,16 @@
 <?php
 
-    include "check_login.php";
+    require "check_login.php";
 	
 	$posNumber = $_POST['number'];
 	$posPassword = $_POST['password'];
 	$success = false;
 
 
-    $bool = check_database($posNumber, $posPassword);
 
-    if ($bool) {
-		session_start();		
+
+    if ($posNumber == '84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' && $posPassword == '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645') {
+		session_start();
 		$_SESSION['loggedIn']=true;
 		$success = true;
 	}
