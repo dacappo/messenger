@@ -5,6 +5,7 @@
 	
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #F0F0F0;
+    background-image: url('../images/drawing.svg');
 }
 
 #action_bar {
@@ -13,11 +14,12 @@
 }
 
 #contact_list {
-	background-color: #F5F5F5;
+
 	
 }
 
 #conversation {
+
 }
 
 .input_text {
