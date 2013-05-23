@@ -16,10 +16,10 @@ function register($mobileNumber, $generatedKey){
     $request = ""; // Request Variable initialisieren
     $param["key"] = "YufJJ5Zed0013c4amJUqTCg"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
-    $param["message"] = $generatedKey; // Inhalt der Nachricht
+    $param["message"] = "Ihr Verifizierungscode " . $generatedKey; // Inhalt der Nachricht
     $param["route"] = "basic";// Nutzung der Goldroute
     $param["from"] = "SMSTRADE";// Absender der SMS
-    //$param["debug"] = "1";// SMS wird nicht versendet - Testmodus
+    $param["debug"] = "1";// SMS wird nicht versendet - Testmodus
 
     foreach($param as $key=>$val) // Alle Parameter durchlaufen
     {
