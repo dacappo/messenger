@@ -19,6 +19,6 @@ if (check_database(' ',' ') == false) {
 echo "Status message from HTTP request to GATEWAY provider: " . register("015140445738","Hallo Welt");
 
 echo '<form action="register.php" method="post">
-    Name: <input type="text" name="number">
+    Mobil number: <input type="text" name="mobileNumber">
 <input type="submit">
 </form> ';
