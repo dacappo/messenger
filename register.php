@@ -33,12 +33,11 @@ function register($mobileNumber, $generatedKey){
     $response_code = intval($response[0]); // Responsecode auslesen
 
     if ($response_code != 100){
-        $responseMessage = "Error! - Error code: " . $response_code;
+        $responseMessage = "Error " . $response_code;
+        return $responseMessage;
     } else {
-        $responseMessage = "SMS sent successfully. Debug modus: " . $param["debug"];
+        return $generatedKey; //"SMS sent successfully. Debug modus: " . $param["debug"];
     }
-
-    return $responseMessage;
 }
 
 function generateValidationKey(){
