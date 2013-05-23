@@ -1,3 +1,3 @@
 <?php
 
- echo($_POST['number']);
+ echo($_POST['mobileNumber']);

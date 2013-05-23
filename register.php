@@ -4,19 +4,19 @@
  * User: Lukas
  * Date: 15.05.13
  * Time: 13:14
- * To change this template use File | Settings | File Templates.
  */
-function register($mobileNumber, $messege){
-    $responseMessage = "";
+echo register($_POST['mobileNumber'], generateValidationKey());
+
+function register($mobileNumber, $generatedKey){
+
     // +--------------------------------------------+
     // | Copyright (c) 2007-2009 by SMSTRADE.DE     |
     // +--------------------------------------------+
-
     $url = "http://gateway.smstrade.de"; // URL des Gateways
     $request = ""; // Request Variable initialisieren
     $param["key"] = "YufJJ5Zed0013c4amJUqTCg"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
-    $param["message"] = $messege; // Inhalt der Nachricht
+    $param["message"] = $generatedKey; // Inhalt der Nachricht
     $param["route"] = "basic";// Nutzung der Goldroute
     $param["from"] = "SMSTRADE";// Absender der SMS
     $param["debug"] = "1";// SMS wird nicht versendet - Testmodus
@@ -39,4 +39,12 @@ function register($mobileNumber, $messege){
     }
 
     return $responseMessage;
+}
+
+function generateValidationKey(){
+    $validationKey = "";
+    while(strlen($validationKey) < 5){
+        $validationKey = $validationKey . rand(0,9);
+    }
+    return $validationKey;
 }
