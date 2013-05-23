@@ -14,7 +14,7 @@ function register($mobileNumber, $generatedKey){
     // +--------------------------------------------+
     $url = "http://gateway.smstrade.de"; // URL des Gateways
     $request = ""; // Request Variable initialisieren
-    $param["key"] = "YufJJ5Zed0013c4amJUqTCg"; // Gateway Key
+    $param["key"] = "1265q4qhjeOQ3xth2R1nNy"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
     $param["message"] = "Ihr Verifizierungscode " . $generatedKey; // Inhalt der Nachricht
     $param["route"] = "basic";// Nutzung der Goldroute
