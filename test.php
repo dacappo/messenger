@@ -16,9 +16,8 @@ if (check_database(' ',' ') == false) {
 
 /* Check HTTP request to GATEWAY provider for registration */
 
-echo "Status message from HTTP request to GATEWAY provider: ";
-
-echo '<form action="register.php" method="post">
-    Mobil number: <input type="text" name="mobileNumber">
-<input type="submit">
-</form> ';
+if (strcmp(register("015140445799", generateValidationString(5)),"OK",2)){
+    echo("register(): connection to SMS gateway provider = <span style='color:green'>successful</span><br>");
+} else {
+    echo("register(): Error => <span style='color:red'>not successful</span><br>");
+}

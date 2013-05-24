@@ -5,7 +5,7 @@
  * Date: 15.05.13
  * Time: 13:14
  */
-echo register($_POST['mobileNumber'], generateValidationKey());
+echo register($_POST['mobileNumber'], generateValidationString(5));
 
 function register($mobileNumber, $generatedKey){
     $aErrorCodesSMS = array(10 => "No valid receiver", 20 => "No valid sender", 30 => "Messenge not valid", 40 => "Message route not correct", 50 => "Identification failed", 60 => "Balance too low", 70 => "Unsupported provider", 100 => "Successful" );
@@ -17,7 +17,7 @@ function register($mobileNumber, $generatedKey){
     $request = ""; // Request Variable initialisieren
     $param["key"] = "1265q4qhjeOQ3xth2R1nNy"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
-    $param["message"] = "Ihr persönlicher Verifizierungscode lautet: " . generateValidationString(5); // Inhalt der Nachricht
+    $param["message"] = "Ihr persönlicher Verifizierungscode lautet: " . $generatedKey; // Inhalt der Nachricht
     $param["route"] = "basic";// Nutzung der Goldroute
     $param["from"] = "SMSTRADE";// Absender der SMS
     $param["debug"] = "1";// SMS wird nicht versendet - Testmodus
