@@ -8,6 +8,7 @@
 echo register($_POST['mobileNumber'], generateValidationKey());
 
 function register($mobileNumber, $generatedKey){
+    $aErrorCodesSMS = array(10 => "No valid receiver", 20 => "No valid sender", 30 => "Messenge not valid", 40 => "Message route not correct", 50 => "Identification failed", 60 => "Balance too low", 70 => "Unsupported provider", 100 => "Successful" );
 
     // +--------------------------------------------+
     // | Copyright (c) 2007-2009 by SMSTRADE.DE     |
@@ -16,7 +17,7 @@ function register($mobileNumber, $generatedKey){
     $request = ""; // Request Variable initialisieren
     $param["key"] = "1265q4qhjeOQ3xth2R1nNy"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
-    $param["message"] = "Ihr Verifizierungscode " . $generatedKey; // Inhalt der Nachricht
+    $param["message"] = "Ihr persönlicher Verifizierungscode lautet: " . generateValidationString(5); // Inhalt der Nachricht
     $param["route"] = "basic";// Nutzung der Goldroute
     $param["from"] = "SMSTRADE";// Absender der SMS
     $param["debug"] = "1";// SMS wird nicht versendet - Testmodus
@@ -33,17 +34,18 @@ function register($mobileNumber, $generatedKey){
     $response_code = intval($response[0]); // Responsecode auslesen
 
     if ($response_code != 100){
-        $responseMessage = "Error " . $response_code;
+        $responseMessage = $aErrorCodesSMS[$response_code];
         return $responseMessage;
     } else {
-        return $generatedKey; //"SMS sent successfully. Debug modus: " . $param["debug"];
+        return "OK " . $generatedKey; //"SMS sent successfully. Debug modus: " . $param["debug"];
     }
 }
 
-function generateValidationKey(){
-    $validationKey = "";
-    while(strlen($validationKey) < 5){
-        $validationKey = $validationKey . rand(0,9);
+function generateValidationString($length) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
     }
-    return $validationKey;
+    return $randomString;
 }
