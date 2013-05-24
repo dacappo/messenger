@@ -15,9 +15,7 @@ if (check_database(' ',' ') == false) {
 }
 
 /* Check HTTP request to GATEWAY provider for registration */
-
-if (strcmp(register("015140445799", generateValidationString(5)),"OK",2)){
-    echo("register(): connection to SMS gateway provider = <span style='color:green'>successful</span><br>");
-} else {
-    echo("register(): Error => <span style='color:red'>not successful</span><br>");
-}
+$returnMessage = register("015140445799", generateValidationString(5));
+echo (strcmp($returnMessage, "OK", 2)) ?
+  "register(): connection to SMS gateway provider = <span style='color:green'>successful</span><br>" :
+  "register(): Error => <span style='color:red'>$returnMessagel</span><br>";
