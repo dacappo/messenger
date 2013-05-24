@@ -1,6 +1,6 @@
 <?php
 
-    require "check_login.php";
+    require "dbconnection.php";
 	
 	$posNumber = $_POST['number'];
 	$posPassword = $_POST['password'];
