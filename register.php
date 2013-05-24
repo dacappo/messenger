@@ -1,3 +1,11 @@
 <?php
+$mobileNumber = $_POST['mobileNumber'];
+$imei = $_POST['imei'];
 
-echo register($_POST['mobileNumber'], generateValidationString(5));
+if (checkDatabaseForUser($mobileNumber,$imei)){
+    echo "User already exists";
+} else {
+    echo register($mobileNumber, generateValidationString(5));
+}
+
+

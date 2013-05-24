@@ -8,11 +8,30 @@
  */
 
 /*
-* This function checks if the number and password match with the data n the server
-*/
-function checkDatabaseForUser($pNumber, $pPassword) {
-    $successful = false;
+ * Initialize connection with HEROKU
+ */
+function initializeConnectionToDB()
+{
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
+    $server = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+
+    $connection = mysql_connect($server, $username, $password);
+    if (!$connection) {
+        die('Connection ERROR: ' . mysql_error());
+    } else {
+        return $connection;
+    }
+}
+
+/*
+* This function checks if the number and password match with the data on the server
+*/
+function checkLoginForUser($pNumber, $pPassword)
+{
+    $successful = false;
     if (isset($pNumber) && isset($pPassword)) {
         $number = $pNumber;
         $ClientPassword = $pPassword;
@@ -20,41 +39,55 @@ function checkDatabaseForUser($pNumber, $pPassword) {
         return false;
     }
 
-    /*
-    * Initialize connection with HEROKU
-    */
-    $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+    //################################# Vielleicht noch auslagerbar
+    $connection = initializeConnectionToDB();
+    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), "PHP_URL_PATH");
+    $db = substr($path, 1);
 
-    $server = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $db = substr($url["path"],1);
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+    //#################################
 
-    $connection = mysql_connect($server, $username, $password);
-    if (!$connection) {
-        die('Connection ERROR: ' . mysql_error());
-    } /* else {
-        echo("Connection to database established!<br>");
-    } */
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"')
+    or die("There was an error running the query !<br>");
 
-    $selected = mysql_select_db($db,$connection)
-    or die("Could not select examples");
-    //echo("Database selected!<br>");
-
-    /*
-    * Check Server data
-    */
-    // SQL query
-
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"');
-    //or die("There was an error running the query !<br>");
-    //echo("Query processed!<br>");
-
-    if(mysql_num_rows($result) > 0) {
+    if (mysql_num_rows($result) > 0) {
         $successful = true;
     }
 
     mysql_close($connection);
-
     return $successful;
+}
+
+/*
+* This function checks if the number and IMEI are already existing
+*/
+function checkDatabaseForUser($pNumber, $pIMEI)
+{
+    $exist = false;
+    if (isset($pNumber) && isset($pIMEI)) {
+        $number = $pNumber;
+        $imea = $pIMEI;
+    } else {
+        return false;
+    }
+
+    //################################# Vielleicht noch auslagerbar
+    $connection = initializeConnectionToDB();
+    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), "PHP_URL_PATH");
+    $db = substr($path, 1);
+
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+    //#################################
+
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND imea="' . $imea . '"')
+    or die("There was an error running the query !<br>");
+
+    if (mysql_num_rows($result) <> 0) {
+        $exist = true;
+    }
+
+    mysql_close($connection);
+    return $exist;
 }

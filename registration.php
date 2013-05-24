@@ -42,3 +42,33 @@
      }
      return $randomString;
  }
+
+function create_user($pNumber, $pPassword, $IMEI){
+    $successful = false;
+    if (isset($pNumber) && isset($pPassword) && isset($IMEI)) {
+        $number = $pNumber;
+        $ClientPassword = $pPassword;
+        $imea = $IMEI;
+    } else {
+        return false;
+    }
+
+    //################################# Vielleicht noch auslagerbar
+    $connection = initializeConnectionToDB();
+    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), "PHP_URL_PATH");
+    $db = substr($path, 1);
+
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+    //#################################
+
+    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" .$number ."','" . $ClientPassword ."','" . $imea . "')")
+    or die("There was an error running the query !<br>");
+
+    mysql_close($connection);
+    if (isset($result)){
+        return true;
+    } else {
+        false;
+    }
+}

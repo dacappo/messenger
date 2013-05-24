@@ -25,11 +25,11 @@ $result = mysql_query("DROP TABLE users")
     or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
-$result = mysql_query("CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))")
+$result = mysql_query("CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66)), imei CHAR(66)")
     or die("There was an error running the query !<br>");
 echo("Table created!<br>");
 
-$result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')")
+$result = mysql_query("INSERT INTO users (mobileNumber,password,imei ) VALUES ('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645','01233210')")
     or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
@@ -42,9 +42,6 @@ while($row = mysql_fetch_array($result))
     echo $row[0];
     echo "<br>";
 }
-
-
-
 
 mysql_close($connection);
 echo("Connection closed!");
