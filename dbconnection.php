@@ -67,7 +67,7 @@ function checkDatabaseForUser($pNumber, $pIMEI)
     $exist = false;
     if (isset($pNumber) && isset($pIMEI)) {
         $number = $pNumber;
-        $imea = $pIMEI;
+        $imei = $pIMEI;
     } else {
         return false;
     }
@@ -81,7 +81,7 @@ function checkDatabaseForUser($pNumber, $pIMEI)
     or die("Could not select Database");
     //#################################
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND imea="' . $imea . '"')
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND imei="' . $imei . '"')
     or die("There was an error running the query !<br>");
 
     if (mysql_num_rows($result) <> 0) {

@@ -13,7 +13,7 @@ include "registration.php";
     <tr>
         <td>Test user login</td>
         <td><?php
-            if (checkDatabaseForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882', '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')) {
+            if (checkLoginForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882', '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')) {
                 echo("checkDatabaseForUser(): correct input </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("checkDatabaseForUser(): correct input </td><td> <span style='color:red'>not successful</span><br></td>");
@@ -23,7 +23,7 @@ include "registration.php";
     <tr>
         <td>Test user login</td>
         <td><?php
-            if (checkDatabaseForUser(' ', ' ') == false) {
+            if (checkLoginForUser(' ', ' ') == false) {
                 echo("checkDatabaseForUser(): wrong input </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("checkDatabaseForUser(): wrong input </td><td> <span style='color:red'>not successful</span><br></td>");
