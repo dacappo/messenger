@@ -4,20 +4,20 @@
 	
 	$posNumber = $_POST['number'];
 	$posPassword = $_POST['password'];
-	$success = false;
+	$suc = false;
 
 
 
 
-    if ($posNumber == '84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' && $posPassword == '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645') {
+    if (checkLoginForUser($posNumber, $posPassword)) {
 		session_start();
 		$_SESSION['loggedIn']=true;
-		$success = true;
+		$suc = true;
 	}
 
 	header ("content-type: text/javascript");
 	
-	if($success) {
+	if($suc) {
 				
  		echo 	'
  		        var message = document.createElement("div");
