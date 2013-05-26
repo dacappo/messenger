@@ -75,7 +75,7 @@ function checkDatabaseForUser($pNumber, $pIMEI)
     //################################# Vielleicht noch auslagerbar
     $connection = initializeConnectionToDB();
     $path = parse_url(getenv("CLEARDB_DATABASE_URL"), "PHP_URL_PATH");
-    $db = substr($path, 1);
+    echo $db = substr($path, 1);
 
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
