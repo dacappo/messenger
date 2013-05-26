@@ -5,12 +5,20 @@
 	
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #F0F0F0;
-    background-image: url('../images/drawing.svg');
+    background-image: url('../images/map.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #action_bar {
 	background-color: #111111;	
 	color: #FFFFFF;
+}
+
+#action_bar_center {
+    max-width: 1200px;
+    height: 40px;
+    margin: auto;
 }
 
 #contact_list {
@@ -38,20 +46,19 @@
 
 .button {
 	 float:right;
-     margin: 6px 5px;
-	 padding: 3px 13px;
+     margin: 7px 5px;
+	 padding: 2px 13px;
 	 background: orange; 
 	 color: #FFF; 
 	 border-radius: 3px; 
 	 border-style:none;
      cursor:pointer;
+    font-size: 14px;
 
 }
 
 .button:hover {
-    float:right;
-    margin: 6px 5px;
-    padding: 3px 13px;
+
     background: #FFB914;
     color: #FFF;
     border-radius: 3px;

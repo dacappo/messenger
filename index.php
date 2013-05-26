@@ -27,12 +27,14 @@
 </head>	 
 <body>
 	<div id="action_bar">
+    <div id="action_bar_center">
 		<div id="action_bar_logo">
 			<span><img src="images/logo.png" style="height:30px"></span>
 		</div>
 		<div id="action_bar_title">
 			<span>PaXaLu</span>
 		</div>
+    </div>
 	</div>
 	
 	<div id="conversation">
@@ -91,7 +93,7 @@
  				button.setAttribute("id","button_logout");
  				button.onclick = function(){
  				    $.ajax({url: "logout.php"});
- 				    document.getElementById("action_bar").removeChild(document.getElementById("button_logout"));
+ 				    document.getElementById("action_bar-center").removeChild(document.getElementById("button_logout"));
  				    var message = document.createElement("div");
  				    message.innerHTML = "Successfully logged out!";
  				    message.setAttribute("class","info_message_success");
@@ -101,7 +103,7 @@
 
  				};
 
- 				document.getElementById("action_bar").appendChild(button);
+ 				document.getElementById("action_bar_center").appendChild(button);
   				';
 	}
 
