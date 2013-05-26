@@ -44,11 +44,10 @@
  }
 
 function create_user($pNumber, $pPassword, $IMEI){
-    $successful = false;
     if (isset($pNumber) && isset($pPassword) && isset($IMEI)) {
         $number = $pNumber;
         $ClientPassword = $pPassword;
-        $imea = $IMEI;
+        $imei = $IMEI;
     } else {
         return false;
     }
@@ -62,7 +61,7 @@ function create_user($pNumber, $pPassword, $IMEI){
     or die("Could not select Database");
     //#################################
 
-    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" .$number ."','" . $ClientPassword ."','" . $imea . "')")
+    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" .$number ."','" . $ClientPassword ."','" . $imei . "')")
     or die("There was an error running the query !<br>");
 
     mysql_close($connection);
