@@ -140,9 +140,7 @@ function insertTempRegistration($mobileNumber,$generatedKey){
     $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('". $number . "','" . $code . "')")
     or die("There was an error running the query !<br>");
 
-    if (mysql_num_rows($result) <> 0) {
-        $successful = true;
-    }
+    $successful = checkTempRegistrations($number,$code);
 
     mysql_close($connection);
     return $successful;
