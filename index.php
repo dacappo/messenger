@@ -139,6 +139,9 @@ Override login submit
         login_container.appendChild(login_form);
 
 
+        var element = document.getElementById("login_container");
+        element.parentNode.removeChild(element);
+
         document.body.appendChild(login_container);
 
         $("#form_login").submit(function(e) {
