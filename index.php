@@ -61,7 +61,7 @@
 /*
 Override login submit
 */
-    $(document).ready(function(){
+    function overrideLoginSubmit() {
 			
     	$("#form_login").submit(function(e) {
     		e.preventDefault();
@@ -73,8 +73,7 @@ Override login submit
        		//Important. Stop the normal POST
         	return false;
     	});
-	});
-
+    }
 /* Show login screen */
     function showLoginScreen() {
 
@@ -142,6 +141,8 @@ Override login submit
         login_container.appendChild(login_form);
 
         document.body.appendChild(login_container);
+
+        overrideLoginSubmit();
 
     }
 
