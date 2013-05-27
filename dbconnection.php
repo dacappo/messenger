@@ -123,7 +123,7 @@ function checkTempRegistrations($pNumber, $pVerCode)
 }
 
 function insertTempRegistration($mobileNumber,$generatedKey){
-    $successful = false;
+    $successful = true;
     if (isset($pNumber) && isset($verCode)) {
         $number = $mobileNumber;
         $code = $generatedKey;
