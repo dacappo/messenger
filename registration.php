@@ -45,13 +45,12 @@ function generateValidationString($length)
     return $randomString;
 }
 
-function create_user($pNumber, $pPassword, $IMEI)
+function create_user($pNumber, $pPassword)
 {
     $created = false;
-    if (isset($pNumber) && isset($pPassword) && isset($IMEI)) {
+    if (isset($pNumber) && isset($pPassword)) {
         $number = $pNumber;
         $ClientPassword = $pPassword;
-        $imei = $IMEI;
     } else {
         return false;
     }
@@ -65,7 +64,7 @@ function create_user($pNumber, $pPassword, $IMEI)
     or die("Could not select Database");
     //#################################
 
-    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" . $number . "','" . $ClientPassword . "','" . $imei . "')")
+    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" . $number . "','" . $ClientPassword . "')")
     or die("There was an error running the query !<br>");
 
     if (mysql_num_rows($result) <> 0) {

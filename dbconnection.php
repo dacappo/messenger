@@ -68,7 +68,7 @@ function checkDatabaseForUser($pNumber)
     if (isset($pNumber)) {
         $number = $pNumber;
     } else {
-        return false;
+        return $exist;
     }
 
     //################################# Vielleicht noch auslagerbar
