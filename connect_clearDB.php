@@ -21,7 +21,7 @@ or die("There was an error running the query !<br>");
 
 while($row = mysql_fetch_array($result))
 {
-    echo "---------------------------------------------------------------------------";
+    echo "<br>---------------------------------------------------------------------------<br>";
     echo("Users:       ");
     echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  password: ". $row[2];
     echo "<br>";
