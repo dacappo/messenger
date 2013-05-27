@@ -40,6 +40,10 @@ $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('84d898
     or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
+$result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('0123456789','01234')")
+or die("There was an error running the query !<br>");
+echo("Example data ceated!<br>");
+
 $result = mysql_query("SELECT * FROM users WHERE mobileNumber='84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' AND password='050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645'")
     or die("There was an error running the query !<br>");
 
