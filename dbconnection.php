@@ -116,10 +116,10 @@ function checkTempRegistrations($pNumber, $pVerCode, $pTest)
 
     if (mysql_num_rows($result) <> 0) {
         $valid = true;
-        if (!$pTest){
-            $result = mysql_query('DELETE FROM temp_registrations WHERE mobileNumber="' . $number . ' " AND verCode="' . $code . '"')
-            or die("There was an error running the query in deleting an temp regeistration!<br>");
-        }
+        //if (!$pTest){
+        //    $result = mysql_query('DELETE FROM temp_registrations WHERE mobileNumber="' . $number . ' " AND verCode="' . $code . '"')
+        //    or die("There was an error running the query in deleting an temp regeistration!<br>");
+       // }
     }
 
     mysql_close($connection);
