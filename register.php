@@ -1,6 +1,7 @@
 <?php
 
 include "dbconnection.php";
+include "registration.php";
 
 $mobileNumber = $_POST['mobileNumber'];
 
