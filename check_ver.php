@@ -9,7 +9,9 @@ $successful = false;
 
 if (checkTempRegistrations($mobileNumber,$verCode)){
     $successful = true;
+    create_user($mobileNumber, "messenger");
 }
+
 echo $successful;
 
 

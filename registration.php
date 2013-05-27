@@ -68,8 +68,8 @@ function create_user($pNumber, $pPassword)
     or die("Could not select Database");
     //#################################
 
-    $result = mysql_query("INSERT INTO users (mobileNumber,password,imei) VALUES ('" . $number . "','" . $ClientPassword . "')")
-    or die("There was an error running the query !<br>");
+    $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('" . $number . "','" . $ClientPassword . "')")
+    or die("There was an error running the query in create_user()!<br>");
 
     if (mysql_num_rows($result) <> 0) {
         $created = true;
