@@ -46,7 +46,6 @@
   				';
  	} else {
  		echo 	'
- 		        
  				var message = document.createElement("div");
  				message.innerHTML = "Wrong number or password!";
  				message.setAttribute("class","info_message_warning");
