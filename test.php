@@ -65,7 +65,7 @@ include "registration.php";
     Number: <input type="text" name="mobileNumber">
     <input type="submit" value="Submit">
 </form>
-<form name="input" action="check_ver.php" method="post">
+<form name="input2" action="check_ver.php" method="post">
     Number: <input type="text" name="mobileNumber">
     VerCode: <input type="text" name="verCode">
     <input type="submit" value="Submit">
