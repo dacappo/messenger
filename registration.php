@@ -48,33 +48,3 @@ function generateValidationString($length)
     }
     return $randomString;
 }
-
-function create_user($pNumber, $pPassword)
-{
-    $created = false;
-    if (isset($pNumber) && isset($pPassword)) {
-        $number = $pNumber;
-        $ClientPassword = $pPassword;
-    } else {
-        return false;
-    }
-
-    //################################# Vielleicht noch auslagerbar
-    $connection = initializeConnectionToDB();
-    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), PHP_URL_PATH);
-    $db = substr($path, 1);
-
-    $selected = mysql_select_db($db, $connection)
-    or die("Could not select Database");
-    //#################################
-
-    $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('" . $number . "','" . $ClientPassword . "')")
-    or die("There was an error running the query in create_user()!<br>");
-
-    if (mysql_num_rows($result) <> 0) {
-        $created = true;
-    }
-
-    mysql_close($connection);
-    return $created;
-}
