@@ -1,26 +1,22 @@
 <?php
-// mysql://bed9db9ba17777:5da87c13@us-cdbr-east-03.cleardb.com/heroku_fe4264edeb6329e?reconnect=true
-$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
+include "dbconnection.php";
 
-$server = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$db = substr($url["path"],1);
+//Connect to DB
+$connection = initializeConnectionToDB();
+$db = selectDB();
+$selected = mysql_select_db($db, $connection)
+or die("Could not select Database");
 
-$connection = mysql_connect($server, $username, $password);
+/*
+ * Configuration of Database
+ */
+$result = mysql_query("SET @@auto_increment_increment=1;")
+or die("There was an error during configuration !<br>");
 
-if (!$connection) {
-    die('Verbindung schlug fehl: ' . mysql_error());
-} else {
-    echo("Connection to database established!<br>");
-}
 
-//mysql_select_db($db);
-
-$selected = mysql_select_db($db,$connection)
-    or die("Could not select examples");
-echo("Database selected!<br>");
-
+/*
+ * Clear existing Tables
+ */
 $result = mysql_query("DROP TABLE users")
     or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
@@ -28,14 +24,21 @@ $result = mysql_query("DROP TABLE temp_registrations")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
-$result = mysql_query("CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), password CHAR(66), PRIMARY KEY(id))")
+/*
+ * Create Entity-Model
+ */
+$result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), password CHAR(66), PRIMARY KEY(id))")
     or die("There was an error running the query !<br>");
 echo("Table created!<br>");
 
-$result = mysql_query("CREATE TABLE temp_registrations(id int NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), verCode CHAR(66), PRIMARY KEY(id))")
+$result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), verCode CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table created!<br>");
 
+
+/*
+ * Create Example Data
+ */
 $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')")
     or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
@@ -44,17 +47,6 @@ $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VAL
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("SELECT * FROM users WHERE mobileNumber='84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882' AND password='050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645'")
-    or die("There was an error running the query !<br>");
-
-while($row = mysql_fetch_array($result))
-{
-    echo("ID matched: ");
-    echo $row[0];
-    echo "<br>";
-}
-
+//Close connection
 mysql_close($connection);
 echo("Connection closed!");
-
-?>
