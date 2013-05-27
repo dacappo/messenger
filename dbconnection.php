@@ -27,6 +27,16 @@ function initializeConnectionToDB()
 }
 
 /*
+ * Select Heroku Database
+ */
+function selectDB()
+{
+    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), PHP_URL_PATH);
+    $db = substr($path, 1);
+    return $db;
+}
+
+/*
 * This function checks if the number and password match with the data on the server
 */
 function checkLoginForUser($pNumber, $pPassword)
@@ -39,14 +49,11 @@ function checkLoginForUser($pNumber, $pPassword)
         return false;
     }
 
-    //################################# Vielleicht noch auslagerbar
+    //Connect to DB
     $connection = initializeConnectionToDB();
-    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), PHP_URL_PATH);
-    $db = substr($path, 1);
-
+    $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
-    //#################################
 
     $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"')
     or die("There was an error running the query !<br>");
@@ -71,14 +78,11 @@ function checkDatabaseForUser($pNumber)
         return $exist;
     }
 
-    //################################# Vielleicht noch auslagerbar
+    //Connect to DB
     $connection = initializeConnectionToDB();
-    $path = parse_url(getenv("CLEARDB_DATABASE_URL"), PHP_URL_PATH);
-    $db = substr($path, 1);
-
+    $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
-    //#################################
 
     $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '"')
     or die("There was an error running the query !<br>");
@@ -89,4 +93,31 @@ function checkDatabaseForUser($pNumber)
 
     mysql_close($connection);
     return $exist;
+}
+
+function checkTempRegistrations($pNumber, $pVerCode)
+{
+    $valid = false;
+    if (isset($pNumber) && isset($verCode)) {
+        $number = $pNumber;
+        $code = $pVerCode;
+    } else {
+        return $valid;
+    }
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT * FROM temp_registrations WHERE ' . 'mobileNumber="' . $number . ' "AND verCode="' . $code . '"')
+    or die("There was an error running the query !<br>");
+
+    if (mysql_num_rows($result) <> 0) {
+        $valid = true;
+    }
+
+    mysql_close($connection);
+    return $valid;
 }
