@@ -21,7 +21,7 @@ $selected = mysql_select_db($db,$connection)
     or die("Could not select examples");
 echo("Database selected!<br>");
 
-$result = mysql_query("DROP TABLE users;")// DROP TABLE temp_registrations;")
+$result = mysql_query("DROP TABLE users; DROP TABLE temp_registrations;")
     or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
