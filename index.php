@@ -61,24 +61,21 @@
 /*
 Override login submit
 */
-    $(document).ready(function(){
-			
-    	$("#form_login").submit(function(e) {
-    		e.preventDefault();
-    		var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
-    		var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
-        	$.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
-            	          	
-        	});
-       		//Important. Stop the normal POST
-        	return false;
-    	});
-	});
+    function overrideLoginSubmit() {
 
+    $("#form_login").submit(function(e) {
+        e.preventDefault();
+        var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
+        var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
+        $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
+
+        });
+        //Important. Stop the normal POST
+        return false;
+    });
+}
 /* Show login screen */
     function showLoginScreen() {
-
-
         var login_container = document.createElement('div');
         var login_form = document.createElement('form');
         login_form.setAttribute('id','form_login');
@@ -142,6 +139,17 @@ Override login submit
         login_container.appendChild(login_form);
 
         document.body.appendChild(login_container);
+
+        $("#form_login").submit(function(e) {
+            e.preventDefault();
+            var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
+            var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
+            $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
+
+            });
+            //Important. Stop the normal POST
+            return false;
+        });
 
     }
 
