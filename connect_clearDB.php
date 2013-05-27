@@ -12,7 +12,7 @@ or die("There was an error running the query !<br>");
 while($row = mysql_fetch_array($result))
 {
     echo("ID matched: ");
-    echo $row[0];
+    echo $row[0] . $row[1] . $row[2];
     echo "<br>";
 }
 
