@@ -190,7 +190,7 @@ Check server-side session
  				document.getElementById("action_bar_center").appendChild(button);
   				';
 	} else {
-	    showLoginScreen();
+	    echo 'showLoginScreen();';
 	}
 
 ?>
