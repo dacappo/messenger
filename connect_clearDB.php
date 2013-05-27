@@ -19,9 +19,11 @@ while($row = mysql_fetch_array($result))
 $result = mysql_query('SELECT * FROM users;')
 or die("There was an error running the query !<br>");
 
+echo "<br>---------------------------------------------------------------------------<br>";
+
+
 while($row = mysql_fetch_array($result))
 {
-    echo "<br>---------------------------------------------------------------------------<br>";
     echo("Users:       ");
     echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  password: ". $row[2];
     echo "<br>";
