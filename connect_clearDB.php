@@ -1,4 +1,6 @@
 <?php
+include "dbconnections.php";
+
 $connection = initializeConnectionToDB();
 $db = selectDB();
 $selected = mysql_select_db($db, $connection)
