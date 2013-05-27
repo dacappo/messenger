@@ -100,7 +100,7 @@ Override login submit
         img2.setAttribute('src','images/keys.png');
         var td4 = document.createElement('td');
         var input2 = document.createElement('input');
-        input2.setAttribute('id','input_mobile_password');
+        input2.setAttribute('id','input_password');
         input2.setAttribute('class','input_text');
         input2.setAttribute('type','password');
         input2.setAttribute('name','password');
