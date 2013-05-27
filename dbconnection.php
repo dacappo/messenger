@@ -121,3 +121,29 @@ function checkTempRegistrations($pNumber, $pVerCode)
     mysql_close($connection);
     return $valid;
 }
+
+function insertTempRegistration($mobileNumber,$generatedKey){
+    $successful = false;
+    if (isset($pNumber) && isset($verCode)) {
+        $number = $mobileNumber;
+        $code = $generatedKey;
+    } else {
+        return $successful;
+    }
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('". $number . "','" . $code . "')")
+    or die("There was an error running the query !<br>");
+
+    if (mysql_num_rows($result) <> 0) {
+        $successful = true;
+    }
+
+    mysql_close($connection);
+    return $successful;
+}

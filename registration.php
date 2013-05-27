@@ -31,7 +31,11 @@ function register($mobileNumber, $generatedKey)
         $responseMessage = $aErrorCodesSMS[$response_code];
         return $responseMessage;
     } else {
-        return "OK " . $generatedKey; //"SMS sent successfully. Debug modus: " . $param["debug"];
+        if (insertTempRegistration($mobileNumber,$generatedKey) == false){
+            return "Server Error during registration";
+        } else {
+            return "OK"; //"SMS sent successfully.
+        }
     }
 }
 
