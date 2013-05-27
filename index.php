@@ -186,10 +186,7 @@ Check server-side session
  				button.setAttribute("class","button");
  				button.setAttribute("id","button_logout");
  				button.onclick = loggedOut();
-
-
- 				};
-
+ 				
  				document.getElementById("action_bar_center").appendChild(button);
   				';
 	}
