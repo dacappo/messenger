@@ -77,6 +77,7 @@ Override login submit
 /* Show login screen */
     function showLoginScreen() {
         var login_container = document.createElement('div');
+        login_container.setAttribute('id','login_container')
         var login_form = document.createElement('form');
         login_form.setAttribute('id','form_login');
         login_form.setAttribute('action','login.php');
@@ -139,10 +140,7 @@ Override login submit
         login_container.appendChild(login_form);
 
 
-        var element = document.getElementById("login_container");
-        if (element != null) {
-            element.parentNode.removeChild(element);
-        }
+        $('#login_container').remove();
 
 
         document.body.appendChild(login_container);
