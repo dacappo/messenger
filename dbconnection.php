@@ -98,7 +98,7 @@ function checkDatabaseForUser($pNumber)
 function checkTempRegistrations($pNumber, $pVerCode)
 {
     $valid = false;
-    if (isset($pNumber) && isset($verCode)) {
+    if (isset($pNumber) && isset($pVerCode)) {
         $number = $pNumber;
         $code = $pVerCode;
     } else {
@@ -122,11 +122,11 @@ function checkTempRegistrations($pNumber, $pVerCode)
     return $valid;
 }
 
-function insertTempRegistration($mobileNumber,$generatedKey){
-    $successful = true;
+function insertTempRegistration($pNumber,$verCode){
+    $successful = false;
     if (isset($pNumber) && isset($verCode)) {
-        $number = $mobileNumber;
-        $code = $generatedKey;
+        $number = $pNumber;
+        $code = $verCode;
     } else {
         return $successful;
     }
@@ -140,7 +140,7 @@ function insertTempRegistration($mobileNumber,$generatedKey){
     $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('". $number . "','" . $code . "')")
     or die("There was an error running the query !<br>");
 
-    $successful = true;
+    $successful = checkTempRegistrations($number,$code);
 
     mysql_close($connection);
     return $successful;
