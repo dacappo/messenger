@@ -28,11 +28,11 @@ $result = mysql_query("DROP TABLE temp_registrations")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
-$result = mysql_query("CREATE TABLE users(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), password CHAR(66))")
+$result = mysql_query("CREATE TABLE users(id int NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), password CHAR(66), PRIMARY KEY(id))")
     or die("There was an error running the query !<br>");
 echo("Table created!<br>");
 
-$result = mysql_query("CREATE TABLE temp_registrations(id int NOT NULL PRIMARY KEY, mobileNumber CHAR(66), verCode CHAR(66))")
+$result = mysql_query("CREATE TABLE temp_registrations(id int NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), verCode CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table created!<br>");
 

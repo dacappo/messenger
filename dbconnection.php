@@ -137,7 +137,7 @@ function insertTempRegistration($pNumber,$verCode){
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('". $number . "','" . $code . "')")
+    $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
     or die("There was an error running the query in insertTempRegistration()!<br>");
 
     $successful = checkTempRegistrations($number,$code);
