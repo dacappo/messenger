@@ -62,12 +62,11 @@ function checkLoginForUser($pNumber, $pPassword)
 /*
 * This function checks if the number and IMEI are already existing
 */
-function checkDatabaseForUser($pNumber, $pIMEI)
+function checkDatabaseForUser($pNumber)
 {
     $exist = false;
-    if (isset($pNumber) && isset($pIMEI)) {
+    if (isset($pNumber)) {
         $number = $pNumber;
-        $imei = $pIMEI;
     } else {
         return false;
     }
@@ -81,7 +80,7 @@ function checkDatabaseForUser($pNumber, $pIMEI)
     or die("Could not select Database");
     //#################################
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND imei="' . $imei . '"')
+    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '"')
     or die("There was an error running the query !<br>");
 
     if (mysql_num_rows($result) <> 0) {
