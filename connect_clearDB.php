@@ -11,7 +11,7 @@ or die("There was an error running the query !<br>");
 
 while($row = mysql_fetch_array($result))
 {
-    echo("ID matched: ");
+    echo("Temp_Users:     ");
     echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  Verification Key: ". $row[2];
     echo "<br>";
 }
@@ -21,7 +21,8 @@ or die("There was an error running the query !<br>");
 
 while($row = mysql_fetch_array($result))
 {
-    echo("ID matched: ");
-    echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  Verification Key: ". $row[2];
+    echo "---------------------------------------------------------------------------";
+    echo("Users:       ");
+    echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  password: ". $row[2];
     echo "<br>";
 }
