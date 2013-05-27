@@ -1,4 +1,7 @@
 <?php
+
+include "dbconnection.php";
+
 $mobileNumber = $_POST['mobileNumber'];
 
 if (checkDatabaseForUser($mobileNumber)){

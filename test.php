@@ -64,4 +64,4 @@ include "registration.php";
 <form name="input" action="register.php" method="post">
     Number: <input type="text" name="mobileNumber">
     <input type="submit" value="Submit">
-</form> 
+</form>
