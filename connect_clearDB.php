@@ -10,6 +10,15 @@ mysql_connect($server, $username, $password);
 
 mysql_select_db($db);
 
-echo("success");
-?>
+$result = mysql_query('SELECT * FROM temp_registrations')
+or die("There was an error running the query !<br>");
+
+while($row = mysql_fetch_array($result))
+{
+    echo("ID matched: ");
+    echo $row[0];
+    echo "<br>";
+}
+
+
 
