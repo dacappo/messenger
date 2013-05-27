@@ -32,6 +32,7 @@
  				button.setAttribute("id","button_logout");
  				button.onclick = function(){
  				    $.ajax({url: "logout.php"});
+ 				    showLoginScreen();
  				    document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
  				    var message = document.createElement("div");
  				    message.innerHTML = "Successfully logged out!";
