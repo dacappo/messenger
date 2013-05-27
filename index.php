@@ -140,7 +140,10 @@ Override login submit
 
 
         var element = document.getElementById("login_container");
-        element.parentNode.removeChild(element);
+        if (element != null) {
+            element.parentNode.removeChild(element);
+        }
+
 
         document.body.appendChild(login_container);
 
