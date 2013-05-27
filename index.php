@@ -154,7 +154,7 @@ Override login submit
 
     }
 
-showLoginScreen();
+
 
 function loggedOut() {
     $.ajax({url: "logout.php"});
@@ -186,9 +186,11 @@ Check server-side session
  				button.setAttribute("class","button");
  				button.setAttribute("id","button_logout");
  				button.onclick = loggedOut();
- 				
+
  				document.getElementById("action_bar_center").appendChild(button);
   				';
+	} else {
+	    showLoginScreen();
 	}
 
 ?>
