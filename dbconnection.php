@@ -95,7 +95,7 @@ function checkDatabaseForUser($pNumber)
     return $exist;
 }
 
-function checkTempRegistrations($pNumber, $pVerCode)
+function checkTempRegistrations($pNumber, $pVerCode, $pTest)
 {
     $valid = false;
     if (isset($pNumber) && isset($pVerCode)) {
@@ -116,8 +116,10 @@ function checkTempRegistrations($pNumber, $pVerCode)
 
     if (mysql_num_rows($result) <> 0) {
         $valid = true;
-        $result = mysql_query('DELETE FROM temp_registrations WHERE mobileNumber="' . $number . ' " AND verCode="' . $code . '"')
-        or die("There was an error running the query in deleting an temp regeistration!<br>");
+        if (!$pTest){
+            $result = mysql_query('DELETE FROM temp_registrations WHERE mobileNumber="' . $number . ' " AND verCode="' . $code . '"')
+            or die("There was an error running the query in deleting an temp regeistration!<br>");
+        }
     }
 
     mysql_close($connection);
@@ -142,7 +144,7 @@ function insertTempRegistration($pNumber,$verCode){
     $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
     or die("There was an error running the query in insertTempRegistration()!<br>");
 
-    $successful = checkTempRegistrations($number,$code);
+    $successful = checkTempRegistrations($number,$code,false);
 
     mysql_close($connection);
     return $successful;

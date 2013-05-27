@@ -7,7 +7,7 @@ $mobileNumber = $_POST['mobileNumber'];
 $verCode = $_POST['verCode'];
 $successful = false;
 
-if (checkTempRegistrations($mobileNumber,$verCode)){
+if (checkTempRegistrations($mobileNumber,$verCode,true)){
     $successful = true;
     create_user($mobileNumber, "messenger");
 }
