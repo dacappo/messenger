@@ -175,7 +175,8 @@ Check server-side session
 
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 	
-		echo   'var message = document.createElement("div");
+		echo   'showLoginScreen();
+		        var message = document.createElement("div");
  				message.innerHTML = "Successfully logged in!";
  				message.setAttribute("class","info_message_success");
  				message.setAttribute("id","login_info_message");
