@@ -145,7 +145,7 @@ Override login submit
 
     }
 
-//showLoginScreen();
+showLoginScreen();
 
 /*
 Check server-side session
