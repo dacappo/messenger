@@ -13,4 +13,6 @@ session_start();
 if (!isset($_COOKIE['session'])) {
     setcookie("session", $_POST['test'], time() + 31536000);
     echo $_COOKIE['session'] . $_POST['username'];
+} else{
+    echo $_COOKIE['session'] . $_POST['username'];
 }
