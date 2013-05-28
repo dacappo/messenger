@@ -137,6 +137,12 @@ function insertTempRegistration($pNumber,$verCode){
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
+    $result = mysql_query('SELECT mobileNumber FROM temp_registrations WHERE mobileNumber ="' . $number . '";')
+    or die("There was an error running the query to look for existing temp registration!<br>");
+    if (mysql_num_rows($result) <> 0){
+        die("User with" . $number .  "already exist");
+    }
+
     $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
     or die("There was an error running the query in insertTempRegistration()!<br>");
 
