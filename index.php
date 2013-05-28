@@ -84,6 +84,7 @@ Override login submit
         var login_info_message = document.createElement('div');
         login_info_message.setAttribute('id','login_info_message');
         var login_table = document.createElement('table');
+        login_table.setAttribute('id','login_table');
         var tr1 = document.createElement('tr');
         var td1 = document.createElement('td');
         var img1 = document.createElement('img');
