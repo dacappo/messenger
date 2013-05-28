@@ -45,7 +45,7 @@ echo("Table dropped!<br>");
 /*
  * Create Entity-Model
  */
-$result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), password CHAR(66), PRIMARY KEY(id))")
+$result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66) UNIQUE, password CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table users created!<br>");
 
