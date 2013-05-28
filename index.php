@@ -182,7 +182,7 @@ Check server-side session
 	
 		echo   'showLoginScreen();
 		        var message = document.createElement("div");
-		        document.getElementById("form_login").innerHTML = "";
+		        $("#login_table").remove();
 		        setInfoMessage("Successfully logged in!","info_message_success");
 
  				var button = document.createElement("div");
