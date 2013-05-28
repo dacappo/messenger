@@ -182,7 +182,9 @@ Check server-side session
 	
 		echo   'showLoginScreen();
 		        var message = document.createElement("div");
-		        setInfoMessage("Successfully logged in!","info_message_success");
+		        document.getElementById("form_login").innerHTML = "";
+		        setInfoMessage('Successfully logged in!','info_message_success');
+
  				var button = document.createElement("div");
  				button.innerHTML = "Logout";
  				button.setAttribute("class","button");
