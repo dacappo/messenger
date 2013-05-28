@@ -17,12 +17,12 @@ or die("There was an error during configuration !<br>");
 $result = mysql_query("SHOW VARIABLES LIKE 'foreign_key_checks';")
 or die("There was an error during configuration !<br>");
 $row = mysql_fetch_array($result);
-echo print_r($row . "<br>");
+echo print_r($row) . "<br>";
 // --
 $result = mysql_query("SHOW VARIABLES LIKE 'storage_engine';")
 or die("There was an error during configuration !<br>");
 $row = mysql_fetch_array($result);
-echo print_r($row. "<br>");
+echo print_r($row). "<br>";
 
 
 /*
