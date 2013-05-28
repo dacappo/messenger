@@ -17,18 +17,18 @@ or die("There was an error during configuration !<br>");
 $result = mysql_query("SHOW VARIABLES LIKE 'foreign_key_checks';")
 or die("There was an error during configuration !<br>");
 $row = mysql_fetch_array($result);
-echo print_r($row);
+echo print_r($row<br>);
 // --
 $result = mysql_query("SHOW VARIABLES LIKE 'storage_engine';")
 or die("There was an error during configuration !<br>");
 $row = mysql_fetch_array($result);
-echo print_r($row);
+echo print_r($row<br>);
 
 
-    /*
-     * Clear existing Tables
-     * First Drop contacts because of foreign key relationship.
-    */
+/*
+ * Clear existing Tables
+ * First Drop contacts because of foreign key relationship.
+*/
 $result = mysql_query("DROP TABLE contacts")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
@@ -40,8 +40,6 @@ or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
 
-
-
 /*
  * Create Entity-Model
  */
@@ -49,7 +47,7 @@ $result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobile
 or die("There was an error running the query !<br>");
 echo("Table users created!<br>");
 
-$result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), verCode CHAR(66), PRIMARY KEY(id))")
+$result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66) UNIQUE, verCode CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table temp_registrations created!<br>");
 
