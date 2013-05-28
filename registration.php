@@ -31,7 +31,7 @@ function register($mobileNumber, $generatedKey)
         $responseMessage = $aErrorCodesSMS[$response_code];
         return $responseMessage;
     } else {
-        if (!insertTempRegistration($mobileNumber,$generatedKey)){
+        if (!insertTempRegistration($mobileNumber, $generatedKey)) {
             return "Server Error during registration";
         } else {
             return "OK"; //"SMS sent successfully.
@@ -43,7 +43,18 @@ function generateValidationString($length)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $randomString = '';
-    for ($i = 0; $i < $length; $i++) {       $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
     }
     return $randomString;
+}
+
+function generateRandNumber($length)
+{
+    $characters = '0123456789';
+    $randomNumber = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomNumber .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $randomNumber;
 }
