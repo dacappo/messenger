@@ -34,7 +34,7 @@ include "registration.php";
         <td>Test SMS Gateway connection</td>
         <td><?php
             /* Check HTTP request to GATEWAY provider for registration */
-            $returnMessage = register("015140445799", generateValidationString(5));
+            $returnMessage = register("0151404457" . rand(0,9), generateValidationString(5));
             echo (!strncmp($returnMessage, "OK", 2)) ?
                 "register(): connection to SMS gateway provider  </td><td>  <span style='color:green'>successful</span><br></td>" :
                 "register(): Error  </td><td>  <span style='color:red'>$returnMessage</span><br></td>";

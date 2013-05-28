@@ -140,7 +140,7 @@ function insertTempRegistration($pNumber,$verCode){
     $result = mysql_query('SELECT mobileNumber FROM temp_registrations WHERE mobileNumber ="' . $number . '";')
     or die("There was an error running the query to look for existing temp registration!<br>");
     if (mysql_num_rows($result) <> 0){
-        die("User with" . $number .  "already exist");
+        die("User with number " . $number .  " already exist");
     }
 
     $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
@@ -167,6 +167,12 @@ function create_user($pNumber, $pPassword)
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
+
+    $result = mysql_query('SELECT mobileNumber FROM users WHERE mobileNumber ="' . $number . '";')
+    or die("There was an error running the query to look for existing temp registration!<br>");
+    if (mysql_num_rows($result) <> 0){
+        die("User with number: " . $number .  " already exist");
+    }
 
     $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('" . $number . "','" . $ClientPassword . "')")
     or die("There was an error running the query in create_user()!<br>");
