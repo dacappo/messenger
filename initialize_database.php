@@ -16,14 +16,15 @@ or die("There was an error during configuration !<br>");
 
 /*
  * Clear existing Tables
+*/
 
-$result = mysql_query("DROP TABLE contacts")
-or die("There was an error running the query !<br>");
-echo("Table dropped!<br>");*/
 $result = mysql_query("DROP TABLE users")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 $result = mysql_query("DROP TABLE temp_registrations")
+or die("There was an error running the query !<br>");
+echo("Table dropped!<br>");
+$result = mysql_query("DROP TABLE contacts")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
@@ -40,7 +41,7 @@ or die("There was an error running the query !<br>");
 echo("Table temp_registrations created!<br>");
 
 $result = mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, source_user_id INT NOT NULL, origin_user_id INT NOT NULL, nickname CHAR(66),
-PRIMARY KEY(contact_id), FOREIGN KEY (source_user_id) REFERENCES users(id), FOREIGN KEY (origin_user_id) REFERENCES users(id))")
+PRIMARY KEY(contact_id), FOREIGN KEY (source_user_id) REFERENCES users(id) ON DELETE CASCADE, FOREIGN KEY (origin_user_id) REFERENCES users(id) ON DELETE CASCADE)")
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 
