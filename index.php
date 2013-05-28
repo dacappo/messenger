@@ -170,12 +170,7 @@ function loggedOut() {
     showLoginScreen();
     document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
     setInfoMessage('Successfully logged out!','info_message_success');
-    /*var message = document.createElement("div");
-    message.innerHTML = "Successfully logged out!";
-    message.setAttribute("class","info_message_success");
-    message.setAttribute("id","login_info_message");
-    document.getElementById("form_login").innerHTML = "";
-    document.getElementById("form_login").appendChild(message);*/
+
 }
 
 /*
@@ -187,11 +182,7 @@ Check server-side session
 	
 		echo   'showLoginScreen();
 		        var message = document.createElement("div");
- 				message.innerHTML = "Successfully logged in!";
- 				message.setAttribute("class","info_message_success");
- 				message.setAttribute("id","login_info_message");
- 				document.getElementById("form_login").innerHTML = "";
- 				document.getElementById("form_login").appendChild(message);
+		        setInfoMessage("Successfully logged in!","info_message_success");
  				var button = document.createElement("div");
  				button.innerHTML = "Logout";
  				button.setAttribute("class","button");
