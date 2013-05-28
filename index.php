@@ -77,12 +77,14 @@ Override login submit
 /* Show login screen */
     function showLoginScreen() {
         var login_container = document.createElement('div');
+        login_container.setAttribute('id','login_container')
         var login_form = document.createElement('form');
         login_form.setAttribute('id','form_login');
         login_form.setAttribute('action','login.php');
         var login_info_message = document.createElement('div');
         login_info_message.setAttribute('id','login_info_message');
         var login_table = document.createElement('table');
+        login_table.setAttribute('id','login_table');
         var tr1 = document.createElement('tr');
         var td1 = document.createElement('td');
         var img1 = document.createElement('img');
@@ -138,6 +140,10 @@ Override login submit
 
         login_container.appendChild(login_form);
 
+
+        $('#login_container').remove();
+
+
         document.body.appendChild(login_container);
 
         $("#form_login").submit(function(e) {
@@ -153,7 +159,20 @@ Override login submit
 
     }
 
-showLoginScreen();
+    function setInfoMessage(message, klass) {
+        document.getElementById('login_info_message').setAttribute('class', klass);
+        document.getElementById('login_info_message').innerHTML = message;
+    }
+
+
+
+function loggedOut() {
+    $.ajax({url: "logout.php"});
+    showLoginScreen();
+    document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
+    setInfoMessage('Successfully logged out!','info_message_success');
+
+}
 
 /*
 Check server-side session
@@ -162,30 +181,22 @@ Check server-side session
 
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 	
-		echo   'var message = document.createElement("div");
- 				message.innerHTML = "Successfully logged in!";
- 				message.setAttribute("class","info_message_success");
- 				message.setAttribute("id","login_info_message");
- 				document.getElementById("form_login").innerHTML = "";
- 				document.getElementById("form_login").appendChild(message);
+		echo   'showLoginScreen();
+		        var message = document.createElement("div");
+		        $("#login_table").remove();
+		        setInfoMessage("Successfully logged in!","info_message_success");
+
  				var button = document.createElement("div");
  				button.innerHTML = "Logout";
  				button.setAttribute("class","button");
  				button.setAttribute("id","button_logout");
- 				button.onclick = function(){
- 				    $.ajax({url: "logout.php"});
- 				    document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
- 				    var message = document.createElement("div");
- 				    message.innerHTML = "Successfully logged out!";
- 				    message.setAttribute("class","info_message_success");
- 				    message.setAttribute("id","login_info_message");
- 				    document.getElementById("form_login").innerHTML = "";
- 				    document.getElementById("form_login").appendChild(message);
-
- 				};
-
+ 				button.onclick = function() {
+ 				    loggedOut();
+                }
  				document.getElementById("action_bar_center").appendChild(button);
   				';
+	} else {
+	    echo 'showLoginScreen();';
 	}
 
 ?>

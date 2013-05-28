@@ -31,15 +31,7 @@
  				button.setAttribute("class","button");
  				button.setAttribute("id","button_logout");
  				button.onclick = function(){
- 				    $.ajax({url: "logout.php"});
- 				    document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
- 				    var message = document.createElement("div");
- 				    message.innerHTML = "Successfully logged out!";
- 				    message.setAttribute("class","info_message_success");
- 				    message.setAttribute("id","login_info_message");
- 				    document.getElementById("form_login").innerHTML = "";
- 				    document.getElementById("form_login").appendChild(message);
-
+ 				    loggedOut();
  				};
 
  				document.getElementById("action_bar_center").appendChild(button);
