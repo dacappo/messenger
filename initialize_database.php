@@ -23,6 +23,9 @@ echo("Table dropped!<br>");
 $result = mysql_query("DROP TABLE temp_registrations")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
+$result = mysql_query("DROP TABLE contacts")
+or die("There was an error running the query !<br>");
+echo("Table dropped!<br>");
 
 /*
  * Create Entity-Model
