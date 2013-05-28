@@ -39,7 +39,7 @@ or die("There was an error running the query !<br>");
 echo("Table temp_registrations created!<br>");
 
 $result = mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, source_user_id INT NOT NULL, origin_user_id INT NOT NULL, nickname CHAR(66),
-PRIMARY KEY(contact_id), FOREIGN KEY (source_user_id) REFERENCES users(id), FOREIGN KEY (origin_user_id) REFERENCES users(id))")
+PRIMARY KEY(contact_id), FOREIGN KEY ON DELETE CASCADE (source_user_id) REFERENCES users(id), FOREIGN KEY ON DELETE CASCADE (origin_user_id) REFERENCES users(id))")
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 
