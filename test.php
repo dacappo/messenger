@@ -71,3 +71,8 @@ include "registration.php";
     VerCode: <input type="text" name="verCode">
     <input type="submit" value="Submit">
 </form>
+
+<form name="input3" action="get_contacts.php" method="post">
+    User ID: <input type="text" name="user_id">
+    <input type="submit" value="Submit">
+</form>
