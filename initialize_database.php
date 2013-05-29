@@ -1,5 +1,5 @@
 <?php
-include "dbConnection.php";
+include "dbconnection.php";
 
 //Connect to DB
 $connection = initializeConnectionToDB();

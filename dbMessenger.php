@@ -6,7 +6,7 @@
  * Time: 13:59
  * To change this template use File | Settings | File Templates.
  */
-include "dbConnection.php";
+include "dbconnection.php";
 
 function getContactsForUserID($user_id){
 

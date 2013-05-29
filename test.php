@@ -1,5 +1,5 @@
 <?php
-include "dbConnection.php";
+include "dbconnection.php";
 include "registration.php";
 ?>
 <table border="2px">
