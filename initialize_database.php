@@ -7,16 +7,31 @@ $db = selectDB();
 $selected = mysql_select_db($db, $connection)
 or die("Could not select Database");
 
+
 /*
  * Configuration of Database
  */
 $result = mysql_query("SET @@auto_increment_increment=1;")
 or die("There was an error during configuration !<br>");
+// --
+$result = mysql_query("SHOW VARIABLES LIKE 'foreign_key_checks';")
+or die("There was an error during configuration !<br>");
+$row = mysql_fetch_array($result);
+echo print_r($row) . "<br>";
+// --
+$result = mysql_query("SHOW VARIABLES LIKE 'storage_engine';")
+or die("There was an error during configuration !<br>");
+$row = mysql_fetch_array($result);
+echo print_r($row). "<br>";
 
 
 /*
  * Clear existing Tables
- */
+ * First Drop contacts because of foreign key relationship.
+*/
+$result = mysql_query("DROP TABLE contacts")
+or die("There was an error running the query !<br>");
+echo("Table dropped!<br>");
 $result = mysql_query("DROP TABLE users")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
@@ -24,19 +39,20 @@ $result = mysql_query("DROP TABLE temp_registrations")
 or die("There was an error running the query !<br>");
 echo("Table dropped!<br>");
 
+
 /*
  * Create Entity-Model
  */
-$result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), password CHAR(66), PRIMARY KEY(id))")
+$result = mysql_query("CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66) UNIQUE, password CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table users created!<br>");
 
-$result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66), verCode CHAR(66), PRIMARY KEY(id))")
+$result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCREMENT, mobileNumber CHAR(66) UNIQUE, verCode CHAR(66), PRIMARY KEY(id))")
 or die("There was an error running the query !<br>");
 echo("Table temp_registrations created!<br>");
 
-mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, source_user_id INT NOT NULL, origin_user_id INT, nickname CHAR(66),
-PRIMARY KEY(id), FOREIGN KEY (source_user_id) REFERENCES users(id), FOREIGN KEY (origin_user_id) REFERENCES users(id))")
+$result = mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, source_user_id INT NOT NULL, origin_user_id INT NOT NULL, nickname CHAR(66),
+PRIMARY KEY(contact_id), FOREIGN KEY (source_user_id) REFERENCES users(id) ON DELETE CASCADE, FOREIGN KEY (origin_user_id) REFERENCES users(id) ON DELETE CASCADE)")
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 

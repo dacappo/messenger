@@ -28,3 +28,16 @@ while($row = mysql_fetch_array($result))
     echo "ID: " . $row[0] . "  Number: " .  $row[1] . "  password: ". $row[2];
     echo "<br>";
 }
+
+$result = mysql_query('SELECT * FROM contacts;')
+or die("There was an error running the query !<br>");
+
+echo "<br>---------------------------------------------------------------------------<br>";
+
+
+while($row = mysql_fetch_array($result))
+{
+    echo("Contacts:       ");
+    echo "ID: " . $row[0] . "  Source_ID: " .  $row[1] . "  origin_ID: ". $row[2] . " Nickname" . $row[3];
+    echo "<br>";
+}
