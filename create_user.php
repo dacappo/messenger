@@ -5,7 +5,7 @@
  * Date: 27.05.13
  * Time: 16:22
 */
-include "dbconnection.php";
+include "dbConnection.php";
 include "registration.php";
 
 $mobileNumber = $_POST['mobileNumber'];
