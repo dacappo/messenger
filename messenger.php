@@ -6,6 +6,7 @@
  * Time: 13:51
  */
 
+include "dbMessenger.php";
 
 function show_contacts($pUser_id)
 {
