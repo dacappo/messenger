@@ -231,13 +231,8 @@ Check server-side session
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 
-	    echo    'showContacts();';
-		/*echo   'showLoginScreen();
-		        var message = document.createElement("div");
-		        $("#login_table").remove();
-		        setInfoMessage("Successfully logged in!","info_message_success");
-
- 				var button = document.createElement("div");
+	    echo   'showContacts();
+		        var button = document.createElement("div");
  				button.innerHTML = "Logout";
  				button.setAttribute("class","button");
  				button.setAttribute("id","button_logout");
@@ -245,7 +240,7 @@ Check server-side session
  				    loggedOut();
                 }
  				document.getElementById("action_bar_center").appendChild(button);
-  				';*/
+  				';
 	} else {
 	    echo 'showLoginScreen();';
 	}
