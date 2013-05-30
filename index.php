@@ -191,11 +191,11 @@ Override login submit
         document.body.appendChild(main);
 
         $.post('contacts.php', {user_id: 1}, function(data){
-            $.each( data.contacts, function( i, contact ) {
+            $.each( data.contacts , function( i, con ) {
                 var contact = document.createElement('div');
                 contact.setAttribute('class','contact');
                 var contact_name = document.createElement('span');
-                contact_name.setAttribute('class',contact.name);
+                contact_name.setAttribute('class',con.name);
                 var icon = document.createElement('img');
                 icon.setAttribute('src','images/avatar.png');
                 icon.setAttribute('class','contact_icon');
