@@ -7,15 +7,57 @@
  */
 
 
-function show_contacts($pUser_id){
+function show_contacts($pUser_id)
+{
 
-    if (isset($pNumber) && isset($pPassword)) {
+    if (isset($pUser_id)) {
         $user_id = $pUser_id;
     } else {
-        return "ERROR : No valid parameter";
+        return '{
+                 "contacts": {
+                    "message": "ERROR : No valid user",
+                    "data": {
+                        "elements": []
+                    }
+                 }
+                }';
     }
 
-    $contacts = getContactsForUserID($user_id);
+    $aContacts = getContactsForUserID($user_id);
 
-    return $contacts;
+    if (count($aContacts) > 0) {
+        return buildJSONForArray($aContacts);
+    } else {
+        return '{
+                 "contacts": {
+                    "message": "No contacts for user with id: ' . var_dump($pUser_id) . '",
+                    "data": {
+                        "elements": []
+                    }
+                 }
+                }';
+    }
+}
+
+function buildJSONForArray($contacts)
+{
+    $JSONString = '{
+                 "contacts": {
+                    "message": "OK : Data for user with id: ' . var_dump($pUser_id) . '",
+                    "data": {
+                        "elements": [';
+    
+    $isFirst = true;
+    while (empty($contacts) == false) {
+        if ($isFirst){
+            $JSONString .= array_pop($contacts);
+            $isFirst = false;
+        } else {
+            $JSONString .= ', ' . array_pop($contacts);
+        }
+    }
+
+    // close JSON
+    $JSONString .= ']}}}';
+    return $JSONString;
 }

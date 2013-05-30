@@ -21,11 +21,12 @@ function getContactsForUserID($user_id){
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
 
     if (mysql_num_rows($result) > 0) {
-
         for ($i=0; $i<mysql_num_rows($result); ++$i)
             array_push($values, mysql_result($result,$i));
     }
-    return $values;
+
     mysql_close($connection);
+    return $values;
+
 }
 
