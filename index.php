@@ -148,6 +148,7 @@ Override login submit
 
 
         $('#login_container').remove();
+        $('#main').remove();
 
         //$('#main').appendChild(login_container);
        document.body.appendChild(login_container);
@@ -215,27 +216,6 @@ Override login submit
     }
 
 
-
-
-
-/*<div id="main">
-    <div id="contacts">
-        <div id="contact_list_head">
-            Contacts
-        </div>
-        <div id="contact_list">
-            <div class="contact">
-                <span class="contact_name"><img src="images/avatar.png" style="height:15px; margin:5px 5px 0px 5px"/>Max Mustermann</span>
-            </div>
-        </div>
-    </div>
-
-*/
-
-
-
-
-
 function loggedOut() {
     $.ajax({url: "logout.php"});
     showLoginScreen();
@@ -250,8 +230,9 @@ Check server-side session
 
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
-	
-		echo   'showLoginScreen();
+
+	    echo    'showContacts();';
+		/*echo   'showLoginScreen();
 		        var message = document.createElement("div");
 		        $("#login_table").remove();
 		        setInfoMessage("Successfully logged in!","info_message_success");
@@ -264,10 +245,9 @@ Check server-side session
  				    loggedOut();
                 }
  				document.getElementById("action_bar_center").appendChild(button);
-  				';
+  				';*/
 	} else {
-	    echo 'showLoginScreen();
-	          showContacts();';
+	    echo 'showLoginScreen();';
 	}
 
 ?>

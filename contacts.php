@@ -15,6 +15,13 @@ header('Content-Type: application/json');
                 { "name":"Sergey Brin"},
                 { "name":"Arnold Schwarzenegger"},
                 { "name":"Jessica Simpson"},
+                { "name":"Tom Ford"},
+                { "name":"Bill McDermott"},
+                { "name":"Harvey Dent"},
+                { "name":"Bruce Wayne"},
+                { "name":"Peter Parker"},
+                { "name":"Morgan Freeman"},
+                { "name":"Adriana Lima"},
                 { "name":"Michael Jordan"}
             ]
          }';
