@@ -190,21 +190,23 @@ Override login submit
 
         document.body.appendChild(main);
 
-        $.post('get_contacts.php', {user_id: 1}, function(data){
-            var contact = document.createElement('div');
-            contact.setAttribute('class','contact');
-            var contact_name = document.createElement('span');
-            contact_name.setAttribute('class','contact_name');
-            var icon = document.createElement('img');
-            icon.setAttribute('src','images/avatar.png');
-            icon.setAttribute('class','contact_icon');
+        $.post('contacts.php', {user_id: 1}, function(data){
+            $.each( data.contacts, function( i, contact ) {
+                var contact = document.createElement('div');
+                contact.setAttribute('class','contact');
+                var contact_name = document.createElement('span');
+                contact_name.setAttribute('class',contact.name);
+                var icon = document.createElement('img');
+                icon.setAttribute('src','images/avatar.png');
+                icon.setAttribute('class','contact_icon');
 
-            contact_name.appendChild(icon);
+                contact_name.appendChild(icon);
 
-            contact_name.appendChild(document.createTextNode('Max Mustermann'));
-            contact.appendChild(contact_name);
+                contact_name.appendChild(document.createTextNode('Max Mustermann'));
+                contact.appendChild(contact_name);
 
-            contact_list.appendChild(contact);
+                contact_list.appendChild(contact);
+            }
         });
 
 
