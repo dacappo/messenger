@@ -195,14 +195,14 @@ Override login submit
                 var contact = document.createElement('div');
                 contact.setAttribute('class','contact');
                 var contact_name = document.createElement('span');
-                contact_name.setAttribute('class',con.name);
+                contact_name.setAttribute('class','contact_name');
                 var icon = document.createElement('img');
                 icon.setAttribute('src','images/avatar.png');
                 icon.setAttribute('class','contact_icon');
 
                 contact_name.appendChild(icon);
 
-                contact_name.appendChild(document.createTextNode('Max Mustermann'));
+                contact_name.appendChild(document.createTextNode(con.name));
                 contact.appendChild(contact_name);
 
                 contact_list.appendChild(contact);
