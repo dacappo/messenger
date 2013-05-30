@@ -206,7 +206,7 @@ Override login submit
                 contact.appendChild(contact_name);
 
                 contact_list.appendChild(contact);
-            }
+            });
         });
 
 
