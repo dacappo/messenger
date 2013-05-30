@@ -9,25 +9,116 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: #F0F0F0;
+} /* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    background-color:#666;
+    border-radius: 5px;
+} /* this will style the thumb, ignoring the track */
+::-webkit-scrollbar-button {
+    background-color: #F0F0F0;
+    height: 0px;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+::-webkit-scrollbar-corner {
+    background-color: #F0F0F0;
+
+}
+
 
 #action_bar {
-	background-color: #111111;	
+	background-color: #111111;
 	color: #FFFFFF;
+    min-width: 1000px;
 }
 
 #action_bar_center {
-    max-width: 1200px;
+    min-width: 1000px;
     height: 40px;
     margin: auto;
 }
 
-#contact_list {
+#main {
+    position: absolute;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    min-width: 1000px;
 
-	
+}
+
+#contacts {
+
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 25%;
+    min-width: 250px;
+
+}
+
+#contact_list {
+    background-color: #FFF;
+    position: absolute;
+    top: 30px;
+    bottom: 0px;
+    left: 10px;
+    right: 0px;
+    overflow:auto;
+}
+
+#contact_list_head {
+    background-color: orange;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    right: 0px;
+
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+    padding:5px;
+}
+
+.contact {
+    height: 40px;
+    width:100%;
+    border-bottom: solid white;
+
+}
+
+.contact_icon {
+    height:15px; margin:5px 5px 0px 5px;
+}
+
+.contact_name {
+    color: #666666;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 5px;
+    margin: 5px;
+}
+
+.contact_number {
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    margin: 5px;
 }
 
 #conversation {
-
+    background-color: black;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    right: 0px;
+    width: 73%;
+    min-width: 750px;
+    opacity: 0.5;
 }
 
 .input_text {

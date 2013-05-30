@@ -25,17 +25,20 @@
 <body>
     <!-- Top bar -->
 	<div id="action_bar">
-    <div id="action_bar_center">
-		<div id="action_bar_logo">
-			<span><img src="images/logo.png" style="height:30px"></span>
-		</div>
-		<div id="action_bar_title">
-			<span>PaXaLu</span>
-		</div>
-    </div>
+        <div id="action_bar_center">
+		    <div id="action_bar_logo">
+			    <span><img src="images/logo.png" style="height:30px"></span>
+		    </div>
+		    <div id="action_bar_title">
+			    <span>PaXaLu</span>
+		    </div>
+        </div>
 	</div>
 
-    <!-- Login fields
+
+    <!--
+    <div id="conversation">
+    </div>
 	<div>
 		<form id="form_login" action="login.php">
 		    <div id="login_info_message" class="info_message_warning" style="visibility:hidden; height: 0px"></div>
@@ -58,6 +61,9 @@
 	-->
 	
 <script type="text/javascript">
+
+
+
 /*
 Override login submit
 */
@@ -143,8 +149,8 @@ Override login submit
 
         $('#login_container').remove();
 
-
-        document.body.appendChild(login_container);
+        //$('#main').appendChild(login_container);
+       document.body.appendChild(login_container);
 
         $("#form_login").submit(function(e) {
             e.preventDefault();
@@ -164,6 +170,68 @@ Override login submit
         document.getElementById('login_info_message').innerHTML = message;
     }
 
+    function showContacts() {
+        $('#login_container').remove();
+
+        var main = document.createElement('div');
+        main.setAttribute('id','main');
+        var contacts = document.createElement('div');
+        contacts.setAttribute('id','contacts');
+        var contact_list_head = document.createElement('div');
+        contact_list_head.setAttribute('id','contact_list_head');
+        contact_list_head.innerHTML = "Contacts";
+        var contact_list = document.createElement('div');
+        contact_list.setAttribute('id','contact_list');
+
+        contacts.appendChild(contact_list_head);
+        contacts.appendChild(contact_list);
+
+        main.appendChild(contacts);
+
+        document.body.appendChild(main);
+
+        $.post('get_contacts.php', {user_id: 1}, function(data){
+            var contact = document.createElement('div');
+            contact.setAttribute('class','contact');
+            var contact_name = document.createElement('span');
+            contact_name.setAttribute('class','contact_name');
+            var icon = document.createElement('img');
+            icon.setAttribute('src','images/avatar.png');
+            icon.setAttribute('class','contact_icon');
+
+            contact_name.appendChild(icon);
+
+            contact_name.appendChild(document.createTextNode('Max Mustermann'));
+            contact.appendChild(contact_name);
+
+            contact_list.appendChild(contact);
+        });
+
+
+
+
+    }
+
+
+
+
+
+/*<div id="main">
+    <div id="contacts">
+        <div id="contact_list_head">
+            Contacts
+        </div>
+        <div id="contact_list">
+            <div class="contact">
+                <span class="contact_name"><img src="images/avatar.png" style="height:15px; margin:5px 5px 0px 5px"/>Max Mustermann</span>
+            </div>
+        </div>
+    </div>
+
+*/
+
+
+
 
 
 function loggedOut() {
@@ -177,8 +245,8 @@ function loggedOut() {
 /*
 Check server-side session
  */
-<?php
 
+<?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 	
 		echo   'showLoginScreen();
@@ -196,7 +264,8 @@ Check server-side session
  				document.getElementById("action_bar_center").appendChild(button);
   				';
 	} else {
-	    echo 'showLoginScreen();';
+	    echo 'showLoginScreen();
+	          showContacts();';
 	}
 
 ?>
