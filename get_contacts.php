@@ -7,8 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-include "dbconnection.php";
-include "registration.php";
+include "messenger.php";
 
 $user_ID = $_POST['user_id'];
 

@@ -46,7 +46,7 @@ function buildJSONForArray($contacts)
                     "message": "OK : Data for user with id: ' . var_dump($pUser_id) . '",
                     "data": {
                         "elements": [';
-    
+
     $isFirst = true;
     while (empty($contacts) == false) {
         if ($isFirst){
