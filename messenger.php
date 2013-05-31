@@ -43,18 +43,20 @@ function show_contacts($pUser_id)
 function buildJSONForArray($contacts)
 {
     $JSONString = '{
-                 "contacts": {
-                    "message": "OK : Data for user with id: ' . var_dump($pUser_id) . '",
-                    "data": {
-                        "elements": [';
+                    "contacts": {
+                        "message": "OK : Data for user",
+                        "data": {
+                            "elements": [';
 
     $isFirst = true;
     while (empty($contacts) == false) {
         if ($isFirst){
-            $JSONString .= array_pop($contacts);
+            $JSONString .= array_pop($contacts)[0];
+            $JSONString .= array_pop($contacts)[1];
             $isFirst = false;
         } else {
-            $JSONString .= ', ' . array_pop($contacts);
+            $JSONString .= ', ' . array_pop($contacts)[0];
+            $JSONString .= array_pop($contacts)[1];
         }
     }
 

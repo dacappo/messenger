@@ -14,4 +14,5 @@ $user_ID = $_POST['user_id'];
 $resultDataJSON = show_contacts($user_ID);
 
 header('Content-Type: application/json');
-echo json_encode($resultDataJSON);
+
+echo $resultDataJSON;
