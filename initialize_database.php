@@ -59,10 +59,10 @@ echo("Table contacts created!<br>");
 /*
  * Create Example Data
  */
-$result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')")
+$result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('1','84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
-$result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('0123456789','messenger')")
+$result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2','0123456789','messenger'),('3','01514044001','messenger'),('4','0160987123','messenger'),('5','01418912302','messenger')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
@@ -70,7 +70,7 @@ $result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VAL
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("INSERT INTO contacts (source_user_id,origin_user_id,nickname) VALUES ('1','2','Bestfriend')")
+$result = mysql_query("INSERT INTO contacts (source_user_id,origin_user_id,nickname) VALUES ('1','2','Hans Peter'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
