@@ -8,7 +8,8 @@
  */
 include "dbconnection.php";
 
-function getContactsForUserID($user_id){
+function getContactsForUserID($user_id)
+{
 
     $values = array();
     //Connect to DB
@@ -21,12 +22,14 @@ function getContactsForUserID($user_id){
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
 
     if (mysql_num_rows($result) > 0) {
-        for ($i=0; $i<mysql_num_rows($result); ++$i)
-            array_push($values, mysql_result($result,$i));
+        for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+            $contact_id = mysql_result($result, $i, 0);
+            $contact_nickname = mysql_result($result, $i, 1);
+            $data = array($contact_id, $contact_nickname);
+            array_push($values, $data);
+        }
     }
-
     mysql_close($connection);
     return $values;
-
 }
 
