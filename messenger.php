@@ -51,7 +51,8 @@ function buildJSONForArray($contacts)
     $isFirst = true;
     while (empty($contacts) == false) {
         if ($isFirst){
-            $JSONString .= array_pop($contacts)[0];
+            $contact_id = array_pop($contacts)[0];
+            $JSONString .= $contact_id;
             $JSONString .= array_pop($contacts)[1];
             $isFirst = false;
         } else {
