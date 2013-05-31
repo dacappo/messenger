@@ -52,12 +52,13 @@ function buildJSONForArray($contacts)
     while (empty($contacts) == false) {
         if ($isFirst){
             $singleArray = array_pop($contacts);
-            $JSONString .= $singleArray[0];
-            $JSONString .= $singleArray[1];
+            $JSONString .= '"' . $singleArray[0] . '" : ';
+            $JSONString .= '"' . $singleArray[1] . '"';
             $isFirst = false;
         } else {
+            $singleArray = array_pop($contacts);
             $JSONString .= ', ' . array_pop($contacts)[0];
-            $JSONString .= array_pop($contacts)[1];
+            $JSONString .= $singleArray[1];
         }
     }
 
