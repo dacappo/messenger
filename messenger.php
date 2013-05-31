@@ -57,8 +57,8 @@ function buildJSONForArray($contacts)
             $isFirst = false;
         } else {
             $singleArray = array_pop($contacts);
-            $JSONString .= ', ' . array_pop($contacts)[0];
-            $JSONString .= $singleArray[1];
+            $JSONString .= ', "' . $singleArray[0] . '" : ';
+            $JSONString .= '"' . $singleArray[1] . '"';
         }
     }
 
