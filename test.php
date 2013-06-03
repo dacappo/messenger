@@ -77,14 +77,14 @@ include "registration.php";
 </form>
 
 <h1>Create User</h1>
-<form name="input2" action="check_ver.php" method="post">
+<form name="input3" action="create_user.php.php" method="post">
     Number: <input type="text" name="mobileNumber">
-    VerCode: <input type="text" name="verCode">
+    VerCode: <input type="text" name="password">
     <input type="submit" value="Submit">
 </form>
 
 <h1>Get contacts</h1>
-<form name="input3" action="get_contacts.php" method="post">
+<form name="input4" action="get_contacts.php" method="post">
     User ID: <input type="text" name="user_id">
     <input type="submit" value="Submit">
 </form>
