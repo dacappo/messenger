@@ -106,7 +106,7 @@ function create_contacts($pID, $pContacts)
         or die("There was an error running the query to look for existing users!<br>");
         $infoContacts[] = "found"; //test
         $infoContacts[] = $key; //test
-        $infoContacts[] = $value; //test
+        $infoContacts[] = $value[$key]; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
             $sourceID = mysql_result($SourceIDResult, 0, 0);
             $infoContacts[] = $sourceID; //test
