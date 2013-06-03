@@ -16,8 +16,8 @@ if (!isset($contacts)){
 }
 // array structure: "number" => "name"
 $arrayOfContacts = json_decode($contacts);
-var_dump($arrayOfContacts);
-if (isset($arrayOfContacts)){
+
+if (isset($arrayOfContacts)){#
    $matchedContacts = compare_contacts($arrayOfContacts);
 } else {
     echo "Server Error : during JSON decoding";
@@ -26,7 +26,7 @@ if (isset($arrayOfContacts)){
 if (!empty($matchedContacts)){
     create_contacts($user_id, $matchedContacts);
 } else {
-    echo "Non of your contacts is using this messenger";
+    echo "Non of your contacts is using this messenger" .var_dump($arrayOfContacts) . var_dump($matchedContacts);
 }
 
 header('Content-Type: application/json');
