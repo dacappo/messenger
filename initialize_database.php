@@ -138,6 +138,7 @@ $result = mysql_query("INSERT INTO contacts (origin_user_id,destination_user_id,
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
+
 $mysqlTimestamp = date('Y-m-d H:i:s');
 $result = mysql_query("INSERT INTO messages (contact_id, content, date_time, read_status) VALUES ('1','Hallo ich bin Root','" . $mysqlTimestamp . "','0'),('1','Warum antwortest du nicht','" . $mysqlTimestamp . "','0'),('1','Dann halt nicht...','" . $mysqlTimestamp . "','0'),('2','Zurueck zu Origin','" . $mysqlTimestamp . "','0')")
 or die("There was an error running the query !<br>");
