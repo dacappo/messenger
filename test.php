@@ -77,9 +77,9 @@ include "registration.php";
 </form>
 
 <h1>Create User</h1>
-<form name="input3" action="create_user.php.php" method="post">
+<form name="input3" action="create_user.php" method="post">
     Number: <input type="text" name="mobileNumber">
-    VerCode: <input type="text" name="password">
+    Password: <input type="text" name="password">
     <input type="submit" value="Submit">
 </form>
 
