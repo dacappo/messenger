@@ -113,6 +113,7 @@ function create_contacts($pID, $pContacts)
     }
 
     if (isset($sourceInformation)){
+
         foreach ($sourceInformation as $key => $value){
             mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
             or die("There was an error running the query to create contacts!<br>");

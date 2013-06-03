@@ -31,4 +31,4 @@ if (!empty($matchedContacts)){
 
 header('Content-Type: application/json');
 
-echo var_dump($contactInformation);
+echo var_dump($arrayOfContacts) . var_dump($matchedContacts) . var_dump($contactInformation);
