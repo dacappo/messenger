@@ -177,7 +177,7 @@ function create_user($pNumber, $pPassword)
     $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('" . $number . "','" . $ClientPassword . "')")
     or die("There was an error running the query in create_user()!<br>");
 
-    if (mysql_affected_rows($result) <> 0) {
+    if (mysql_affected_rows() <> 0) {
         $created = true;
     }
 
