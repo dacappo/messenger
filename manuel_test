@@ -1,7 +1,0 @@
-<?php
-
-$contacts = '{ contacts" : [ { "number":"112323542356" , "name" : "Patrick" } , { "number":"11232123444444" , "name" : "röetig" }]}';
-
-$arrayOfContacts = json_decode($contacts);
-
-echo print_r($arrayOfContacts);
