@@ -63,28 +63,3 @@ include "registration.php";
     </tr>
 </table>
 
-<h1>Register</h1>
-<form name="input" action="register.php" method="post">
-    Number: <input type="text" name="mobileNumber">
-    <input type="submit" value="Submit">
-</form>
-
-<h1>Verfication</h1>
-<form name="input2" action="check_ver.php" method="post">
-    Number: <input type="text" name="mobileNumber">
-    VerCode: <input type="text" name="verCode">
-    <input type="submit" value="Submit">
-</form>
-
-<h1>Create User</h1>
-<form name="input3" action="create_user.php" method="post">
-    Number: <input type="text" name="mobileNumber">
-    Password: <input type="text" name="password">
-    <input type="submit" value="Submit">
-</form>
-
-<h1>Get contacts</h1>
-<form name="input4" action="get_contacts.php" method="post">
-    User ID: <input type="text" name="user_id">
-    <input type="submit" value="Submit">
-</form>
