@@ -66,10 +66,6 @@ $result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2',
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ('0123456789','01234')")
-or die("There was an error running the query !<br>");
-echo("Example data ceated!<br>");
-
 $result = mysql_query("INSERT INTO contacts (source_user_id,origin_user_id,nickname) VALUES ('1','2','Hans Peter'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
