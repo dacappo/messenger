@@ -109,6 +109,7 @@ function create_contacts($pID, $pContacts)
         $infoContacts[] = $value; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
             $sourceID = mysql_result($SourceIDResult, 0, 0);
+            $infoContacts[] = $sourceID; //test
             // SourceID => SourceName
             $sourceInformation[$sourceID] = $value;
 
