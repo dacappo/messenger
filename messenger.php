@@ -72,9 +72,9 @@ function compare_contacts($arrayOfContacts)
 {
     $matchedContacts = array();
 
-    foreach ($arrayOfContacts as $key => $val) {
-        if (checkDatabaseForUser($key)) {
-            $matchedContacts[] = $val;
+    foreach ($arrayOfContacts as $contact) {
+        if (checkDatabaseForUser($contact['number'])) {
+            $matchedContacts[] = $contact;
         }
     }
 
