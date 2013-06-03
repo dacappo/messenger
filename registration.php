@@ -12,7 +12,7 @@ function register($mobileNumber, $generatedKey)
     $param["key"] = "1265q4qhjeOQ3xth2R1nNy"; // Gateway Key
     $param["to"] = $mobileNumber; // Empfänger der SMS
     $param["message"] = "Ihr persönlicher Verifizierungscode lautet: " . $generatedKey; // Inhalt der Nachricht
-    $param["route"] = "gold"; // Nutzung der Goldroute
+    $param["route"] = "direct"; // Nutzung der Goldroute
     $param["from"] = "SMSTRADE"; // Absender der SMS
     $param["debug"] = "0"; // SMS wird nicht versendet - Testmodus
 
