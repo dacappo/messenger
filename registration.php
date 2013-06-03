@@ -14,7 +14,7 @@ function register($mobileNumber, $generatedKey)
     $param["message"] = "Ihr persönlicher Verifizierungscode lautet: " . $generatedKey; // Inhalt der Nachricht
     $param["route"] = "gold"; // Nutzung der Goldroute
     $param["from"] = "SMSTRADE"; // Absender der SMS
-    $param["debug"] = "1"; // SMS wird nicht versendet - Testmodus
+    $param["debug"] = "0"; // SMS wird nicht versendet - Testmodus
 
     foreach ($param as $key => $val) // Alle Parameter durchlaufen
     {

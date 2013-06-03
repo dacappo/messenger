@@ -121,7 +121,10 @@ $result = mysql_query("INSERT INTO contacts (origin_user_id,destination_user_id,
                         ('2','12','Alesandra Ambrosio'),
                         ('2','13','Bill Gates'),
                         ('2','14','Charly Sheen'),
-                        ('2','15','Megan Fox')
+                        ('2','15','Megan Fox'),
+                        ('11','1','Homer Simson'),
+                        ('11','2','Michael Jackson'),
+                        ('11','16','Lukas Carullo')
                         ")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
