@@ -191,8 +191,8 @@ Override login submit
 
         document.body.appendChild(main);
 
-        $.post('contacts.php', {user_id: 1}, function(data){
-            $.each( data.contacts , function( i, con ) {
+        $.post('get_contacts.php', {user_id: 1}, function(result){
+            $.each( result.contacts.data.elements , function( i, con ) {
                 var contact = document.createElement('div');
                 contact.setAttribute('class','contact');
                 var contact_name = document.createElement('span');
@@ -201,7 +201,7 @@ Override login submit
                 icon.setAttribute('src','images/avatar.png');
                 icon.setAttribute('class','contact_icon');
 
-                contact_name.appendChild(icon);
+                contact.appendChild(icon);
 
                 contact_name.appendChild(document.createTextNode(con.name));
                 contact.appendChild(contact_name);
@@ -242,7 +242,17 @@ Check server-side session
  				document.getElementById("action_bar_center").appendChild(button);
   				';
 	} else {
-	    echo 'showLoginScreen();';
+	    //echo 'showLoginScreen();';
+	     echo   'showContacts();
+		        var button = document.createElement("div");
+ 				button.innerHTML = "Logout";
+ 				button.setAttribute("class","button");
+ 				button.setAttribute("id","button_logout");
+ 				button.onclick = function() {
+ 				    loggedOut();
+                }
+ 				document.getElementById("action_bar_center").appendChild(button);
+  				';
 	}
 
 ?>
