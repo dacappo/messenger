@@ -86,7 +86,7 @@ function create_contacts($pID, $pContacts)
 {
     $infoContacts = array();
 
-    if (isset($pID) && isset($verCode)) {
+    if (isset($pID) && isset($pContacts)) {
         $origin_id = $pID;
         $source_contacts = $pContacts;
     } else {
