@@ -104,11 +104,14 @@ function create_contacts($pID, $pContacts)
     foreach ($source_contacts as $key => $value) {
         $SourceIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $key . '";')
         or die("There was an error running the query to look for existing users!<br>");
+        $infoContacts[] = "found"; //test
+        $infoContacts[] = $key; //test
+        $infoContacts[] = $value; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
             $sourceID = mysql_result($SourceIDResult, 0, 0);
-
             // SourceID => SourceName
             $sourceInformation[$sourceID] = $value;
+
         }
     }
 
