@@ -16,7 +16,7 @@ if (!isset($contacts)){
 }
 // array structure: "number" => "name"
 $arrayOfContacts = json_decode($contacts);
-
+var_dump($arrayOfContacts);
 if (isset($arrayOfContacts)){
    $matchedContacts = compare_contacts($arrayOfContacts);
 } else {
