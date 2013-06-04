@@ -48,12 +48,12 @@ function buildJSONForArray($contacts)
     while (empty($contacts) == false) {
         if ($isFirst) {
             $singleArray = array_pop($contacts);
-            $JSONString .= '{ "number" : "' . $singleArray[0] . '" ,';
+            $JSONString .= '{ "id" : "' . $singleArray[0] . '" ,';
             $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
             $isFirst = false;
         } else {
             $singleArray = array_pop($contacts);
-            $JSONString .= ', { "number" : "' . $singleArray[0] . '" ,';
+            $JSONString .= ', { "id" : "' . $singleArray[0] . '" ,';
             $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
         }
     }
@@ -101,6 +101,7 @@ function create_contacts($pID, $pContacts)
         or die("There was an error running the query to look for existing users!<br>");
         $infoContacts[] = $value; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
+            var_dump($SourceIDResult);
             $sourceID = mysql_result($SourceIDResult, 0, 0);
             $infoContacts[] = $sourceID; //test
             // SourceID => SourceName
