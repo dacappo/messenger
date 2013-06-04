@@ -91,7 +91,7 @@ function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
     $ContactInfo = array();
 
     foreach ($matchedContacts as $contact){
-        $ContactID = mysql_query('SELECT id FROM contacts WHERE origin_user_id ="' . $user_id . '" AND destination_user_id="' . $contact['id']. '";')
+        $ContactID = mysql_query('SELECT contact_id FROM contacts WHERE origin_user_id ="' . $user_id . '" AND destination_user_id="' . $contact['id']. '";')
         or die("There was an error running the query get contact ids!<br>" . var_dump($matchedContacts));
         if (mysql_num_rows($ContactID) <> 0) {
             $cID = mysql_result($ContactID, 0, 0);
