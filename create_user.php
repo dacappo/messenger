@@ -11,5 +11,5 @@ include "registration.php";
 $mobileNumber = $_POST['mobileNumber'];
 $password = $_POST['password'];
 
-return create_user($mobileNumber, $password);
+echo create_user($mobileNumber, $password);
 
