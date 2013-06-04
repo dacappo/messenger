@@ -79,7 +79,7 @@ function compare_contacts($arrayOfContacts)
 
 function create_contacts($pID, $pContacts)
 {
-    $infoContacts = array();
+    $infoContacts = false;
 
     if (isset($pID) && isset($pContacts)) {
         $origin_id = $pID;
@@ -108,10 +108,10 @@ function create_contacts($pID, $pContacts)
     }
 
     if (isset($destinationInformation)) {
-
         foreach ($destinationInformation as $key => $value) {
-            mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
+            $infoContacts = mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
             or die("There was an error running the query to create contacts!<br>");
+
         }
     }
 
