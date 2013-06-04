@@ -122,7 +122,9 @@ function checkTempRegistrations($pNumber, $pVerCode)
     return $valid;
 }
 
-function insertTempRegistration($pNumber,$verCode){
+function insertTempRegistration($pNumber, $verCode)
+{
+
     $successful = false;
     if (isset($pNumber) && isset($verCode)) {
         $number = $pNumber;
@@ -139,14 +141,14 @@ function insertTempRegistration($pNumber,$verCode){
 
     $result = mysql_query('SELECT mobileNumber FROM temp_registrations WHERE mobileNumber ="' . $number . '";')
     or die("There was an error running the query to look for existing temp registration!<br>");
-    if (mysql_num_rows($result) <> 0){
-        die("User with number " . $number .  " already exist");
+    if (mysql_num_rows($result) <> 0) {
+        die("User with number " . $number . " already exist");
     }
 
     $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
     or die("There was an error running the query in insertTempRegistration()!<br>");
 
-    $successful = checkTempRegistrations($number,$code,false);
+    $successful = checkTempRegistrations($number, $code, false);
 
     mysql_close($connection);
     return $successful;
@@ -171,8 +173,8 @@ function create_user($pNumber, $pPassword)
     // Check if user already exists
     $result = mysql_query('SELECT mobileNumber FROM users WHERE mobileNumber ="' . $number . '";')
     or die("There was an error running the query to look for existing temp registration!<br>");
-    if (mysql_num_rows($result) <> 0){
-        die("User with number: " . $number .  " already exist");
+    if (mysql_num_rows($result) <> 0) {
+        die("User with number: " . $number . " already exist");
     }
 
     // Create User
@@ -182,11 +184,11 @@ function create_user($pNumber, $pPassword)
     //Get user id of newly created user
     if (mysql_affected_rows() <> 0) {
         $result = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $number . '";');
-        if (mysql_num_rows($result) <> 0){
+        if (mysql_num_rows($result) <> 0) {
             $userID = mysql_result($result, 0, 0);
             $response = "OK : " . $userID;
         }
-    } else{
+    } else {
         die("Internal Server Error during creating user");
     }
 
