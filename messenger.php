@@ -104,9 +104,7 @@ function create_contacts($pID, $pContacts)
     foreach ($source_contacts as $key => $value) {
         $SourceIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $key . '";')
         or die("There was an error running the query to look for existing users!<br>");
-        $infoContacts[] = "found"; //test
         $infoContacts[] = $key; //test
-        $infoContacts[] = $value[$key]; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
             $sourceID = mysql_result($SourceIDResult, 0, 0);
             $infoContacts[] = $sourceID; //test
@@ -116,9 +114,9 @@ function create_contacts($pID, $pContacts)
         }
     }
 
-    if (isset($sourceInformation)){
+    if (isset($sourceInformation)) {
 
-        foreach ($sourceInformation as $key => $value){
+        foreach ($sourceInformation as $key => $value) {
             mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
             or die("There was an error running the query to create contacts!<br>");
         }
