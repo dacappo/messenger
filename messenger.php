@@ -18,9 +18,7 @@ function show_contacts($pUser_id)
         return '{
                  "contacts": {
                     "message": "ERROR : No valid user",
-                    "data": {
-                        "elements": []
-                    }
+                    "data": []
                  }
                 }';
     }
@@ -33,9 +31,7 @@ function show_contacts($pUser_id)
         return '{
                  "contacts": {
                     "message": "No contacts for user with id: ' . var_dump($pUser_id) . '",
-                    "data": {
-                        "elements": []
-                    }
+                    "data": []
                  }
                 }';
     }
@@ -46,25 +42,24 @@ function buildJSONForArray($contacts)
     $JSONString = '{
                     "contacts": {
                         "message": "OK : Data for user",
-                        "data": {
-                            "elements": [';
+                        "data": [';
 
     $isFirst = true;
     while (empty($contacts) == false) {
         if ($isFirst) {
             $singleArray = array_pop($contacts);
-            $JSONString .= '"' . $singleArray[0] . '" : ';
-            $JSONString .= '"' . $singleArray[1] . '"';
+            $JSONString .= '{ "id" : "' . $singleArray[0] . '" ,';
+            $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
             $isFirst = false;
         } else {
             $singleArray = array_pop($contacts);
-            $JSONString .= ', "' . $singleArray[0] . '" : ';
-            $JSONString .= '"' . $singleArray[1] . '"';
+            $JSONString .= ', { "id" : "' . $singleArray[0] . '" ,';
+            $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
         }
     }
 
     // close JSON
-    $JSONString .= ']}}}';
+    $JSONString .= ']}}';
     return $JSONString;
 }
 
@@ -84,11 +79,11 @@ function compare_contacts($arrayOfContacts)
 
 function create_contacts($pID, $pContacts)
 {
-    $infoContacts = array();
+    $infoContacts = false;
 
     if (isset($pID) && isset($pContacts)) {
         $origin_id = $pID;
-        $source_contacts = $pContacts;
+        $contacts = $pContacts;
     } else {
         return $infoContacts;
     }
@@ -99,28 +94,24 @@ function create_contacts($pID, $pContacts)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $sourceInformation = array();
+    $destinationInformation = array();
 
-    foreach ($source_contacts as $key => $value) {
-        $SourceIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $key . '";')
+    foreach ($contacts as $key => $value) {
+        $destinationIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $value['number'] . '";')
         or die("There was an error running the query to look for existing users!<br>");
-        $infoContacts[] = "found"; //test
-        $infoContacts[] = $key; //test
-        $infoContacts[] = $value[$key]; //test
-        if (mysql_num_rows($SourceIDResult) <> 0) {
-            $sourceID = mysql_result($SourceIDResult, 0, 0);
-            $infoContacts[] = $sourceID; //test
+        if (mysql_num_rows($destinationIDResult) <> 0) {
+            $destinationID = mysql_result($destinationIDResult, 0, 0);
             // SourceID => SourceName
-            $sourceInformation[$sourceID] = $value;
+            $destinationInformation[$destinationID] = $value['name'];
 
         }
     }
 
-    if (isset($sourceInformation)){
-
-        foreach ($sourceInformation as $key => $value){
-            mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
+    if (isset($destinationInformation)) {
+        foreach ($destinationInformation as $key => $value) {
+            $infoContacts = mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
             or die("There was an error running the query to create contacts!<br>");
+
         }
     }
 
