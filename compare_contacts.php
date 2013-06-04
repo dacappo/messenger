@@ -7,6 +7,7 @@
 */
 
 include "messenger.php";
+include "dbMessenger.php";
 
 $contacts = $_POST['contacts'];
 $user_id = $_POST['id'];
