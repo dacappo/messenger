@@ -51,8 +51,8 @@ $result = mysql_query("CREATE TABLE temp_registrations(id INT NOT NULL AUTO_INCR
 or die("There was an error running the query !<br>");
 echo("Table temp_registrations created!<br>");
 
-$result = mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, source_user_id INT NOT NULL, origin_user_id INT NOT NULL, nickname CHAR(66),
-PRIMARY KEY(contact_id), FOREIGN KEY (source_user_id) REFERENCES users(id) ON DELETE CASCADE, FOREIGN KEY (origin_user_id) REFERENCES users(id) ON DELETE CASCADE)")
+$result = mysql_query("CREATE TABLE contacts (contact_id INT NOT NULL AUTO_INCREMENT, origin_user_id INT NOT NULL, destination_user_id INT NOT NULL, nickname CHAR(66),
+PRIMARY KEY(contact_id), FOREIGN KEY (destination_user_id) REFERENCES users(id) ON DELETE CASCADE, FOREIGN KEY (origin_user_id) REFERENCES users(id) ON DELETE CASCADE)")
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 
@@ -66,7 +66,7 @@ $result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2',
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("INSERT INTO contacts (source_user_id,origin_user_id,nickname) VALUES ('1','2','Hans Peter'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
+$result = mysql_query("INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ('1','2','Hans Peter'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 

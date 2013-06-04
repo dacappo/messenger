@@ -18,7 +18,7 @@ function getContactsForUserID($user_id)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT origin_user_id,nickname FROM contacts WHERE ' . 'source_user_id="' . $user_id . '"')
+    $result = mysql_query('SELECT destination_user_id,nickname FROM contacts WHERE ' . 'origin_user_id="' . $user_id . '"')
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
 
     if (mysql_num_rows($result) > 0) {
