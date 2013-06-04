@@ -192,7 +192,7 @@ Override login submit
         document.body.appendChild(main);
 
         $.post('get_contacts.php', {user_id: 1}, function(result){
-            $.each( result.contacts.data.elements , function( i, con ) {
+            $.each( result.contacts.data , function( i, con ) {
                 var contact = document.createElement('div');
                 contact.setAttribute('class','contact');
                 var contact_name = document.createElement('span');
@@ -242,17 +242,8 @@ Check server-side session
  				document.getElementById("action_bar_center").appendChild(button);
   				';
 	} else {
-	    //echo 'showLoginScreen();';
-	     echo   'showContacts();
-		        var button = document.createElement("div");
- 				button.innerHTML = "Logout";
- 				button.setAttribute("class","button");
- 				button.setAttribute("id","button_logout");
- 				button.onclick = function() {
- 				    loggedOut();
-                }
- 				document.getElementById("action_bar_center").appendChild(button);
-  				';
+	    echo 'showLoginScreen();';
+
 	}
 
 ?>
