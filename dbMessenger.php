@@ -35,13 +35,13 @@ function getContactsForUserID($user_id)
 
 function create_contacts($pID, $pContacts)
 {
-    $infoContacts = false;
+    $newContactsCreated = false;
 
     if (isset($pID) && isset($pContacts)) {
         $origin_id = $pID;
         $contacts = $pContacts;
     } else {
-        return $infoContacts;
+        return $newContactsCreated;
     }
 
     //Connect to DB
@@ -59,20 +59,48 @@ function create_contacts($pID, $pContacts)
             $destinationID = mysql_result($destinationIDResult, 0, 0);
             // SourceID => SourceName
             $destinationInformation[$destinationID] = $value['name'];
-
         }
     }
 
     if (isset($destinationInformation)) {
         foreach ($destinationInformation as $key => $value) {
-            $infoContacts = mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
+            $newContactsCreated = mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
             or die("There was an error running the query to create contacts!<br>");
-
         }
     }
 
     mysql_close($connection);
-    return $infoContacts;
+    return $newContactsCreated;
+}
 
+function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
+
+    if (isset($pMatchedContacts) && isset($pUser_id)) {
+        $matchedContacts = $pMatchedContacts;
+        $user_id = $pUser_id;
+    } else {
+        return "Not all required parameters are given";
+    }
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $ContactInfo = array();
+
+    foreach ($matchedContacts as $contact){
+        $ContactID = mysql_query('SELECT id FROM contacts WHERE origin_user_id ="' . $user_id . '" AND destination_user_id="' . $contact['id']. '";')
+        or die("There was an error running the query get contact ids!<br>" . var_dump($matchedContacts));
+        if (mysql_num_rows($ContactID) <> 0) {
+            $cID = mysql_result($ContactID, 0, 0);
+            // ContactID => Number of Contact (hash)
+            $ContactInfo[$cID] = $contact['number'];
+        }
+    }
+
+    mysql_close($connection);
+    return $ContactInfo;
 }
 

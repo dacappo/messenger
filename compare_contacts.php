@@ -18,7 +18,7 @@ if (!isset($contacts)){
 // array structure: "number" => "name"
 $arrayOfContacts = json_decode($contacts, true);
 
-if (isset($arrayOfContacts)){#
+if (isset($arrayOfContacts)){
    $matchedContacts = compare_contacts($arrayOfContacts);
 } else {
     echo "Server Error : during JSON decoding";
@@ -33,7 +33,7 @@ if (!empty($matchedContacts)){
 header('Content-Type: application/json');
 
 if ($newCreated){
-    echo "";
+    echo createJSONResponseForNewContacts($matchedContacts, $user_id);
 } else {
-    echo "No new Contacts created";
+    echo "OK : No new contacts created";
 }

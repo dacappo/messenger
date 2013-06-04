@@ -68,12 +68,34 @@ function compare_contacts($arrayOfContacts)
     $matchedContacts = array();
 
     foreach ($arrayOfContacts as $contact) {
-        if (checkDatabaseForUser($contact['number'])) {
+        if ($contact['id'] = checkDatabaseForUser($contact['number'])) {
             $matchedContacts[] = $contact;
         }
     }
 
     return $matchedContacts;
-
 }
 
+function createJSONResponseForNewContacts($matchedContacts, $user_id){
+    $JSONString = '[';
+
+    $contactInfoArray = getContactIDsForNumbers($matchedContacts, $user_id );
+
+    $isFirst = true;
+    while (empty($contactInfoArray) == false) {
+        if ($isFirst) {
+            $singleObject = array_pop($contactInfoArray);
+            $JSONString .= '{ "number" : "' . $singleObject[1] . '" ,';
+            $JSONString .= ' "id" : "' . $singleObject[0] . '" } ';
+            $isFirst = false;
+        } else {
+            $singleObject = array_pop($contactInfoArray);
+            $JSONString .= ', { "id" : "' . $singleObject[1] . '" ,';
+            $JSONString .= ' "name" : "' . $singleObject[0] . '" } ';
+        }
+    }
+
+    // close JSON
+    $JSONString .= ']';
+    return $JSONString;
+}

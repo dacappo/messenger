@@ -71,11 +71,11 @@ function checkLoginForUser($pNumber, $pPassword)
 */
 function checkDatabaseForUser($pNumber)
 {
-    $exist = false;
+    $userID = 0;
     if (isset($pNumber)) {
         $number = $pNumber;
     } else {
-        return $exist;
+        return $userID;
     }
 
     //Connect to DB
@@ -84,15 +84,15 @@ function checkDatabaseForUser($pNumber)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '"')
+    $result = mysql_query('SELECT id FROM users WHERE ' . 'mobileNumber="' . $number . '"')
     or die("There was an error running the query in checkDataBaseForUser!<br>");
 
     if (mysql_num_rows($result) <> 0) {
-        $exist = true;
+        $userID = mysql_result($result, 0, 0);
     }
 
     mysql_close($connection);
-    return $exist;
+    return $userID;
 }
 
 function checkTempRegistrations($pNumber, $pVerCode)
