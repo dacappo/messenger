@@ -11,8 +11,5 @@ include "registration.php";
 $mobileNumber = $_POST['mobileNumber'];
 $password = $_POST['password'];
 
-if (create_user($mobileNumber, $password)){
-    echo "OK : User created";
-} else {
-    echo "Server Error during Runtime with following parameters:" . var_dump($mobileNumber,$password);
-}
+return create_user($mobileNumber, $password);
+
