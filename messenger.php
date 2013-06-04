@@ -18,9 +18,7 @@ function show_contacts($pUser_id)
         return '{
                  "contacts": {
                     "message": "ERROR : No valid user",
-                    "data": {
-                        "elements": []
-                    }
+                    "data": []
                  }
                 }';
     }
@@ -33,9 +31,7 @@ function show_contacts($pUser_id)
         return '{
                  "contacts": {
                     "message": "No contacts for user with id: ' . var_dump($pUser_id) . '",
-                    "data": {
-                        "elements": []
-                    }
+                    "data": []
                  }
                 }';
     }
@@ -46,25 +42,24 @@ function buildJSONForArray($contacts)
     $JSONString = '{
                     "contacts": {
                         "message": "OK : Data for user",
-                        "data": {
-                            "elements": [';
+                        "data": [';
 
     $isFirst = true;
     while (empty($contacts) == false) {
         if ($isFirst) {
             $singleArray = array_pop($contacts);
-            $JSONString .= '"' . $singleArray[0] . '" : ';
-            $JSONString .= '"' . $singleArray[1] . '"';
+            $JSONString .= '{ "number" : "' . $singleArray[0] . '" ,';
+            $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
             $isFirst = false;
         } else {
             $singleArray = array_pop($contacts);
-            $JSONString .= ', "' . $singleArray[0] . '" : ';
-            $JSONString .= '"' . $singleArray[1] . '"';
+            $JSONString .= ', { "number" : "' . $singleArray[0] . '" ,';
+            $JSONString .= ' "name" : "' . $singleArray[1] . '" } ';
         }
     }
 
     // close JSON
-    $JSONString .= ']}}}';
+    $JSONString .= ']}}';
     return $JSONString;
 }
 
@@ -104,7 +99,7 @@ function create_contacts($pID, $pContacts)
     foreach ($source_contacts as $key => $value) {
         $SourceIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $key . '";')
         or die("There was an error running the query to look for existing users!<br>");
-        $infoContacts[] = $key; //test
+        $infoContacts[] = $value; //test
         if (mysql_num_rows($SourceIDResult) <> 0) {
             $sourceID = mysql_result($SourceIDResult, 0, 0);
             $infoContacts[] = $sourceID; //test
