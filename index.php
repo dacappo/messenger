@@ -284,12 +284,11 @@ function createConversation(inName, inId) {
         conversation_flow.scrollTop = conversation_flow.scrollHeight;
     }
 
-    this.lastMessage = '';
+
     function checkNewMessages() {
-        $.post('receive_messages.php', {contact_id: inId, timestamp: conversation.lastMessage}, function(result){
-            $.each( result , function( i, message ) {
+        $.post('receive_messages.php', {contact_id: inId}, function(result){
+            $.each( result.messages , function( i, message ) {
                 conversation.appendExternMessage(inName,message.timestamp, message.content);
-                conversation.lastMessage = message.timestamp;
             });
         });
 
