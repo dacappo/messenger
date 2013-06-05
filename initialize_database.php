@@ -59,10 +59,11 @@ echo("Table contacts created!<br>");
 /*
  * Create Example Data
  */
+$hashNumbersForTestUser = array('39f70f667f716efbaca8ff661766a427bb855aba56b7e28a5099d7048aac0f15','eea8f51875dd4c243b7a1783bb5aaabaae413a5774c08d3162de98162672e03c','8eafddf4f4e0cd1571c6cd0e48fc82bfcc25d22af80495d500657c57671b3642');
 $result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('1','84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882','050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
-$result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2','0123456789','messenger'),('3','01514044001','messenger'),('4','0160987123','messenger'),('5','01418912302','messenger'),('20','015122233344','unsicher'),('21','017511166633','unsicher'),('22','0180664433','unsicher')")
+$result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2','0123456789','messenger'),('3','01514044001','messenger'),('4','0160987123','messenger'),('5','01418912302','messenger'),('20'," . $hashNumbersForTestUser[0] . ",'unsicher'),('21'," . $hashNumbersForTestUser[1] . ",'unsicher'),('22'," . $hashNumbersForTestUser[2] . ",'unsicher')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
