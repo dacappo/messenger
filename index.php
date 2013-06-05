@@ -288,8 +288,8 @@ function createConversation(inName, inId) {
     function checkNewMessages() {
         $.post('receive_messages.php', {contact_id: inId, timestamp: conversation.lastMessage}, function(result){
             $.each( result , function( i, message ) {
-                conversation.appendExternMessage(inName,result.timestamp, result.content);
-                conversation.lastMessage = result.timestamp;
+                conversation.appendExternMessage(inName,message.timestamp, message.content);
+                conversation.lastMessage = message.timestamp;
             });
         });
 
