@@ -285,6 +285,16 @@ function createConversation(inName, inId) {
     }
 
 
+    function checkNewMessages() {
+        $.post('receive_messages.php', {contact_id: inId}, function(data){
+            //do nothing
+        });
+
+    }
+
+
+
+
 
     $('#conversation').remove();
 
@@ -303,6 +313,8 @@ function createConversation(inName, inId) {
         //Important. Stop the normal POST
         return false;
     });
+
+    setInterval(checkNewMessages, 1000);
 
     return this;
 }
