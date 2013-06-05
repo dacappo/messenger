@@ -99,6 +99,7 @@ function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
             // 1 -> ContactID
             $ContactInfo[0] = $contact['number'];
             $ContactInfo[1] = $cID;
+            var_dump($ContactInfo);
         }
     }
 
