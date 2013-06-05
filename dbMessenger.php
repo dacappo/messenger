@@ -73,8 +73,10 @@ function create_contacts($pID, $pContacts)
     return $newContactsCreated;
 }
 
-function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
+function getContactIDsForNumbers($pMatchedContacts, $pUser_id)
+{
 
+    $ContactInfo = array();
     if (isset($pMatchedContacts) && isset($pUser_id)) {
         $matchedContacts = $pMatchedContacts;
         $user_id = $pUser_id;
@@ -88,22 +90,16 @@ function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $ContactInfo = array();
-
-    foreach ($matchedContacts as $contact){
-        $ContactID = mysql_query('SELECT contact_id FROM contacts WHERE origin_user_id ="' . $user_id . '" AND destination_user_id="' . $contact['id']. '";')
+    foreach ($matchedContacts as $contact) {
+        $ContactID = mysql_query('SELECT contact_id FROM contacts WHERE origin_user_id ="' . $user_id . '" AND destination_user_id="' . $contact['id'] . '";')
         or die("There was an error running the query get contact ids!<br>" . var_dump($matchedContacts));
         if (mysql_num_rows($ContactID) <> 0) {
             $cID = mysql_result($ContactID, 0, 0);
-            // 0 -> Number of Contact (hash)
-            // 1 -> ContactID
-            $ContactInfo[0] = $contact['number'];
-            $ContactInfo[1] = $cID;
-            var_dump($ContactInfo);
+            $singleContactInfo = array($contact['number'], $cID);
+            array_push($ContactInfo, $singleContactInfo);
         }
     }
 
     mysql_close($connection);
     return $ContactInfo;
 }
-
