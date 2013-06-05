@@ -38,6 +38,6 @@ echo "<br>----------------------------------------------------------------------
 while($row = mysql_fetch_array($result))
 {
     echo("Contacts:       ");
-    echo "ID: " . $row[0] . "  Source_ID: " .  $row[1] . "  origin_ID: ". $row[2] . "  Nickname " . $row[3];
+    echo "ID: " . $row[0] . "  Source_ID: " .  $row[1] . "  Destination_ID: ". $row[2] . "  Nickname " . $row[3];
     echo "<br>";
 }
