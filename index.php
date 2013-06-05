@@ -200,7 +200,7 @@ function createContactList() {
             addContact(con.name, con.id);
         });
     });
-    
+
 
     this.addContact = function(inName,inId){
         var contact = createElement('div','contact','contact');
