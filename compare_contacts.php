@@ -16,7 +16,6 @@ if (!isset($contacts)){
     echo "Not all required POST parameters are set";
 }
 // array structure: "number" => "name"
-var_dump($contacts);
 $arrayOfContacts = json_decode($contacts, true);
 
 if (isset($arrayOfContacts)){
