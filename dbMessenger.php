@@ -95,8 +95,10 @@ function getContactIDsForNumbers($pMatchedContacts, $pUser_id ){
         or die("There was an error running the query get contact ids!<br>" . var_dump($matchedContacts));
         if (mysql_num_rows($ContactID) <> 0) {
             $cID = mysql_result($ContactID, 0, 0);
-            // ContactID => Number of Contact (hash)
-            $ContactInfo[$cID] = $contact['number'];
+            // 0 -> Number of Contact (hash)
+            // 1 -> ContactID
+            $ContactInfo[0] = $contact['number'];
+            $ContactInfo[1] = $cID;
         }
     }
 
