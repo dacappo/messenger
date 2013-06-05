@@ -27,7 +27,7 @@ if (isset($arrayOfContacts)){
 if (!empty($matchedContacts)){
     $newCreated = create_contacts($user_id, $matchedContacts);
 } else {
-    echo "Non of your contacts is using this messenger" .var_dump($arrayOfContacts) . var_dump($matchedContacts);
+    echo "Non of your contacts is using this messenger";
 }
 
 header('Content-Type: application/json');
