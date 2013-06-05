@@ -86,7 +86,6 @@ function createJSONResponseForNewContacts($matchedContacts, $user_id){
         if ($isFirst) {
             $singleObject = array_pop($contactInfoArray);
             var_dump($singleObject);
-            print_r($singleObject);
             $JSONString .= '{ "number" : "' . $singleObject[1] . '" ,';
             $JSONString .= ' "id" : "' . $singleObject[0] . '" } ';
             $isFirst = false;
