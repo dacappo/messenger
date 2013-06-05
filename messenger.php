@@ -11,7 +11,6 @@ include "dbconnection.php";
 
 function show_contacts($pUser_id)
 {
-
     if (isset($pUser_id)) {
         $user_id = $pUser_id;
     } else {
@@ -63,62 +62,70 @@ function buildJSONForArray($contacts)
     return $JSONString;
 }
 
-function compare_contacts($arrayOfContacts)
+function compare_contacts($arrayOfContacts, $sourceID)
 {
     $matchedContacts = array();
 
     foreach ($arrayOfContacts as $contact) {
-        if (checkDatabaseForUser($contact['number'])) {
+        if ($DestinationID = checkDatabaseForUser($contact['number'])) {
+            //Check if Contact pair alrady exist and if yes get ID
+            $contact['id'] = $DestinationID;
+            if ($existingContactID = checkDatabaseForContact($sourceID, $DestinationID)) {
+                $contact['contactID'] = $existingContactID;
+            }
             $matchedContacts[] = $contact;
         }
     }
 
     return $matchedContacts;
-
 }
 
-function create_contacts($pID, $pContacts)
+function createJSONResponseForNewContacts($matchedContacts, $user_id)
 {
-    $infoContacts = array();
+    $JSONString = '[';
+    $contactInfoArray = getContactIDsForNumbers($matchedContacts, $user_id);
 
-    if (isset($pID) && isset($pContacts)) {
-        $origin_id = $pID;
-        $source_contacts = $pContacts;
-    } else {
-        return $infoContacts;
-    }
-
-    //Connect to DB
-    $connection = initializeConnectionToDB();
-    $db = selectDB();
-    $selected = mysql_select_db($db, $connection)
-    or die("Could not select Database");
-
-    $sourceInformation = array();
-
-    foreach ($source_contacts as $key => $value) {
-        $SourceIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $value['number'] . '";')
-        or die("There was an error running the query to look for existing users!<br>");
-        $infoContacts[] = $value; //test
-        if (mysql_num_rows($SourceIDResult) <> 0) {
-            var_dump($SourceIDResult);
-            $sourceID = mysql_result($SourceIDResult, 0, 0);
-            $infoContacts[] = $sourceID; //test
-            // SourceID => SourceName
-            $sourceInformation[$sourceID] = $value;
-
+    $isFirst = true;
+    while (empty($contactInfoArray) == false) {
+        if ($isFirst) {
+            $singleObject = array_pop($contactInfoArray);
+            $JSONString .= '{ "number" : "' . $singleObject[0] . '" ,';
+            $JSONString .= ' "id" : "' . $singleObject[1] . '" } ';
+            $isFirst = false;
+        } else {
+            $singleObject = array_pop($contactInfoArray);
+            $JSONString .= ', { "number" : "' . $singleObject[0] . '" ,';
+            $JSONString .= ' "id" : "' . $singleObject[1] . '" } ';
         }
     }
 
-    if (isset($sourceInformation)) {
+    // close JSON
+    $JSONString .= ']';
+    return $JSONString;
+}
 
-        foreach ($sourceInformation as $key => $value) {
-            mysql_query('INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
-            or die("There was an error running the query to create contacts!<br>");
+//Insert existing contacts to new created
+function checkForExistingContacts($matchedContacts)
+{
+    $exist = false;
+    foreach ($matchedContacts as $contact) {
+        if (isset($contact['contactID'])) {
+            $exist = true;
         }
     }
+    return $exist;
+}
 
-    mysql_close($connection);
-    return $infoContacts;
-
+/*
+ * param: $messageData[0] = contact_id, $messageData[1] = body, $messageData[2] = timestamp
+ */
+function sendMessage($messageData)
+{
+    $successful = false;
+    //Parties unused
+    $messageParties = getPartiesID($messageData[0]);
+    if (isset($messageParties)){
+        $successful = insertMessageIntoDB($messageData);
+    }
+    return $successful;
 }

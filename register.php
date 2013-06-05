@@ -5,8 +5,8 @@ include "registration.php";
 
 $mobileNumber = $_POST['mobileNumber'];
 
-if (checkDatabaseForUser($mobileNumber)){
-    echo "User already exists";
+if ($user_id = checkDatabaseForUser($mobileNumber)){
+    echo "User already exists : ". $user_id;
 } else {
     echo register($mobileNumber, generateValidationString(5));
 }

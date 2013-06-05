@@ -44,7 +44,7 @@ include "registration.php";
     <tr>
         <td>Check if user already exist</td>
         <td><?php
-            if (checkDatabaseForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882')) {
+            if (checkDatabaseForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882') <> 0) {
                 echo("checkDatabaseForUser(): existing User </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("checkDatabaseForUser(): existing User </td><td> <span style='color:red'>not successful</span><br></td>");
@@ -54,7 +54,7 @@ include "registration.php";
     <tr>
         <td>Check if user already exist</td>
         <td><?php
-            if (checkDatabaseForUser(' ') == false) {
+            if (checkDatabaseForUser(' ') == 0) {
                 echo("checkDatabaseForUser(): non existing User </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("checkDatabaseForUser(): non existing User </td><td> <span style='color:red'>not successful</span><br></td>");

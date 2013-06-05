@@ -71,11 +71,11 @@ function checkLoginForUser($pNumber, $pPassword)
 */
 function checkDatabaseForUser($pNumber)
 {
-    $exist = false;
+    $userID = 0;
     if (isset($pNumber)) {
         $number = $pNumber;
     } else {
-        return $exist;
+        return $userID;
     }
 
     //Connect to DB
@@ -84,15 +84,15 @@ function checkDatabaseForUser($pNumber)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '"')
+    $result = mysql_query('SELECT id FROM users WHERE ' . 'mobileNumber="' . $number . '"')
     or die("There was an error running the query in checkDataBaseForUser!<br>");
 
     if (mysql_num_rows($result) <> 0) {
-        $exist = true;
+        $userID = mysql_result($result, 0, 0);
     }
 
     mysql_close($connection);
-    return $exist;
+    return $userID;
 }
 
 function checkTempRegistrations($pNumber, $pVerCode)
@@ -122,7 +122,9 @@ function checkTempRegistrations($pNumber, $pVerCode)
     return $valid;
 }
 
-function insertTempRegistration($pNumber,$verCode){
+function insertTempRegistration($pNumber, $verCode)
+{
+
     $successful = false;
     if (isset($pNumber) && isset($verCode)) {
         $number = $pNumber;
@@ -139,14 +141,14 @@ function insertTempRegistration($pNumber,$verCode){
 
     $result = mysql_query('SELECT mobileNumber FROM temp_registrations WHERE mobileNumber ="' . $number . '";')
     or die("There was an error running the query to look for existing temp registration!<br>");
-    if (mysql_num_rows($result) <> 0){
-        die("User with number " . $number .  " already exist");
+    if (mysql_num_rows($result) <> 0) {
+        die("User with number " . $number . " already exist");
     }
 
     $result = mysql_query('INSERT INTO temp_registrations (mobileNumber,verCode) VALUES ("' . $number . '","' . $code . '")')
     or die("There was an error running the query in insertTempRegistration()!<br>");
 
-    $successful = checkTempRegistrations($number,$code,false);
+    $successful = checkTempRegistrations($number, $code, false);
 
     mysql_close($connection);
     return $successful;
@@ -154,33 +156,42 @@ function insertTempRegistration($pNumber,$verCode){
 
 function create_user($pNumber, $pPassword)
 {
-    $created = false;
+    $response = "";
     if (isset($pNumber) && isset($pPassword)) {
         $number = $pNumber;
         $ClientPassword = $pPassword;
     } else {
-        return $created;
+        return $response;
     }
 
-    //Connect to DB
+    // Connect to DB
     $connection = initializeConnectionToDB();
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
+    // Check if user already exists
     $result = mysql_query('SELECT mobileNumber FROM users WHERE mobileNumber ="' . $number . '";')
     or die("There was an error running the query to look for existing temp registration!<br>");
-    if (mysql_num_rows($result) <> 0){
-        die("User with number: " . $number .  " already exist");
+    if (mysql_num_rows($result) <> 0) {
+        die("User with number: " . $number . " already exist");
     }
 
+    // Create User
     $result = mysql_query("INSERT INTO users (mobileNumber,password) VALUES ('" . $number . "','" . $ClientPassword . "')")
     or die("There was an error running the query in create_user()!<br>");
 
+    //Get user id of newly created user
     if (mysql_affected_rows() <> 0) {
-        $created = true;
+        $result = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $number . '";');
+        if (mysql_num_rows($result) <> 0) {
+            $userID = mysql_result($result, 0, 0);
+            $response = "OK : " . $userID;
+        }
+    } else {
+        die("Internal Server Error during creating user");
     }
 
     mysql_close($connection);
-    return $created;
+    return $response;
 }
