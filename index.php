@@ -289,7 +289,8 @@ function createConversation(inName, inId) {
 
     function checkNewMessages() {
         $.post('receive_messages.php', {contact_id: inId}, function(data){
-            $.each( data.messages , function( i, message ) {
+            $.each(data.messages, function(i, message) {
+                alert("here");
                 conversation.appendExternMessage(inName,message.timestamp, message.content);
             });
         });
