@@ -318,10 +318,7 @@ function createConversation(inName, inId) {
         return false;
     });
 
-    //setInterval(checkNewMessages, 1000);
-    checkNewMessages();
-    checkNewMessages();
-    checkNewMessages();
+    setInterval(checkNewMessages, 1000);
 
     return this;
 }
