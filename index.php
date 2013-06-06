@@ -195,7 +195,7 @@ function createContactList() {
     main.appendChild(contacts);
     document.body.appendChild(main);
 
-    
+
     $.post('get_contacts.php', {user_id: userId}, function(data){
         $.each( data.contacts.data , function( i, con ) {
             addContact(con.name, con.id);
@@ -288,8 +288,8 @@ function createConversation(inName, inId) {
 
 
     function checkNewMessages() {
-        $.post('receive_messages.php', {contact_id: inId}, function(result){
-            $.each( result.messages , function( i, message ) {
+        $.post('receive_messages.php', {contact_id: inId}, function(data){
+            $.each( data.messages , function( i, message ) {
                 conversation.appendExternMessage(inName,message.timestamp, message.content);
             });
         });
