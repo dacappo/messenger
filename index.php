@@ -69,8 +69,9 @@ function createContentElement(inType, inId, inClass, inContent) {
 some global stuff
 */
 
-var userInfo = '';
-var contactList = '';
+var userInfo = null;
+var contactList = null;
+var checkConversation = null;
 
 var mobileNumber = '';
 var userId = '';
@@ -245,6 +246,8 @@ function createContactList() {
 
 function createConversation(inName, inId) {
 
+    clearInterval(checkConversation);
+
     contactList.removeMessageNotification(inId);
 
     var conversation = createElement('div','conversation');
@@ -336,7 +339,7 @@ function createConversation(inName, inId) {
         return false;
     });
 
-    setInterval(checkNewMessages, 1000);
+    checkConversation = setInterval(checkNewMessages, 1000);
 
     return this;
 }
