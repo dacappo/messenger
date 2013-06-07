@@ -46,7 +46,7 @@ function checkLoginForUser($pNumber, $pPassword)
         $number = $pNumber;
         $ClientPassword = $pPassword;
     } else {
-        return false;
+        return $user_id;
     }
 
     //Connect to DB

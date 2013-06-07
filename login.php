@@ -19,7 +19,7 @@
 				
  		echo 	'createUserInfo(mobileNumber);
 	             createContactList();
-	             userId = ' + $userId + ';
+	             userId = ' . $userId . ';
   				';
  	} else {
  		echo 	'setInfoMessage("Wrong number or password!","info_message_warning");';
