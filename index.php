@@ -215,8 +215,11 @@ function createContactList() {
     }
 
     this.setMessageNotification = function(inId) {
-        var notification = createElement('div', 'notification' + inId, 'notification');
-        document.getElementById('contact'+inId).appendChild(notification);
+
+        if (!($('#notification'+inId).length > 0)) {}
+            var notification = createElement('div', 'notification' + inId, 'notification');
+            document.getElementById('contact'+inId).appendChild(notification);
+        }
     }
 
     this.removeMessageNotification = function(inId) {
