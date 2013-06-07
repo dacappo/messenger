@@ -216,7 +216,7 @@ function createContactList() {
 
     this.setMessageNotification = function(inId) {
 
-        if (!($('#notification'+inId).length > 0)) {}
+        if (!($('#notification'+inId).length > 0)) {
             var notification = createElement('div', 'notification' + inId, 'notification');
             document.getElementById('contact'+inId).appendChild(notification);
         }
