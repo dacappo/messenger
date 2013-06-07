@@ -293,7 +293,7 @@ function createConversation(inName, inId) {
     $("#conversation_input").submit(function(e) {
         e.preventDefault();
 
-        $.post($("#form_login").attr("action"), {body: conversation_input_field.value, contact_id: inId }, function(data){
+        $.post('send_message.php', {body: conversation_input_field.value, contact_id: inId }, function(data){
          //do nothing
         });
         var date = new Date();
