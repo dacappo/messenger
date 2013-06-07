@@ -338,7 +338,7 @@ function createConversation(inName, inId) {
          //do nothing
         });
         var date = new Date();
-        appendInternMessage('Me',data.getFullYear()+'-'+data.getMonth()+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
+        appendInternMessage('Me',date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
         conversation_input_field.value = '';
         conversation_input_field.focus();
         //Important. Stop the normal POST
