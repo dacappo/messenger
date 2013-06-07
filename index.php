@@ -206,7 +206,7 @@ function createContactList() {
         });
     });
 
-    this.checkNewMessages = function() {
+    this.checkNewNotifications = function() {
         $.post('check_new_messages.php', {user_id: userId}, function(data){
             $.each(data.contact_IDs, function(i, conId) {
                 setMessageNotification(conId);
@@ -238,6 +238,8 @@ function createContactList() {
         contact.appendChild(contact_name);
         contact_list.appendChild(contact);
     }
+
+    setInterval(checkNewNotifications, 1000);
 
     return this;
 }
