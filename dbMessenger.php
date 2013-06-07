@@ -33,7 +33,32 @@ function getContactsForUserID($user_id)
     return $values;
 }
 
-function getContactsForBothUserIDs($parties)
+function getOpponentContactsForUserID($user_id)
+{
+
+    $values = array();
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT contact_id,nickname FROM contacts WHERE ' . 'destination_user_id=' . $user_id . '')
+    or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
+
+    if (mysql_num_rows($result) > 0) {
+        for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+            $contact_id = mysql_result($result, $i, 0);
+            $contact_nickname = mysql_result($result, $i, 1);
+            $data = array($contact_id, $contact_nickname);
+            array_push($values, $data);
+        }
+    }
+    mysql_close($connection);
+    return $values;
+}
+
+function getOppositeContactID($parties)
 {
 
     $contact_id = 0;
@@ -209,11 +234,11 @@ function insertMessageIntoDB($messageData)
 function getMessagesFromDB($contact_id, $opposite_contact_id, $all)
 {
     $messages = array();
-    if (isset($all)){
+    if (isset($all)) {
         $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC LIMIT 15;';
 
     } else { // nur die vom opponent abholen
-        $query = 'SELECT * FROM messages WHERE ( contact_id=' . $opposite_contact_id . ') AND read_status = 0 ORDER BY date_time DESC ;';
+        $query = 'SELECT * FROM messages WHERE contact_id=' . $opposite_contact_id . ' AND read_status = 0 ORDER BY date_time DESC ;';
     }
     //Connect to DB
     $connection = initializeConnectionToDB();
@@ -241,8 +266,8 @@ function getMessagesFromDB($contact_id, $opposite_contact_id, $all)
 function lookForNewMessages($user_id)
 {
 
-    // Get all contactIDs for user
-    $contact_IDs = getContactsForUserID($user_id);
+    // Get all contactIDs from the user that
+    $contact_IDs = getOpponentContactsForUserID($user_id);
     $pending_contact_IDs = array();
 
     //Connect to DB
@@ -261,4 +286,44 @@ function lookForNewMessages($user_id)
 
     mysql_close($connection);
     return $pending_contact_IDs;
+}
+
+function getOwnCIDFromOppositeCID($pending_contact_IDs)
+{
+
+    $ownContactIDs = array();
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    //encode contactID
+    $contactInfo = array();
+    foreach ($pending_contact_IDs as $contact_id) {
+        $result = mysql_query('SELECT origin_user_id, destination_user_id FROM contacts WHERE ' . 'contact_id=' . $contact_id . '')
+        or die("SQL Error:" . mysql_error() . " with param" . var_dump($contact_id) . " <br>");
+        if (mysql_num_rows($result) > 0) {
+            for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+                $opponent = mysql_result($result, $i, 0);
+                $own = mysql_result($result, $i, 1);
+                $data = array($opponent, $own);
+                array_push($contactInfo, $data);
+            }
+        }
+    }
+
+    // find contact id with data
+    foreach ($contactInfo as $info) {
+        $result = mysql_query('SELECT contact_id FROM contacts WHERE origin_user_id=' . $info[1] . ' AND destination_user_id=' . $info[0] . ';')
+        or die("SQL Error:" . mysql_error() . " with param" . var_dump($info) . " <br>");
+
+        if (mysql_num_rows($result) > 0) {
+            for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+                $ownContactIDs[] =  mysql_result($result, $i, 0);
+            }
+        }
+    }
+    mysql_close($connection);
+    return $ownContactIDs;
 }
