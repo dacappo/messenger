@@ -69,6 +69,9 @@ function createContentElement(inType, inId, inClass, inContent) {
 some global stuff
 */
 
+var userInfo = '';
+var contactList = '';
+
 var mobileNumber = '';
 var userId = '';
 
@@ -202,14 +205,32 @@ function createContactList() {
         });
     });
 
+    this.checkNewMessages = function() {
+        $.post('check_new_messages.php', {user_id: userId}, function(data){
+            $.each(data.contact_IDs, function(i, conId) {
+                setMessageNotification(conId);
+            });
+        });
+    }
+
+    this.setMessageNotification = function(inId) {
+        var notification = createElement('div', 'notification' + inId, 'notification');
+        document.getElementById('contact'+inId).appendChild(notification);
+    }
+
+    this.removeMessageNotification = function(inId) {
+        $('#notification'+inId).remove();
+    }
+
 
     this.addContact = function(inName,inId){
-        var contact = createElement('div','contact','contact');
+        var contact = createElement('div','contact'+inId,'contact');
         contact.onclick = function() {
             createConversation(inName,inId);
         }
         var contact_name = createElement('span','contact_name','contact_name');
         var icon = createImgElement('img','contact_icon','contact_icon', 'images/avatar.png');
+
 
         contact.appendChild(icon);
         contact_name.appendChild(document.createTextNode(inName));
@@ -224,7 +245,7 @@ function createContactList() {
 
 function createConversation(inName, inId) {
 
-
+    contactList.removeMessageNotification(inId);
 
     var conversation = createElement('div','conversation');
     var conversation_info = createElement('div','conversation_info');
@@ -235,7 +256,8 @@ function createConversation(inName, inId) {
 
     var conversation_input = createElement('form','conversation_input');
     var conversation_input_wrapper_field = createElement('div','conversation_input_wrapper_field');
-    var conversation_input_field = createElement('textarea','conversation_input_field');
+    var conversation_input_field = createElement('input','conversation_input_field');
+    conversation_input_field.setAttribute('type', 'text');
     var conversation_input_wrapper_button = createElement('div','conversation_input_wrapper_button');
     var conversation_input_button = createElement('input','conversation_input_button','button');
     conversation_input_button.setAttribute('type','submit');
@@ -333,8 +355,8 @@ Check server-side session
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 
-	    echo   'createUserInfo(mobileNumber);
-	            createContactList();
+	    echo   'userInfo = createUserInfo(mobileNumber);
+	            contactList = createContactList();
   				';
 	} else {
 	   /* echo   'createUserInfo(mobileNumber);

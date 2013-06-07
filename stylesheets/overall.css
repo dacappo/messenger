@@ -155,11 +155,12 @@
     padding: 5px;
 }
 
-.contact_number {
-    color: white;
-    font-size: 12px;
-    font-weight: 800;
-    margin: 5px;
+.notification {
+    position: relative;
+    float: right;
+    margin: 15px;
+    border-radius: 5px;
+    border: 5px solid #66FF00;
 }
 
 #conversation {
