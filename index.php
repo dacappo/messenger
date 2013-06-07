@@ -321,6 +321,7 @@ function createConversation(inName, inId) {
         $.post('receive_messages.php', {contact_id: inId}, function(data){
             $.each(data.messages, function(i, message) {
                 appendExternMessage(inName,message.timestamp, message.content);
+                contactList.removeMessageNotification(inId);
             });
         });
 
@@ -337,7 +338,7 @@ function createConversation(inName, inId) {
          //do nothing
         });
         var date = new Date();
-        appendInternMessage('Me',date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
+        appendInternMessage('Me',data.getFullYear()+'-'+data.getMonth()+'-'+date.getDate()+' '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
         conversation_input_field.value = '';
         conversation_input_field.focus();
         //Important. Stop the normal POST
