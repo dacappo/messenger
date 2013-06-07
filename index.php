@@ -292,13 +292,14 @@ function createConversation(inName, inId) {
 
     $("#conversation_input").submit(function(e) {
         e.preventDefault();
+
+        $.post($("#form_login").attr("action"), {body: conversation_input_field.value, contact_id: inId }, function(data){
+         //do nothing
+        });
         var date = new Date();
         appendInternMessage('Me',date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
         conversation_input_field.value = '';
         conversation_input_field.focus();
-        //$.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
-        //do nothing
-        //});
         //Important. Stop the normal POST
         return false;
     });
