@@ -6,7 +6,8 @@
 	$posPassword = $_POST['password'];
 	$suc = false;
 
-    if (checkLoginForUser($posNumber, $posPassword)) {
+    $userId = checkLoginForUser($posNumber, $posPassword);
+    if ($userId > 0) {
 		session_start();
 		$_SESSION['loggedIn']=true;
 		$suc = true;
@@ -17,7 +18,8 @@
 	if($suc) {
 				
  		echo 	'createUserInfo(mobileNumber);
-	            createContactList();
+	             createContactList();
+	             userId = ' + $userId + ';
   				';
  	} else {
  		echo 	'setInfoMessage("Wrong number or password!","info_message_warning");';

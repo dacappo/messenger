@@ -70,6 +70,7 @@ some global stuff
 */
 
 var mobileNumber = '';
+var userId = '';
 
 
 /* Show login screen */
@@ -194,7 +195,7 @@ function createContactList() {
     main.appendChild(contacts);
     document.body.appendChild(main);
 
-    $.post('get_contacts.php', {user_id: 1}, function(result){
+    $.post('get_contacts.php', {user_id: userId}, function(result){
         $.each( result.contacts.data , function( i, con ) {
             addContact(con.name, con.id);
         });
