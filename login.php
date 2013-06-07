@@ -17,9 +17,9 @@
 	
 	if($suc) {
 				
- 		echo 	'createUserInfo(mobileNumber);
+ 		echo 	'userInfo =createUserInfo(mobileNumber);
  		         userId = ' . $userId . ';
-	             createContactList();
+	             contactList = createContactList();
   				';
  	} else {
  		echo 	'setInfoMessage("Wrong number or password!","info_message_warning");';
