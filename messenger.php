@@ -105,3 +105,16 @@ function createJSONResponseForNewContacts($matchedContacts, $user_id)
     $JSONString .= ']';
     return $JSONString;
 }
+
+//Insert existing contacts to new created
+function appendExistingContacts($newCreated, $matchedContacts){
+    foreach($matchedContacts as $contact){
+        if (isset($contact['contactID'])){
+            $contactInfo = array();
+            $contactInfo['number'] = $contact['number'];
+            $contactInfo['id'] = $contact['contactID'];
+            array_push($newCreated, $contactInfo);
+        }
+    }
+    return $newCreated;
+}

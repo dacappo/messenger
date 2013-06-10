@@ -27,13 +27,14 @@ if (isset($arrayOfContacts)){
 
 if (!empty($matchedContacts)){
     $newCreated = create_contacts($user_id, $matchedContacts);
+    $allExisting = appendExistingContacts($newCreated, $matchedContacts);
 } else {
     echo "Non of your contacts is using this messenger";
 }
 
 header('Content-Type: application/json');
 
-if ($newCreated){
+if ($allExisting){
     echo createJSONResponseForNewContacts($matchedContacts, $user_id);
 } else {
     echo "OK : No new contacts created";
