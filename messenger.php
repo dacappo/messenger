@@ -90,8 +90,8 @@ function createJSONResponseForNewContacts($matchedContacts, $user_id){
             $isFirst = false;
         } else {
             $singleObject = array_pop($contactInfoArray);
-            $JSONString .= ', { "id" : "' . $singleObject[0] . '" ,';
-            $JSONString .= ' "name" : "' . $singleObject[1] . '" } ';
+            $JSONString .= ', { "number" : "' . $singleObject[0] . '" ,';
+            $JSONString .= ' "id" : "' . $singleObject[1] . '" } ';
         }
     }
 
