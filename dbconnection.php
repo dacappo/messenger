@@ -74,6 +74,7 @@ function checkDatabaseForUser($pNumber)
     $userID = 0;
     if (isset($pNumber)) {
         $number = $pNumber;
+        var_dump($number);
     } else {
         return $userID;
     }

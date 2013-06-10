@@ -15,6 +15,7 @@ $user_id = $_POST['id'];
 if (!isset($contacts) && !isset($user_id)){
     echo "Not all required POST parameters are set";
 }
+var_dump($contacts);
 
 $arrayOfContacts = json_decode($contacts, true);
 
