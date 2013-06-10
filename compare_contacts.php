@@ -12,17 +12,17 @@ include "dbMessenger.php";
 $contacts = $_POST['contacts'];
 $user_id = $_POST['id'];
 
-if (!isset($contacts)){
+if (!isset($contacts) && !isset($user_id)){
     echo "Not all required POST parameters are set";
 }
-// array structure: "number" => "name"
+
 $arrayOfContacts = json_decode($contacts, true);
 
 
 if (isset($arrayOfContacts)){
-   $matchedContacts = compare_contacts($arrayOfContacts);
+   $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
 } else {
-    echo "Server Error : during JSON decoding" . var_dump($arrayOfContacts) . var_dump($contacts);
+    echo "Server Error : during JSON decoding" . json_last_error() . var_dump($arrayOfContacts) . var_dump($contacts);
 }
 
 if (!empty($matchedContacts)){

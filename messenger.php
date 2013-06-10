@@ -63,12 +63,17 @@ function buildJSONForArray($contacts)
     return $JSONString;
 }
 
-function compare_contacts($arrayOfContacts)
+function compare_contacts($arrayOfContacts, $sourceID)
 {
     $matchedContacts = array();
 
     foreach ($arrayOfContacts as $contact) {
-        if ($contact['id'] = checkDatabaseForUser($contact['number'])) {
+        if ( $DestinationID = checkDatabaseForUser($contact['number'])) {
+            //Check if Contact pair alrady exist and if yes get ID
+            $contact['id'] = $DestinationID;
+            if ($existingContactID = checkDatabaseForContact($sourceID, $DestinationID)){
+            $contact['contactID'] = $existingContactID;
+            }
             $matchedContacts[] = $contact;
         }
     }

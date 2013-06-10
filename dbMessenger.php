@@ -103,3 +103,31 @@ function getContactIDsForNumbers($pMatchedContacts, $pUser_id)
     mysql_close($connection);
     return $ContactInfo;
 }
+
+function checkDatabaseForContact($pSourceID, $pDestinationID)
+{
+    $existingContactID = 0;
+    if (isset($pSourceID) && isset($pDestinationID)) {
+        $source_id = $pSourceID;
+        $destination_id = $pDestinationID;
+    } else {
+        return "Not all required parameters are given";
+    }
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT contact_id FROM contacts WHERE ' . 'origin_user_id="' . $source_id . '" AND destination_user_id="' . $destination_id . '"')
+    or die("SQL Error:" . mysql_error() . " with param" . var_dump($source_id) . var_dump($destination_id) . " <br>");
+
+    if (mysql_num_rows($result) <> 0) {
+        $existingContactID = mysql_result($result, 0, 0);
+    }
+
+    mysql_close($connection);
+    //return Contact ID or 0 if no contact exists, yet.
+    return $existingContactID;
+}
