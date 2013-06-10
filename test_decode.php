@@ -7,6 +7,8 @@
  * To change this template use File | Settings | File Templates.
  */
 
+include "mbstring.php";
+
 $json =
     '[
     {"number":"607b21028a1beec63020a14f04510a75c7122f6582c17176b07fcd7acdfa7530","name":"Marco Giualiano"},
