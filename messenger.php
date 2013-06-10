@@ -68,11 +68,11 @@ function compare_contacts($arrayOfContacts, $sourceID)
     $matchedContacts = array();
 
     foreach ($arrayOfContacts as $contact) {
-        if ( $DestinationID = checkDatabaseForUser($contact['number'])) {
+        if ($DestinationID = checkDatabaseForUser($contact['number'])) {
             //Check if Contact pair alrady exist and if yes get ID
             $contact['id'] = $DestinationID;
-            if ($existingContactID = checkDatabaseForContact($sourceID, $DestinationID)){
-            $contact['contactID'] = $existingContactID;
+            if ($existingContactID = checkDatabaseForContact($sourceID, $DestinationID)) {
+                $contact['contactID'] = $existingContactID;
             }
             $matchedContacts[] = $contact;
         }
@@ -81,10 +81,11 @@ function compare_contacts($arrayOfContacts, $sourceID)
     return $matchedContacts;
 }
 
-function createJSONResponseForNewContacts($matchedContacts, $user_id){
+function createJSONResponseForNewContacts($matchedContacts, $user_id)
+{
     $JSONString = '[';
 
-    $contactInfoArray = getContactIDsForNumbers($matchedContacts, $user_id );
+    $contactInfoArray = getContactIDsForNumbers($matchedContacts, $user_id);
 
     $isFirst = true;
     while (empty($contactInfoArray) == false) {
