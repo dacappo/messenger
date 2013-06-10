@@ -15,10 +15,12 @@ $user_id = $_POST['id'];
 if (!isset($contacts) && !isset($user_id)){
     echo "Not all required POST parameters are set";
 }
-var_dump($contacts);
+
+if (strlen($contacts) < 4){
+    echo "Invalid JSON : Too short!";
+}
 
 $arrayOfContacts = json_decode($contacts, true);
-
 
 if (isset($arrayOfContacts)){
    $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
