@@ -37,5 +37,5 @@ header('Content-Type: application/json');
 if ($allExisting){
     echo createJSONResponseForNewContacts($matchedContacts, $user_id);
 } else {
-    echo "OK : No new contacts created";
+    echo "OK : No new contacts created" . var_dump($matchedContacts) . var_dump($newCreated).var_dump($allExisting);
 }
