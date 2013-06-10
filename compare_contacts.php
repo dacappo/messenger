@@ -18,10 +18,11 @@ if (!isset($contacts)){
 // array structure: "number" => "name"
 $arrayOfContacts = json_decode($contacts, true);
 
+
 if (isset($arrayOfContacts)){
    $matchedContacts = compare_contacts($arrayOfContacts);
 } else {
-    echo "Server Error : during JSON decoding";
+    echo "Server Error : during JSON decoding" . var_dump($arrayOfContacts) . var_dump($contacts);
 }
 
 if (!empty($matchedContacts)){
