@@ -41,7 +41,7 @@ if (!empty($matchedContacts)) {
     } else {
         echo "OK : No new contacts created" . var_dump($matchedContacts);
     }
-    
+
 } else {
     echo "Non of your contacts is using this messenger";
 }
