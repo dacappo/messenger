@@ -19,9 +19,7 @@ $json =
     {"number":"fbf512e15ec9a296dca3a03daceb9366a1b3d968b1495d61645e62a032debd44","name":"Nicole Kellner"}
     ]';
 
-$json = utf8_decode($json);
-
-mb_detect_encoding($json);
+echo mb_detect_encoding($json);
 
 echo json_decode($json, true);
 
