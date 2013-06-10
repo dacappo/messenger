@@ -53,12 +53,14 @@ function create_contacts($pID, $pContacts)
     $destinationInformation = array();
 
     foreach ($contacts as $item) {
-        $destinationIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $item['number'] . '";')
-        or die("There was an error running the query to look for existing users!<br>");
-        if (mysql_num_rows($destinationIDResult) <> 0) {
-            $destinationID = mysql_result($destinationIDResult, 0, 0);
-            // SourceID => SourceName
-            $destinationInformation[$destinationID] = $item['name'];
+        if (!isset($item['contactID'])) {
+            $destinationIDResult = mysql_query('SELECT id FROM users WHERE mobileNumber ="' . $item['number'] . '";')
+            or die("There was an error running the query to look for existing users!<br>");
+            if (mysql_num_rows($destinationIDResult) <> 0) {
+                $destinationID = mysql_result($destinationIDResult, 0, 0);
+                // SourceID => SourceName
+                $destinationInformation[$destinationID] = $item['name'];
+            }
         }
     }
 
