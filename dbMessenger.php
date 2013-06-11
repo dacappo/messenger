@@ -165,7 +165,7 @@ function getPartiesID($contactID)
     return $parties;
 }
 
-function insertMessageIntoDB($messageParties, $messageData)
+function insertMessageIntoDB($messageData)
 {
     //Connect to DB
     $connection = initializeConnectionToDB();
@@ -174,7 +174,7 @@ function insertMessageIntoDB($messageParties, $messageData)
     or die("Could not select Database");
 
     $messageSuccessful = mysql_query('INSERT INTO messages (contact_id, content, date_time) VALUES ("' . $messageData[0] . '","' . $messageData[1] . '","' . $messageData[2] . '")')
-    or die("There was an error running the query to create contacts!<br>");
+    or die("There was an error running the query to create a message!<br> ". mysql_error() . var_dump($messageData));
 
     mysql_close($connection);
     return $messageSuccessful;
