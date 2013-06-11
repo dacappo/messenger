@@ -20,7 +20,7 @@ if (!isset($contact_id) || !isset($body) || !isset($timestamp)) {
     echo "Not all required POST parameters are set";
 }
 
-$messageData = array($contact_id, $timestamp, $body);
+$messageData = array($contact_id, $body, $timestamp);
 
 if (sendMessage($messageData)){
     echo "OK";

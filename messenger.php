@@ -117,7 +117,7 @@ function checkForExistingContacts($matchedContacts)
 }
 
 /*
- * param: $messageData[0] = contact_id, $messageData[1] = timestamp, $messageData[2] = body
+ * param: $messageData[0] = contact_id, $messageData[1] = body, $messageData[2] = timestamp
  */
 function sendMessage($messageData)
 {
