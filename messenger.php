@@ -122,9 +122,10 @@ function checkForExistingContacts($matchedContacts)
 function sendMessage($messageData)
 {
     $successful = false;
+    //Parties unused
     $messageParties = getPartiesID($messageData[0]);
     if (isset($messageParties)){
-        $successful = insertMessageIntoDB($messageParties, $messageData);
+        $successful = insertMessageIntoDB($messageData);
     }
     return $successful;
 }

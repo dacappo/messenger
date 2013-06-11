@@ -12,6 +12,10 @@ $contact_id = $_POST['contact_id'];
 $body = $_POST['body'];
 $timestamp = $_POST['timestamp'];
 
+if (!isset($timestamp)){
+    $timestamp = date('Y-m-d H:i:s');
+}
+
 if (!isset($contact_id) || !isset($body) || !isset($timestamp)) {
     echo "Not all required POST parameters are set";
 }

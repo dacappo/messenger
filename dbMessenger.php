@@ -167,13 +167,15 @@ function getPartiesID($contactID)
 
 function insertMessageIntoDB($messageParties, $messageData)
 {
-
     //Connect to DB
     $connection = initializeConnectionToDB();
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $messageSuccessful = mysql_query('INSERT INTO message (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
+    $messageSuccessful = mysql_query('INSERT INTO messages (contact_id, content, date_time) VALUES ("' . $messageData[0] . '","' . $messageData[1] . '","' . $messageData[2] . '")')
     or die("There was an error running the query to create contacts!<br>");
+
+    mysql_close($connection);
+    return $messageSuccessful;
 }
