@@ -133,3 +133,47 @@ function checkDatabaseForContact($pSourceID, $pDestinationID)
     //return Contact ID or 0 if no contact exists, yet.
     return $existingContactID;
 }
+
+/*
+ * returns an array() with [0] => source_id, [1] => destination_id
+ * and null if something went wrong
+ */
+function getPartiesID($contactID)
+{
+    $parties = array();
+    if (isset($contactID)) {
+        $contact_id = $contactID;
+    } else {
+        return null;
+    }
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT DISTINCT origin_user_id, destination_user_id FROM contacts WHERE ' . 'contact_id="' . $contact_id . '"')
+    or die("SQL Error:" . mysql_error() . " with param" . var_dump($contact_id) . " <br>");
+
+    if (mysql_num_rows($result) <> 0) {
+        $parties[0] = mysql_result($result, 0, 0);
+        $parties[1] = mysql_result($result, 0, 1);
+    }
+
+    mysql_close($connection);
+    return $parties;
+}
+
+function insertMessageIntoDB($messageParties, $messageData)
+{
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $messageSuccessful = mysql_query('INSERT INTO message (origin_user_id,destination_user_id,nickname) VALUES ("' . $origin_id . '","' . $key . '","' . $value . '")')
+    or die("There was an error running the query to create contacts!<br>");
+}

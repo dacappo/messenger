@@ -12,7 +12,7 @@ include "dbMessenger.php";
 $contacts = $_POST['contacts'];
 $user_id = $_POST['id'];
 
-if (!isset($contacts) && !isset($user_id)) {
+if (!isset($contacts) || !isset($user_id)) {
     echo "Not all required POST parameters are set";
 }
 
