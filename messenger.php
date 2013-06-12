@@ -157,7 +157,7 @@ function createJSONMessages($messages){
             $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
             $isFirst = false;
         } else {
-            $singleObject = array_pop($contactInfoArray);
+            $singleObject = array_pop($messages);
             $JSONString .= ', { "id" : "' . $singleObject['contact_id'] . '" ,';
             $JSONString .= ' "content" : "' - $singleObject['content'] . '" ,';
             $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
