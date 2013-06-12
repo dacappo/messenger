@@ -146,5 +146,24 @@ function getMessages($contact_id, $timestamp){
 }
 
 function createJSONMessages($messages){
-    return json_encode($messages);
+    $JSONString = '[';
+    $isFirst = true;
+    while (empty($messages) == false) {
+        if ($isFirst) {
+            $singleObject = array_pop($messages);
+            $JSONString .= '{ "id" : "' . $singleObject['contact_id'] . '" ,';
+            $JSONString .= ' "content" : "' - $singleObject['content'] . '" ,';
+            $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
+            $isFirst = false;
+        } else {
+            $singleObject = array_pop($contactInfoArray);
+            $JSONString .= ', { "id" : "' . $singleObject['contact_id'] . '" ,';
+            $JSONString .= ' "content" : "' - $singleObject['content'] . '" ,';
+            $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
+        }
+    }
+
+    // close JSON
+    $JSONString .= ']';
+    return $JSONString;
 }
