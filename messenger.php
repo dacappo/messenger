@@ -145,7 +145,7 @@ function getMessages($contact_id, $timestamp){
 }
 
 function createJSONMessages($messages){
-    $JSONString = '[';
+    $JSONString = '[ ';
     $isFirst = true;
     while (empty($messages) == false) {
         if ($isFirst) {
