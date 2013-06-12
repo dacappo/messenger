@@ -1,6 +1,13 @@
 ﻿html, body {
-	position: relative;
+    position:absolute;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+
 	height: 100%;
+    min-height: 600px;
+    min-width:1000px;
 	margin: 0;	
 	
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -30,15 +37,33 @@
 
 
 #action_bar {
+    position: absolute;
+    top: 0;
+    min-width: 1000px;
 	background-color: #111111;
 	color: #FFFFFF;
-    min-width: 1000px;
+    box-shadow: 0px 0px 3px #666;
+    z-index: 3;
+
 }
 
-#action_bar_center {
-    min-width: 1000px;
+#action_bar_caption {
+    width: 150px;
     height: 40px;
     margin: auto;
+}
+
+#action_bar_user {
+    width: 25%;
+    min-width: 250px;
+    position: absolute;
+    left: 0px;
+    height: 40px;
+}
+
+#action_bar_user_number {
+    float: left;
+    margin: 8px 30px;
 }
 
 #main {
@@ -48,17 +73,16 @@
     left: 0px;
     right: 0px;
     min-width: 1000px;
-
 }
 
 #contacts {
-
     position: absolute;
     top: 0px;
     bottom: 0px;
     width: 25%;
     min-width: 250px;
-
+    box-shadow: 0px 0px 3px #444 ;
+    z-index: 2;
 }
 
 #contact_list {
@@ -82,6 +106,11 @@
     color: #FFF;
     font-size: 16px;
     padding:5px;
+}
+
+.contact_list_icon {
+    margin: 0px;
+    height: 20px;
 }
 
 .contact {
@@ -111,14 +140,112 @@
 }
 
 #conversation {
-    background-color: black;
+    background-color: #fafafa;
     position: absolute;
-    top: 10px;
-    bottom: 10px;
+    top: 40px;
+    bottom: 0px;
     right: 0px;
-    width: 73%;
+    width: 75%;
     min-width: 750px;
-    opacity: 0.5;
+    z-index: 0;
+}
+
+#conversation_flow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom:60px;
+    z-index: 0;
+    overflow: auto;
+}
+
+.conversation_flow_message {
+    position: relative;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.conversation_flow_message_title {
+    position: relative;
+    float: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: orange;
+    margin: 10px;
+}
+
+.conversation_flow_message_time {
+    position: relative;
+    float: right;
+    font-size: 12px;
+    font-weight: 800;
+    color: orange;
+    margin: 10px;
+}
+
+.conversation_flow_message_content {
+    position: relative;
+    float: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    width: 90%;
+}
+
+#conversation_flow_extern_message {
+
+}
+
+#conversation_flow_intern_message {
+
+}
+
+#conversation_input {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+
+}
+
+#conversation_input_field {
+    position:absolute;
+    top: 5px;
+    bottom: 5px;
+    right: 200px;
+    left: 5px;
+    border-radius: 10px;
+
+
+    border: 2px solid #666666;
+    padding: 2px 5px;
+    outline: none;
+}
+
+#conversation_input_button {
+    position: absolute;
+    bottom: 5px;
+    top: 5px;
+    right: 5px;
+    width: 185px;
+    background: orange;
+    color: #FFF;
+    border-radius: 3px;
+    border-style:none;
+    cursor:pointer;
+    font-size: 14px;
+}
+
+#conversation_input_button:hover {
+    background: #FFB914;
+    color: #FFF;
+    border-style:none;
+    cursor:pointer;
 }
 
 .input_text {
@@ -144,7 +271,7 @@
 	 border-radius: 3px; 
 	 border-style:none;
      cursor:pointer;
-    font-size: 14px;
+     font-size: 14px;
 
 }
 
@@ -175,4 +302,14 @@
 	font-size: 11px;
 	color: #eee;
     text-align: center;
+}
+
+#form_login {
+    padding: 20px;
+    margin: auto;
+    margin-top: 200px;
+    width: 250px;
+    background-color: #FFF;
+    border: 1px solid #EAEAEA;
+
 }
