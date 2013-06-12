@@ -19,8 +19,8 @@ if (!isset($timestamp)){
 // TODO Timestamp benuten
 $messagesJSON = getMessages($contact_id, $timestamp);
 
-if (isset($messagesJSON) && $messages != ''){
-    echo $messagesJSON;
+if (!isset($messagesJSON) || $messagesJSON == ' '){
+    echo "NO messages found!" ;
 } else {
-    echo "NO messages found!" ; // var_dump($messagesJSON);
+    echo $messagesJSON;
 }

@@ -139,10 +139,8 @@ function getMessages($contact_id, $timestamp){
     //Get messages for the contact owner and the messages from contact to owner
     $messages = getMessagesFromDB($contact_id, $opposite_contact_id);
 
-
     //Create JSON
     $messagesJSON = createJSONMessages($messages);
-    var_dump($messagesJSON);
     return $messagesJSON;
 }
 
@@ -153,13 +151,13 @@ function createJSONMessages($messages){
         if ($isFirst) {
             $singleObject = array_pop($messages);
             $JSONString .= '{ "id" : "' . $singleObject['contact_id'] . '" ,';
-            $JSONString .= ' "content" : "' - $singleObject['content'] . '" ,';
+            $JSONString .= ' "content" : "' . $singleObject['content'] . '" ,';
             $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
             $isFirst = false;
         } else {
             $singleObject = array_pop($messages);
             $JSONString .= ', { "id" : "' . $singleObject['contact_id'] . '" ,';
-            $JSONString .= ' "content" : "' - $singleObject['content'] . '" ,';
+            $JSONString .= ' "content" : "' . $singleObject['content'] . '" ,';
             $JSONString .= ' "timestamp" : "' . $singleObject['date_time'] . '" } ';
         }
     }
