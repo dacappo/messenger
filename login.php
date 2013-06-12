@@ -6,9 +6,6 @@
 	$posPassword = $_POST['password'];
 	$suc = false;
 
-
-
-
     if (checkLoginForUser($posNumber, $posPassword)) {
 		session_start();
 		$_SESSION['loggedIn']=true;

@@ -25,7 +25,7 @@ $arrayOfContacts = json_decode($contacts, true);
 if (isset($arrayOfContacts)) {
     $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
 } else {
-    echo "Server Error : during JSON decoding  with JSON Error: " . json_last_error() . var_dump($arrayOfContacts) . var_dump($contacts);
+    echo "Server Error : during JSON decoding  with JSON Error: " . json_last_error() . " and JSON: " . $contacts;
 }
 
 $newCreated = false;
