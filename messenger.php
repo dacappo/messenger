@@ -139,10 +139,10 @@ function getMessages($contact_id, $timestamp){
     //Get messages for the contact owner and the messages from contact to owner
     $messages = getMessagesFromDB($contact_id, $opposite_contact_id);
 
-    var_dump($messages);
+
     //Create JSON
     $messagesJSON = createJSONMessages($messages);
-
+    var_dump($messagesJSON);
     return $messagesJSON;
 }
 
