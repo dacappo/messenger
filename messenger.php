@@ -11,7 +11,6 @@ include "dbconnection.php";
 
 function show_contacts($pUser_id)
 {
-
     if (isset($pUser_id)) {
         $user_id = $pUser_id;
     } else {
@@ -84,7 +83,6 @@ function compare_contacts($arrayOfContacts, $sourceID)
 function createJSONResponseForNewContacts($matchedContacts, $user_id)
 {
     $JSONString = '[';
-
     $contactInfoArray = getContactIDsForNumbers($matchedContacts, $user_id);
 
     $isFirst = true;
@@ -107,12 +105,27 @@ function createJSONResponseForNewContacts($matchedContacts, $user_id)
 }
 
 //Insert existing contacts to new created
-function checkForExistingContacts($matchedContacts){
+function checkForExistingContacts($matchedContacts)
+{
     $exist = false;
-    foreach($matchedContacts as $contact){
-        if (isset($contact['contactID'])){
+    foreach ($matchedContacts as $contact) {
+        if (isset($contact['contactID'])) {
             $exist = true;
         }
     }
     return $exist;
+}
+
+/*
+ * param: $messageData[0] = contact_id, $messageData[1] = body, $messageData[2] = timestamp
+ */
+function sendMessage($messageData)
+{
+    $successful = false;
+    //Parties unused
+    $messageParties = getPartiesID($messageData[0]);
+    if (isset($messageParties)){
+        $successful = insertMessageIntoDB($messageData);
+    }
+    return $successful;
 }
