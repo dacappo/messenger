@@ -22,5 +22,5 @@ $messagesJSON = getMessages($contact_id, $timestamp);
 if (isset($messagesJSON) && $messages != ''){
     echo $messagesJSON;
 } else {
-    echo "NO messages found!";
+    echo "NO messages found!" . var_dump($messagesJSON);
 }
