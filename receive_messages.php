@@ -6,6 +6,8 @@
  * Time: 15:53
  */
 
+include "messenger.php";
+
 $contact_id = $_POST['contact_id'];
 $timestamp = $_POST['timestamp'];
 
