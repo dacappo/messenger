@@ -130,6 +130,7 @@ function sendMessage($messageData)
     return $successful;
 }
 
+//TODO Timestamp integration
 function getMessages($contact_id, $timestamp){
 
     $parties = getPartiesID($contact_id);
