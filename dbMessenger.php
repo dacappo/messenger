@@ -33,6 +33,27 @@ function getContactsForUserID($user_id)
     return $values;
 }
 
+function getContactsForBothUserIDs($parties){
+
+    $contact_id = 0;
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT DISTINCT contact_id FROM contacts WHERE ' . 'origin_user_id="' . $parties[1] . '" AND destination_user_id="' . $parties[0] . '"')
+    or die("SQL Error:" . mysql_error() . " with param" . var_dump($parties) . " <br>");
+
+    if (mysql_num_rows($result) <> 0) {
+         $contact_id = mysql_result($result, 0, 0);
+    }
+
+    mysql_close($connection);
+    return $contact_id;
+}
+
 function create_contacts($pID, $pContacts)
 {
     $newContactsCreated = false;
@@ -178,4 +199,28 @@ function insertMessageIntoDB($messageData)
 
     mysql_close($connection);
     return $messageSuccessful;
+}
+
+function getMessagesFromDB($contact_id, $opposite_contact_id){
+
+    $messages = array();
+
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $resultMessages = mysql_query('SELECT * FROM messages WHERE contact_id=' . $contact_id .' OR contact_id=' . $opposite_contact_id .' ORDER BY date_time DESC;')
+    or die("There was an error running the query to receive messages!<br> ". mysql_error() . var_dump($contact_id) . var_dump($opposite_contact_id));
+
+    if (mysql_num_rows($resultMessages) <> 0) {
+        for ($i = 0; $i < mysql_num_rows($resultMessages); ++$i) {
+            $row = mysql_fetch_assoc($resultMessages);
+            array_push($messages, $row);
+        }
+    }
+
+    mysql_close($connection);
+    return $messages;
 }

@@ -129,3 +129,21 @@ function sendMessage($messageData)
     }
     return $successful;
 }
+
+function getMessages($contact_id, $timestamp){
+
+    $parties = getPartiesID($contact_id);
+    $opposite_contact_id = getContactsForBothUserIDs($parties);
+
+    //Get messages for the contact owner and the messages from contact to owner
+    $messages = getMessagesFromDB($contact_id, $opposite_contact_id);
+
+    //Create JSON
+    $messagesJSON = createJSONMessages($messages);
+
+    return $messagesJSON;
+}
+
+function createJSONMessages($messages){
+    return json_encode($messages);
+}
