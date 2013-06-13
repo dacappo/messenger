@@ -21,6 +21,13 @@
         }
         .success {
             font-weight: 800;
+            color: white;
+            background-color: green;
+        }
+        .notsuccess {
+            font-weight: 800;
+            color: white;
+            background-color: red;
         }
     </style>
     <title></title>
@@ -49,7 +56,7 @@ include "dbMessenger.php";
             if (checkLoginForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882', '050f993ea2322d4b6940f8560a253a11709fdc5ab08fd994bceb096846ea1645')) {
                 echo("checkLoginForUser(): correct input </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("(): correct input </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("(): correct input </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?></td>
     </tr>
@@ -59,7 +66,7 @@ include "dbMessenger.php";
             if (checkLoginForUser(' ', ' ') == false) {
                 echo("checkLoginForUser(): wrong input </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("checkLoginForUser(): wrong input </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("checkLoginForUser(): wrong input </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -82,7 +89,7 @@ include "dbMessenger.php";
             $returnMessage = register($number, generateValidationString(5));
             echo (!strncmp($returnMessage, "OK", 2)) ?
                 "register(): Test connection to SMS gateway provider  </td><td>  <span class='success' style='color:green'>successful</span><br></td>" :
-                "register(): Error  </td><td>  <span class='success' style='color:red'>$returnMessage</span><br></td>";
+                "register(): Error  </td><td>  <span class='notsuccess' style='color:red'>$returnMessage</span><br></td>";
             ?></td>
     </tr>
     <tr>
@@ -91,7 +98,7 @@ include "dbMessenger.php";
             if (checkDatabaseForUser('84d89877f0d4041efb6bf91a16f0248f2fd573e6af05c19f96bedb9f882f7882') <> 0) {
                 echo("checkDatabaseForUser(): existing User </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("checkDatabaseForUser(): existing User </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("checkDatabaseForUser(): existing User </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -101,7 +108,7 @@ include "dbMessenger.php";
             if (checkDatabaseForUser(' ') == 0) {
                 echo("checkDatabaseForUser(): non existing User </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("checkDatabaseForUser(): non existing User </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("checkDatabaseForUser(): non existing User </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -113,7 +120,7 @@ include "dbMessenger.php";
             if (strpos(create_user($mobileNumber, $password), "OK") === 0) {
                 echo("create_user(): valid data </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("create_user(): valid data </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("create_user(): valid data </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -138,7 +145,7 @@ include "dbMessenger.php";
             if (!empty($matchedContacts)) {
                 echo("compare_contacts(): existing contact </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("compare_contacts(): existing contact </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("compare_contacts(): existing contact </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -152,7 +159,7 @@ include "dbMessenger.php";
             if (empty($matchedContacts)) {
                 echo("compare_contacts(): unknown number </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("compare_contacts(): unknown number </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("compare_contacts(): unknown number </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
@@ -169,7 +176,7 @@ include "dbMessenger.php";
             if (create_contacts($user_id, $matchedContacts)) {
                 echo("create_contacts(): valid data </td><td> <span class='success' style='color:green'>successful</span><br></td>");
             } else {
-                echo("create_contacts(): valid data </td><td> <span class='success' style='color:red'>not successful</span><br></td>");
+                echo("create_contacts(): valid data </td><td> <span class='notsuccess' style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
