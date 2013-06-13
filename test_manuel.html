@@ -5,12 +5,14 @@
 </head>
 <body>
 <h1>Register</h1>
+
 <form name="input" action="register.php" method="post">
     Number: <input type="text" name="mobileNumber">
     <input type="submit" value="Submit">
 </form>
 
 <h1>Verfication</h1>
+
 <form name="input2" action="check_ver.php" method="post">
     Number: <input type="text" name="mobileNumber">
     VerCode: <input type="text" name="verCode">
@@ -18,6 +20,7 @@
 </form>
 
 <h1>Create User</h1>
+
 <form name="input3" action="create_user.php" method="post">
     Number: <input type="text" name="mobileNumber">
     Password: <input type="text" name="password">
@@ -25,24 +28,34 @@
 </form>
 
 <h1>Get contacts</h1>
+
 <form name="input4" action="get_contacts.php" method="post">
     User ID: <input type="text" name="user_id">
     <input type="submit" value="Submit">
 </form>
 
 <h1>Compare Contacts</h1>
+
 <form name="input4" action="compare_contacts.php" method="post">
     User ID: <input type="text" name="id">
     JSON: <input type="text" name="contacts">
-    <input type="submit" value="Submit">
+    <input type="submit" value="Sent">
 </form>
 
-<h1>Send message</h1>
+-<h1>Send message</h1>
+-
 <form name="input5" action="send_message.php" method="post">
     Contact_ID: <input type="text" name="contact_id">
-    Content: <input type="text" name="body">
-    <p>Timestamp set automatically</p>
-    <input type="submit" value="Submit">
+    - Content: <input type="text" name="body">
+    - <p>Timestamp set automatically</p>
+    - <input type="submit" value="Submit">
+</form>
+
+<h1>Receive Message</h1>
+
+<form name="input6" action="receive_messages.php" method="post">
+    Contact_ID: <input type="text" name="contact_id">
+    <input type="submit" value="Get">
 </form>
 </body>
 </html>

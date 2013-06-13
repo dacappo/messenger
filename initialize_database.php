@@ -74,12 +74,12 @@ $result = mysql_query("INSERT INTO users (id,mobileNumber,password) VALUES ('2',
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
-$result = mysql_query("INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ('1','2','Hans Peter'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
+$result = mysql_query("INSERT INTO contacts (origin_user_id,destination_user_id,nickname) VALUES ('1','2','Hans Peter'),('2','1','Freund von Hans'),('1','3','Willi Schmidt'),('1','4','Max Mustermann'),('1','5','Julia König')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
 $mysqlTimestamp = date('Y-m-d H:i:s');
-$result = mysql_query("INSERT INTO messages (contact_id, content, date_time) VALUES ('1','Hallo ich bin Root','" . $mysqlTimestamp . "'),('1','Warum antwortest du nicht','" . $mysqlTimestamp . "'),('1','Dann halt nicht...','" . $mysqlTimestamp . "')")
+$result = mysql_query("INSERT INTO messages (contact_id, content, date_time) VALUES ('1','Hallo ich bin Root','" . $mysqlTimestamp . "'),('1','Warum antwortest du nicht','" . $mysqlTimestamp . "'),('1','Dann halt nicht...','" . $mysqlTimestamp . "'),('2','Zurueck zu Origin','" . $mysqlTimestamp . "')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 

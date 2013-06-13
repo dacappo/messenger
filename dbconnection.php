@@ -41,7 +41,7 @@ function selectDB()
 */
 function checkLoginForUser($pNumber, $pPassword)
 {
-    $successful = false;
+    $user_id = 0;
     if (isset($pNumber) && isset($pPassword)) {
         $number = $pNumber;
         $ClientPassword = $pPassword;
@@ -55,15 +55,15 @@ function checkLoginForUser($pNumber, $pPassword)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT * FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"')
+    $result = mysql_query('SELECT id FROM users WHERE ' . 'mobileNumber="' . $number . '" AND password="' . $ClientPassword . '"')
     or die("There was an error running the query !<br>");
 
-    if (mysql_num_rows($result) > 0) {
-        $successful = true;
+    if (mysql_num_rows($result) <> 0) {
+        $user_id = mysql_result($result, 0, 0);
     }
 
     mysql_close($connection);
-    return $successful;
+    return $user_id;
 }
 
 /*
