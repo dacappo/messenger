@@ -135,9 +135,8 @@ function showLoginScreen() {
 
     document.body.appendChild(login_container);
 
-    overrideLoginSubmit();
 
-    this.overrideLoginSubmit = function() {
+
         $("#form_login").submit(function(e) {
             e.preventDefault();
             mobileNumber = $("#input_mobile_number").val().toString();
@@ -149,7 +148,7 @@ function showLoginScreen() {
             //Important. Stop the normal POST
             return false;
         });
-    }
+    
 }
 
 function setInfoMessage(message, klass) {
