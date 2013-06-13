@@ -2,16 +2,17 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
-    <link rel="stylesheet" type="text/css" " href="stylesheets/default.css">
+    <link rel="stylesheet" type="text/css"
+    " href="stylesheets/default.css">
     <style type="text/css">
         body {
-            font-style:normal;
-            background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
-            background-repeat:no-repeat;
-            background-position:center center;
+            font-style: normal;
+            background-image: url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
+            background-repeat: no-repeat;
+            background-position: center center;
             background-size: 20%;
             background-color: lavender;
-             }
+        }
     </style>
     <title></title>
 </head>
@@ -124,7 +125,7 @@ include "dbMessenger.php";
             $user_id = 1;
             $JSON = '[ { "number" : "01514044001" , "name" :  "hansi" }]';
             $arrayOfContacts = json_decode($JSON, true);
-            $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
+            $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
             if (!empty($matchedContacts)) {
                 echo("compare_contacts(): existing contact </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
@@ -138,11 +139,28 @@ include "dbMessenger.php";
             $user_id = 1;
             $JSON = '[ { "number" : "02344232144444441" , "name" :  "hansi" }]';
             $arrayOfContacts = json_decode($JSON, true);
-            $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
+            $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
             if (empty($matchedContacts)) {
                 echo("compare_contacts(): unknown number </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("compare_contacts(): unknown number </td><td> <span style='color:red'>not successful</span><br></td>");
+            }
+            ?>
+    </tr>
+    <tr>
+        <td>Check if a contact can be created with valid data</td>
+        <td><?php
+            $user_id = 1;
+            $mobileNumber = generateRandNumber(12);;
+            $password = "test";
+            create_user($mobileNumber, $password);
+            $JSON = '[ { "number" : "' . $mobileNumber . '" , "name" :  "Test User" }]';
+            $arrayOfContacts = json_decode($JSON, true);
+            $matchedContacts = compare_contacts($arrayOfContacts, $user_id);
+            if (create_contacts($user_id, $matchedContacts)) {
+                echo("create_contacts(): valid data </td><td> <span style='color:green'>successful</span><br></td>");
+            } else {
+                echo("create_contacts(): valid data </td><td> <span style='color:red'>not successful</span><br></td>");
             }
             ?>
     </tr>
