@@ -15,6 +15,8 @@
         }
         table {
             opacity: 0.5;
+            background-color: GRAYTEXT;
+            color: white;
             font-weight: 400;
         }
     </style>
