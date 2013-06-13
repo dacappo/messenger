@@ -123,7 +123,7 @@ include "registration.php";
             $JSON = '[ { "number" : "01514044001" , "name" :  "hansi" }]';
             $arrayOfContacts = json_decode($JSON, true);
             $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
-            if (!emtpty($matchedContacts)) {
+            if (!empty($matchedContacts)) {
                 echo("compare_contacts(): existing contact </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("compare_contacts(): existing contact </td><td> <span style='color:red'>not successful</span><br></td>");
@@ -137,7 +137,7 @@ include "registration.php";
             $JSON = '[ { "number" : "02344232144444441" , "name" :  "hansi" }]';
             $arrayOfContacts = json_decode($JSON, true);
             $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
-            if (emtpty($matchedContacts)) {
+            if (empty($matchedContacts)) {
                 echo("compare_contacts(): unknown number </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("compare_contacts(): unknown number </td><td> <span style='color:red'>not successful</span><br></td>");
