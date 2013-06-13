@@ -136,7 +136,7 @@
     border-bottom: 1px solid #111111;
 }
 
-.contact {
+.contact:hover {
     height: 40px;
     width:100%;
     border-bottom: 1px solid #111111;
