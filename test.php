@@ -9,7 +9,7 @@
             background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
             background-repeat:no-repeat;
             background-position:center;
-            background-size: 50%;
+            background-size: 20%;
              }
     </style>
     <title></title>
@@ -62,7 +62,7 @@ include "registration.php";
     </tr>
     </thead>
     <tr>
-        <td>Test SMS Gateway connection</td>
+        <td>Test SMS Gateway connection and creating of a temporary user</td>
         <td><?php
             /* Check HTTP request to GATEWAY provider for registration */
             $number = generateRandNumber(12);
@@ -92,9 +92,21 @@ include "registration.php";
             }
             ?>
     </tr>
+    <tr>
+        <td>Check if a user can be created with valid data</td>
+        <td><?php
+            $mobileNumber = "01233310";
+            $password = "test";
+            if (create_user($mobileNumber, $password) == "OK") {
+                echo("create_user(): valid data </td><td> <span style='color:green'>successful</span><br></td>");
+            } else {
+                echo("create_user(): valid data </td><td> <span style='color:red'>not successful</span><br></td>");
+            }
+            ?>
+    </tr>
 </table>
 
-<h2>Test Case: Registration</h2>
+<h2>Test Case: Show Contacts</h2>
 <table border="2px">
     <thead>
     <tr>
