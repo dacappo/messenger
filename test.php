@@ -21,13 +21,13 @@
         }
         .success {
             font-weight: 800;
-            color: white;
             background-color: green;
+            color: white;
         }
         .notsuccess {
             font-weight: 800;
-            color: white;
             background-color: red;
+            color: white;
         }
     </style>
     <title></title>
