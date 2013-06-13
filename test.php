@@ -8,7 +8,7 @@
             font-style:normal;
             background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
             background-repeat:no-repeat;
-            background-position:right center;
+            background-position:center center;
             background-size: 20%;
             background-color: lavender;
              }
@@ -116,7 +116,34 @@ include "registration.php";
         <td>Status</td>
     </tr>
     </thead>
-
+    <tr>
+        <td>Look for an contact with a registered number</td>
+        <td><?php
+            $user_id = 1;
+            $JSON = '[ { "number" : "01514044001" , "name" :  "hansi" }]';
+            $arrayOfContacts = json_decode($JSON, true);
+            $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
+            if (!emtpty($matchedContacts)) {
+                echo("compare_contacts(): existing contact </td><td> <span style='color:green'>successful</span><br></td>");
+            } else {
+                echo("compare_contacts(): existing contact </td><td> <span style='color:red'>not successful</span><br></td>");
+            }
+            ?>
+    </tr>
+    <tr>
+        <td>Look for an contact with an unknown number</td>
+        <td><?php
+            $user_id = 1;
+            $JSON = '[ { "number" : "02344232144444441" , "name" :  "hansi" }]';
+            $arrayOfContacts = json_decode($JSON, true);
+            $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
+            if (emtpty($matchedContacts)) {
+                echo("compare_contacts(): unknown number </td><td> <span style='color:green'>successful</span><br></td>");
+            } else {
+                echo("compare_contacts(): unknown number </td><td> <span style='color:red'>not successful</span><br></td>");
+            }
+            ?>
+    </tr>
 </table>
 </body>
 </html>
