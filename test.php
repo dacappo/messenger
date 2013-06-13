@@ -3,6 +3,11 @@
 <head>
     <link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
     <link rel="stylesheet" type="text/css" " href="stylesheets/default.css">
+    <style type="text/css">
+        body {
+            font-style:normal;
+             }
+    </style>
     <title></title>
 </head>
 <body>
