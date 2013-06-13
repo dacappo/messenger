@@ -8,7 +8,7 @@
             font-style:normal;
             background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
             background-repeat:no-repeat;
-            background-position:center;
+            background-position:right center;
             background-size: 20%;
             background-color: lavender;
              }
@@ -98,7 +98,7 @@ include "registration.php";
         <td><?php
             $mobileNumber = generateRandNumber(12);;
             $password = "test";
-            if (create_user($mobileNumber, $password) == "OK") {
+            if (strpos(create_user($mobileNumber, $password), "OK") === 0) {
                 echo("create_user(): valid data </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
                 echo("create_user(): valid data </td><td> <span style='color:red'>not successful</span><br></td>");
