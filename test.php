@@ -6,6 +6,9 @@
     <style type="text/css">
         body {
             font-style:normal;
+            background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
+            background-repeat:no-repeat;
+            background-position:center;
              }
     </style>
     <title></title>
@@ -15,7 +18,7 @@
 include "dbconnection.php";
 include "registration.php";
 ?>
-<h1>PHP Unit tests</h1>
+<h1>PHP Unit tests - PaXaLu messenger</h1>
 
 <h2>Test Case: Login</h2>
 <table border="2px">
