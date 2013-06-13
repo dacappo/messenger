@@ -124,9 +124,7 @@ include "dbMessenger.php";
             $user_id = 1;
             $JSON = '[ { "number" : "01514044001" , "name" :  "hansi" }]';
             $arrayOfContacts = json_decode($JSON, true);
-            var_dump($arrayOfContacts);
             $matchedContacts = compare_contacts($arrayOfContacts,$user_id);
-            var_dump($matchedContacts);
             if (!empty($matchedContacts)) {
                 echo("compare_contacts(): existing contact </td><td> <span style='color:green'>successful</span><br></td>");
             } else {
