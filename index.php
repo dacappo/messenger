@@ -25,9 +25,12 @@
 <body>
     <!-- Top bar -->
 	<div id="action_bar">
-        <div id="action_bar_center">
+        <!-- Top bar user -->
+
+        <!-- Top bar caption -->
+        <div id="action_bar_caption">
 		    <div id="action_bar_logo">
-			    <span><img src="images/logo.png" style="height:30px"></span>
+			    <span><img src="images/logo.png" class="action_bar_caption_icon" ></span>
 		    </div>
 		    <div id="action_bar_title">
 			    <span>PaXaLu</span>
@@ -36,192 +39,277 @@
 	</div>
 
 
-    <!--
-    <div id="conversation">
-    </div>
-	<div>
-		<form id="form_login" action="login.php">
-		    <div id="login_info_message" class="info_message_warning" style="visibility:hidden; height: 0px"></div>
-		    <table>
-			    <tr>
-				    <td><img src="images/phone.png"></td>
-				    <td ><input id="input_mobile_number" class="input_text" type="text" name="mobile_nubmer" placeholder="Mobile number"></td>
-			    </tr>
-			    <tr>
-				    <td><img src="images/keys.png"></td>
-				    <td><input id="input_password" class="input_text" type="password" name="password" placeholder="Password" ></td>
-			    </tr>
-			    <tr>
-				    <td></td>
- 				    <td><input class="button" type="submit" value="Submit"></td>
-			    </tr>
-		    </table>
- 		</form>
-	</div>
-	-->
 	
 <script type="text/javascript">
+/*
+ Basic supporting functions
+ */
 
+function createElement(inType, inId, inClass) {
+    var element = document.createElement(inType);
+    element.setAttribute('id',inId);
+    element.setAttribute('class',inClass);
+    return element;
+}
+
+function createImgElement(inType, inId, inClass, inSrc) {
+    var element = createElement(inType,inId, inClass);
+    element.setAttribute('src',inSrc);
+    return element;
+}
+
+function createContentElement(inType, inId, inClass, inContent) {
+    var element = createElement(inType,inId, inClass);
+    element.innerHTML = inContent;
+    return element;
+}
 
 
 /*
-Override login submit
+some global stuff
 */
-    function overrideLoginSubmit() {
 
-    $("#form_login").submit(function(e) {
-        e.preventDefault();
-        var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
-        var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
-        $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
+var mobileNumber = '';
 
-        });
-        //Important. Stop the normal POST
-        return false;
-    });
-}
+
 /* Show login screen */
-    function showLoginScreen() {
-        var login_container = document.createElement('div');
-        login_container.setAttribute('id','login_container')
-        var login_form = document.createElement('form');
-        login_form.setAttribute('id','form_login');
-        login_form.setAttribute('action','login.php');
-        var login_info_message = document.createElement('div');
-        login_info_message.setAttribute('id','login_info_message');
-        var login_table = document.createElement('table');
-        login_table.setAttribute('id','login_table');
-        var tr1 = document.createElement('tr');
-        var td1 = document.createElement('td');
-        var img1 = document.createElement('img');
-        img1.setAttribute('src','images/phone.png');
-        var td2 = document.createElement('td');
-        var input1 = document.createElement('input');
-        input1.setAttribute('id','input_mobile_number');
-        input1.setAttribute('class','input_text');
-        input1.setAttribute('type','text');
-        input1.setAttribute('name','mobile_number');
-        input1.setAttribute('placeholder','Mobile number');
-        var tr2 = document.createElement('tr');
-        var td3 = document.createElement('td');
-        var img2 = document.createElement('img');
-        img2.setAttribute('src','images/keys.png');
-        var td4 = document.createElement('td');
-        var input2 = document.createElement('input');
-        input2.setAttribute('id','input_password');
-        input2.setAttribute('class','input_text');
-        input2.setAttribute('type','password');
-        input2.setAttribute('name','password');
-        input2.setAttribute('placeholder','Password');
-        var tr3 = document.createElement('tr');
-        var td5 = document.createElement('td');
-        var td6 = document.createElement('td');
-        var input3 = document.createElement('input');
-        input3.setAttribute('class','button');
-        input3.setAttribute('type','submit');
-        input3.setAttribute('value','Login');
-        login_form.appendChild(login_table);
-        login_container.appendChild(login_form);
+function showLoginScreen() {
+    var login_container = createElement('div', 'login_container');
+    var login_form = createElement('form','form_login');
+    login_form.setAttribute('action','login.php');
+    var login_info_message = createElement('div','login_info_message');
+    var login_table = createElement('table','login_table');
+    var tr1 = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var img1 = document.createElement('img');
+    img1.setAttribute('src','images/phone.png');
+    var td2 = document.createElement('td');
+    var input1 = createElement('input','input_mobile_number','input_text');
+    input1.setAttribute('type','text');
+    input1.setAttribute('name','mobile_number');
+    input1.setAttribute('placeholder','Mobile number');
+    var tr2 = document.createElement('tr');
+    var td3 = document.createElement('td');
+    var img2 = document.createElement('img');
+    img2.setAttribute('src','images/keys.png');
+    var td4 = document.createElement('td');
+    var input2 = createElement('input','input_password','input_text');
+    input2.setAttribute('type','password');
+    input2.setAttribute('name','password');
+    input2.setAttribute('placeholder','Password');
+    var tr3 = document.createElement('tr');
+    var td5 = document.createElement('td');
+    var td6 = document.createElement('td');
+    var input3 = createElement('input','button1','button');
+    input3.setAttribute('type','submit');
+    input3.setAttribute('value','Login');
 
+    login_form.appendChild(login_table);
+    login_container.appendChild(login_form);
 
-        td1.appendChild(img1);
-        td2.appendChild(input1);
-        td3.appendChild(img2);
-        td4.appendChild(input2);
-        td6.appendChild(input3);
+    td1.appendChild(img1);
+    td2.appendChild(input1);
+    td3.appendChild(img2);
+    td4.appendChild(input2);
+    td6.appendChild(input3);
 
-        tr1.appendChild(td1);
-        tr1.appendChild(td2);
-        tr2.appendChild(td3);
-        tr2.appendChild(td4);
-        tr3.appendChild(td5);
-        tr3.appendChild(td6);
+    tr1.appendChild(td1);
+    tr1.appendChild(td2);
+    tr2.appendChild(td3);
+    tr2.appendChild(td4);
+    tr3.appendChild(td5);
+    tr3.appendChild(td6);
 
-        login_table.appendChild(tr1);
-        login_table.appendChild(tr2);
-        login_table.appendChild(tr3);
+    login_table.appendChild(tr1);
+    login_table.appendChild(tr2);
+    login_table.appendChild(tr3);
 
-        login_form.appendChild(login_info_message);
-        login_form.appendChild(login_table);
+    login_form.appendChild(login_info_message);
+    login_form.appendChild(login_table);
 
-        login_container.appendChild(login_form);
+    login_container.appendChild(login_form);
 
+    $('#action_bar_user').remove();
+    $('#login_container').remove();
+    $('#main').remove();
 
-        $('#login_container').remove();
-        $('#main').remove();
+    document.body.appendChild(login_container);
 
-        //$('#main').appendChild(login_container);
-       document.body.appendChild(login_container);
+    overrideLoginSubmit();
 
+    this.overrideLoginSubmit = function() {
         $("#form_login").submit(function(e) {
             e.preventDefault();
+            mobileNumber = $("#input_mobile_number").val().toString();
             var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
             var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
             $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
-
+                //do nothing
             });
             //Important. Stop the normal POST
             return false;
         });
+    }
+}
 
+function setInfoMessage(message, klass) {
+    document.getElementById('login_info_message').setAttribute('class', klass);
+    document.getElementById('login_info_message').innerHTML = message;
+}
+
+function createUserInfo(inNumber) {
+    var action_bar_user = createElement('div','action_bar_user');
+    var action_bar_user_icon = createImgElement('img','action_bar_user_icon','action_bar_user_icon','images/avatar2.png');
+    var action_bar_user_status = createElement('div','action_bar_user_status');
+    var button = createContentElement('div','button_logout','button','Logout');
+    button.onclick = function() {
+        loggedOut();
     }
 
-    function setInfoMessage(message, klass) {
-        document.getElementById('login_info_message').setAttribute('class', klass);
-        document.getElementById('login_info_message').innerHTML = message;
-    }
+    action_bar_user_status.appendChild(createContentElement('span','','','Logged in as '));
+    action_bar_user_status.appendChild(createContentElement('span','','action_bar_user_status_number',inNumber));
+    action_bar_user_status.appendChild(createContentElement('span','','',' !'));
+    action_bar_user.appendChild(action_bar_user_icon);
+    action_bar_user.appendChild(action_bar_user_status);
+    action_bar_user.appendChild(button);
 
-    function showContacts() {
-        $('#login_container').remove();
+    document.getElementById('action_bar').insertBefore(action_bar_user, document.getElementById('action_bar_caption'));
 
-        var main = document.createElement('div');
-        main.setAttribute('id','main');
-        var contacts = document.createElement('div');
-        contacts.setAttribute('id','contacts');
-        var contact_list_head = document.createElement('div');
-        contact_list_head.setAttribute('id','contact_list_head');
-        contact_list_head.innerHTML = "Contacts";
-        var contact_list = document.createElement('div');
-        contact_list.setAttribute('id','contact_list');
+    return this;
+}
 
-        contacts.appendChild(contact_list_head);
-        contacts.appendChild(contact_list);
 
-        main.appendChild(contacts);
+function createContactList() {
 
-        document.body.appendChild(main);
+    $('#login_container').remove();
 
-        $.post('get_contacts.php', {user_id: 1}, function(result){
-            $.each( result.contacts.data , function( i, con ) {
-                var contact = document.createElement('div');
-                contact.setAttribute('class','contact');
-                var contact_name = document.createElement('span');
-                contact_name.setAttribute('class','contact_name');
-                var icon = document.createElement('img');
-                icon.setAttribute('src','images/avatar.png');
-                icon.setAttribute('class','contact_icon');
+    var main = createElement('div','main');
+    var contacts = createElement('div','contacts');
+    var contact_list_head = createElement('div','contact_list_head');
+    var icon = createImgElement('img', 'icon', 'icon','images/addressbook.png');
+    var contact_list = createElement('div','contact_list');
 
-                contact.appendChild(icon);
+    contact_list_head.appendChild(icon);
+    contacts.appendChild(contact_list_head);
+    contacts.appendChild(contact_list);
+    main.appendChild(contacts);
+    document.body.appendChild(main);
 
-                contact_name.appendChild(document.createTextNode(con.name));
-                contact.appendChild(contact_name);
-
-                contact_list.appendChild(contact);
-            });
+    $.post('get_contacts.php', {user_id: 1}, function(result){
+        $.each( result.contacts.data , function( i, con ) {
+            addContact(con.name, con.id);
         });
+    });
 
+    this.addContact = function(inName,inId){
+        var contact = createElement('div','contact'+i,'contact');
+        contact.onclick = function() {
+            createConversation(inName,inId);
+        }
+        var contact_name = createElement('span','contact_name'+i,'contact_name');
+        var icon = createImgElement('img','contact_icon'+i,'contact_icon', 'images/avatar.png');
 
-
-
+        contact.appendChild(icon);
+        contact_name.appendChild(document.createTextNode(inName));
+        contact.appendChild(contact_name);
+        contact_list.appendChild(contact);
     }
+
+    return this;
+}
+
+
+
+function createConversation(inName, inId) {
+
+
+
+    var conversation = createElement('div','conversation');
+    var conversation_info = createElement('div','conversation_info');
+    var conversation_info_title = createElement ('div','conversation_info_title');
+    var conversation_info_title_icon = createImgElement('img','','conversation_info_title_icon','images/avatar.png');
+    var conversation_info_title_content = createContentElement('span','','',inName);
+    var conversation_flow = createElement('div','conversation_flow');
+
+    var conversation_input = createElement('form','conversation_input');
+    var conversation_input_wrapper_field = createElement('div','conversation_input_wrapper_field');
+    var conversation_input_field = createElement('textarea','conversation_input_field');
+    var conversation_input_wrapper_button = createElement('div','conversation_input_wrapper_button');
+    var conversation_input_button = createElement('input','conversation_input_button','button');
+    conversation_input_button.setAttribute('type','submit');
+    conversation_input_button.setAttribute('value','Send');
+
+    conversation_info_title.appendChild(conversation_info_title_icon);
+    conversation_info_title.appendChild(conversation_info_title_content);
+    conversation_info.appendChild(conversation_info_title);
+
+
+    conversation_input_wrapper_field.appendChild(conversation_input_field);
+    conversation_input_wrapper_button.appendChild(conversation_input_button);
+    conversation_input.appendChild(conversation_input_wrapper_field);
+    conversation_input.appendChild(conversation_input_wrapper_button);
+
+    conversation.appendChild(conversation_info);
+    conversation.appendChild(conversation_flow);
+    conversation.appendChild(conversation_input);
+
+    // Update screen
+
+    this.appendExternMessage = function(inName,inTime,inContent) {
+        var message = createElement('div','','conversation_flow_extern_message');
+        var message_title = createContentElement('div','','conversation_flow_message_title',inName);
+        var message_time = createContentElement('div','','conversation_flow_message_time',inTime);
+        var message_content = createContentElement('div','','conversation_flow_message_content',inContent);
+
+        message.appendChild(message_title);
+        message.appendChild(message_time);
+        message.appendChild(message_content);
+
+        conversation_flow.appendChild(message);
+        conversation_flow.scrollTop = conversation_flow.scrollHeight;
+    }
+
+    this.appendInternMessage = function(inName,inTime,inContent) {
+        var message = createElement('div','','conversation_flow_intern_message');
+        var message_title = createContentElement('div','','conversation_flow_message_title',inName);
+        var message_time = createContentElement('div','','conversation_flow_message_time',inTime);
+        var message_content = createContentElement('div','','conversation_flow_message_content',inContent);
+
+        message.appendChild(message_title);
+        message.appendChild(message_time);
+        message.appendChild(message_content);
+
+        conversation_flow.appendChild(message);
+        conversation_flow.scrollTop = conversation_flow.scrollHeight;
+    }
+
+
+
+    $('#conversation').remove();
+
+    document.getElementById('main').appendChild(conversation);
+
+    $("#conversation_input").submit(function(e) {
+        e.preventDefault();
+        var date = new Date();
+        appendInternMessage(inName,date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
+        conversation_input_field.value = '';
+        conversation_input_field.focus();
+        //$.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
+        //do nothing
+        //});
+        //Important. Stop the normal POST
+        return false;
+    });
+
+    return this;
+}
 
 
 function loggedOut() {
     $.ajax({url: "logout.php"});
     showLoginScreen();
-    document.getElementById("action_bar_center").removeChild(document.getElementById("button_logout"));
     setInfoMessage('Successfully logged out!','info_message_success');
-
 }
 
 /*
@@ -231,17 +319,27 @@ Check server-side session
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 
-	    echo   'showContacts();
-		        var button = document.createElement("div");
- 				button.innerHTML = "Logout";
- 				button.setAttribute("class","button");
- 				button.setAttribute("id","button_logout");
- 				button.onclick = function() {
- 				    loggedOut();
-                }
- 				document.getElementById("action_bar_center").appendChild(button);
+	    echo   'createUserInfo(mobileNumber);
+	            createContactList();
   				';
 	} else {
+	   /* echo   'createUserInfo(mobileNumber);
+	            var contactList = createContactList();
+	            var conversation = createConversation("Patrick Spiegel");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","Hey, what is up guys?");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","Hey, everything is top!");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","That sounds great! What should we do today");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","What we do every day! We try to rule the world :D");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","Here we go ;)");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","Hey, everything is top!");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","That sounds great! What should we do today");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","What we do every day! We try to rule the world :D");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","Here we go ;)");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","Hey, everything is top!");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","That sounds great! What should we do today");
+	            conversation.appendInternMessage("Lukas Carullo","12:25:12","What we do every day! We try to rule the world :D");
+	            conversation.appendExternMessage("Patrick Spiegel","12:25:12","Here we go ;)");
+  				'; */
 	    echo 'showLoginScreen();';
 
 	}
