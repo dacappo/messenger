@@ -19,6 +19,8 @@
 <?php
 include "dbconnection.php";
 include "registration.php";
+include "messenger.php";
+include "dbMessenger.php";
 ?>
 <h1>PHP Unit tests - PaXaLu messenger</h1>
 
