@@ -9,6 +9,7 @@
             background-image:url("http://www.planet-source-code.com/vb/2010Redesign/images/LangugeHomePages/PHP.png");
             background-repeat:no-repeat;
             background-position:center;
+            background-size: 50%;
              }
     </style>
     <title></title>
