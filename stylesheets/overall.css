@@ -47,6 +47,17 @@
 
 }
 
+.action_bar_caption_icon {
+    height: 30px;
+    float:left;
+}
+
+.action_bar_user_icon {
+    height: 20px;
+    float: left;
+    margin: 10px 0px 10px 10px;
+}
+
 #action_bar_caption {
     width: 150px;
     height: 40px;
@@ -55,15 +66,20 @@
 
 #action_bar_user {
     width: 25%;
-    min-width: 250px;
+    min-width: 300px;
     position: absolute;
     left: 0px;
     height: 40px;
 }
 
-#action_bar_user_number {
+#action_bar_user_status {
     float: left;
-    margin: 8px 30px;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.action_bar_user_status_number {
+    color: orange;
 }
 
 #main {
@@ -73,6 +89,7 @@
     left: 0px;
     right: 0px;
     min-width: 1000px;
+    z-index: -0;
 }
 
 #contacts {
@@ -88,7 +105,7 @@
 #contact_list {
     background-color: #222;
     position: absolute;
-    top: 30px;
+    top: 40px;
     bottom: 0px;
     left: 0px;
     right: 0px;
@@ -117,7 +134,13 @@
     height: 40px;
     width:100%;
     border-bottom: 1px solid #111111;
+}
 
+.contact {
+    height: 40px;
+    width:100%;
+    border-bottom: 1px solid #111111;
+    background-color: orange;
 }
 
 .contact_icon {
@@ -142,17 +165,39 @@
 #conversation {
     background-color: #fafafa;
     position: absolute;
-    top: 40px;
+    top: 0px;
     bottom: 0px;
     right: 0px;
     width: 75%;
-    min-width: 750px;
-    z-index: 0;
+    min-width: 750px;;
+}
+
+#conversation_info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 40px;
+    background-color: orange;
+}
+
+#conversation_info_title {
+    position: relative;
+    color: #111;
+    font-weight: 400;
+    margin: 10px auto;
+    width: 300px;
+}
+
+.conversation_info_title_icon {
+    height: 20px;
+    float: left;
+    margin: 0px 10px 10px 10px;
 }
 
 #conversation_flow {
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
     left: 0;
     bottom:60px;
@@ -167,12 +212,21 @@
     border-bottom: 1px solid #eee;
 }
 
-.conversation_flow_message_title {
+.conversation_flow_extern_message > .conversation_flow_message_title {
     position: relative;
     float: left;
     font-size: 12px;
     font-weight: 800;
     color: orange;
+    margin: 10px;
+}
+
+.conversation_flow_intern_message > .conversation_flow_message_title {
+    position: relative;
+    float: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: #333;
     margin: 10px;
 }
 
@@ -181,27 +235,56 @@
     float: right;
     font-size: 12px;
     font-weight: 800;
-    color: orange;
+    color: #333;
     margin: 10px;
 }
 
-.conversation_flow_message_content {
+.conversation_flow_extern_message > .conversation_flow_message_content {
     position: relative;
-    float: left;
+    clear: left;
     font-size: 14px;
     font-weight: 300;
     color: #666;
     margin: 10px;
     margin-top: 0px;
-    width: 90%;
+    color: #111;
 }
 
-#conversation_flow_extern_message {
-
+.conversation_flow_intern_message > .conversation_flow_message_content {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    color: #777;
 }
 
-#conversation_flow_intern_message {
+.conversation_flow_extern_message {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 3px;
+    color: #eee;
+    background-color: #ccc;
+}
 
+.conversation_flow_intern_message {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    border-radius: 5px;
+    padding: 3px;
+    color: #eee;
 }
 
 #conversation_input {
@@ -213,26 +296,42 @@
 
 }
 
-#conversation_input_field {
+#conversation_input_wrapper_field {
     position:absolute;
     top: 5px;
     bottom: 5px;
     right: 200px;
     left: 5px;
     border-radius: 10px;
-
-
     border: 2px solid #666666;
     padding: 2px 5px;
-    outline: none;
 }
 
-#conversation_input_button {
+
+#conversation_input_wrapper_button {
     position: absolute;
     bottom: 5px;
     top: 5px;
     right: 5px;
-    width: 185px;
+    width: 180px;
+}
+
+
+#conversation_input_field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI";
+}
+
+#conversation_input_button {
+    width: 100%;
+    height: 30px;
     background: orange;
     color: #FFF;
     border-radius: 3px;

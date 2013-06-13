@@ -16,22 +16,10 @@
 	
 	if($suc) {
 				
- 		echo 	'showContacts();
-		        var button = document.createElement("div");
- 				button.innerHTML = "Logout";
- 				button.setAttribute("class","button");
- 				button.setAttribute("id","button_logout");
- 				button.onclick = function() {
- 				    loggedOut();
-                }
- 				document.getElementById("action_bar_center").appendChild(button);
+ 		echo 	'createUserInfo(mobileNumber);
+	            createContactList();
   				';
  	} else {
- 		echo 	'
- 				var message = document.createElement("div");
- 				message.innerHTML = "Wrong number or password!";
- 				message.setAttribute("class","info_message_warning");
- 				message.setAttribute("id","login_info_message");
- 				document.getElementById("form_login").replaceChild(message, document.getElementById("login_info_message"));
-  				';
+ 		echo 	'showLoginScreen();
+ 		         showInfoMessage("Wrong number or password!","info_message_success");';
 	}
