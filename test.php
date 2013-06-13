@@ -13,6 +13,10 @@
             background-size: 20%;
             background-color: lavender;
         }
+        table {
+            opacity: 0.5;
+            font-weight: 400;
+        }
     </style>
     <title></title>
 </head>
