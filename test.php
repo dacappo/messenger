@@ -10,6 +10,7 @@
             background-repeat:no-repeat;
             background-position:center;
             background-size: 20%;
+            background-color: lavender;
              }
     </style>
     <title></title>
@@ -95,7 +96,7 @@ include "registration.php";
     <tr>
         <td>Check if a user can be created with valid data</td>
         <td><?php
-            $mobileNumber = "01233310";
+            $mobileNumber = "012399999";
             $password = "test";
             if (create_user($mobileNumber, $password) == "OK") {
                 echo("create_user(): valid data </td><td> <span style='color:green'>successful</span><br></td>");
