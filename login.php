@@ -21,5 +21,5 @@
   				';
  	} else {
  		echo 	'showLoginScreen();
- 		         showInfoMessage("Wrong number or password!","info_message_warning");';
+ 		         setInfoMessage("Wrong number or password!","info_message_warning");';
 	}

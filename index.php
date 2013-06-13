@@ -292,7 +292,7 @@ function createConversation(inName, inId) {
     $("#conversation_input").submit(function(e) {
         e.preventDefault();
         var date = new Date();
-        appendInternMessage(inName,date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
+        appendInternMessage('Me',date.getHours()+':'+date.getMinutes()+':'+date.getSeconds(),conversation_input_field.value);
         conversation_input_field.value = '';
         conversation_input_field.focus();
         //$.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
