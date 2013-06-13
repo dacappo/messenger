@@ -96,7 +96,7 @@ include "registration.php";
     <tr>
         <td>Check if a user can be created with valid data</td>
         <td><?php
-            $mobileNumber = "012399999";
+            $mobileNumber = generateRandNumber(12);;
             $password = "test";
             if (create_user($mobileNumber, $password) == "OK") {
                 echo("create_user(): valid data </td><td> <span style='color:green'>successful</span><br></td>");
