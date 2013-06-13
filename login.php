@@ -20,6 +20,5 @@
 	            createContactList();
   				';
  	} else {
- 		echo 	'showLoginScreen();
- 		         setInfoMessage("Wrong number or password!","info_message_warning");';
+ 		echo 	'setInfoMessage("Wrong number or password!","info_message_warning");';
 	}
