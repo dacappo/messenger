@@ -309,7 +309,7 @@ function createConversation(inName, inId) {
 function loggedOut() {
     $.ajax({url: "logout.php"});
     showLoginScreen();
-    setInfoMessage('Successfully logged out!','info_message_warning');
+    setInfoMessage('Successfully logged out!','info_message_success');
 }
 
 /*
