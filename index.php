@@ -279,15 +279,9 @@ function createConversation(inName, inId) {
         message.appendChild(message_time);
         message.appendChild(message_content);
 
-<<<<<<< HEAD
+
         conversation_flow.appendChild(message);
         conversation_flow.scrollTop = conversation_flow.scrollHeight;
-=======
-        
-
-
-
->>>>>>> 73ee5e083f8bf9f1e61a1bee94e7ac6c2778eb11
     }
 
 
