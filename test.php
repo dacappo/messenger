@@ -1,8 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
+    <link rel="stylesheet" type="text/css" " href="stylesheets/default.css">
+    <title></title>
+</head>
+<body>
 <?php
 include "dbconnection.php";
 include "registration.php";
 ?>
-<h1>PHP Unit tests</h1><br>
+<h1>PHP Unit tests</h1>
+
 <h2>Test Case: Login</h2>
 <table border="2px">
     <thead>
@@ -87,3 +96,5 @@ include "registration.php";
     </thead>
 
 </table>
+</body>
+</html>
