@@ -20,5 +20,6 @@
 	            createContactList();
   				';
  	} else {
- 		echo 	'showLoginScreen();';
+ 		echo 	'showLoginScreen();
+ 		         showInfoMessage("Wrong number or password!","info_message_success");';
 	}

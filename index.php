@@ -201,12 +201,12 @@ function createContactList() {
     });
 
     this.addContact = function(inName,inId){
-        var contact = createElement('div','contact'+i,'contact');
+        var contact = createElement('div','contact','contact');
         contact.onclick = function() {
             createConversation(inName,inId);
         }
-        var contact_name = createElement('span','contact_name'+i,'contact_name');
-        var icon = createImgElement('img','contact_icon'+i,'contact_icon', 'images/avatar.png');
+        var contact_name = createElement('span','contact_name','contact_name');
+        var icon = createImgElement('img','contact_icon','contact_icon', 'images/avatar.png');
 
         contact.appendChild(icon);
         contact_name.appendChild(document.createTextNode(inName));
@@ -309,7 +309,7 @@ function createConversation(inName, inId) {
 function loggedOut() {
     $.ajax({url: "logout.php"});
     showLoginScreen();
-    setInfoMessage('Successfully logged out!','info_message_success');
+    setInfoMessage('Successfully logged out!','info_message_warning');
 }
 
 /*
