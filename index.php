@@ -148,7 +148,7 @@ function showLoginScreen() {
             //Important. Stop the normal POST
             return false;
         });
-    
+
 }
 
 function setInfoMessage(message, klass) {
