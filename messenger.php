@@ -151,7 +151,12 @@ function check_for_contacts($user_id)
 
     if (!empty($contact_IDs)) {
         $contactIDsJSON = json_encode($contact_IDs);
+    } else {
+        $contactIDsJSON = '[]';
     }
+
+   //extend JSON with root tag
+    $contactIDsJSON .= '{ "contact_IDs" : ' . $contactIDsJSON . ' }';
 
     if (isset($contactIDsJSON)) {
         return $contactIDsJSON;
