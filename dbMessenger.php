@@ -247,10 +247,10 @@ function lookForNewMessages($user_id)
         $result = mysql_query('SELECT DISTINCT contact_id FROM messages WHERE contact_id=' . $contact[0] . ' AND read_status=0;')
         or die("There was an error running the query to look for new messages!<br> " . mysql_error() . var_dump($contact[0]) . var_dump($user_id));
         //die schleife kann entfertnt werden da distinct aber noch prüfen
-        for ($i = 0; $i < mysql_num_rows($result); ++$i) {
-            $row = mysql_fetch_row($result);
-            $pending_contact_IDs[] = $row[0];
-        }
+       // for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+        //    $row = mysql_fetch_row($result);
+            $pending_contact_IDs[] = mysql_result($result, 0, 0);
+       // }
     }
 
     mysql_close($connection);
