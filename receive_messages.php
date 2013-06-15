@@ -17,7 +17,7 @@ if (!isset($timestamp)){
     echo "Not all required POST parameters set";
 }
 // TODO Timestamp benuten
-$messagesJSON = getMessages($contact_id, $timestamp);
+$messagesJSON = getMessages($contact_id);
 
 if (!isset($messagesJSON) || $messagesJSON == ' '){
     echo "NO messages found!" ;

@@ -218,6 +218,9 @@ function getMessagesFromDB($contact_id, $opposite_contact_id){
         for ($i = 0; $i < mysql_num_rows($resultMessages); ++$i) {
             $row = mysql_fetch_assoc($resultMessages);
             array_push($messages, $row);
+            if (!mysql_query('UPDATE messages SET read_status = 1 WHERE message_id="'. $row['message_id'] . '";')){
+                die("Error during updating message" . $row['message_id'] );
+            }
         }
     }
 

@@ -59,7 +59,7 @@ PRIMARY KEY(contact_id), FOREIGN KEY (destination_user_id) REFERENCES users(id) 
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 
-$result = mysql_query("CREATE TABLE messages (message_id INT NOT NULL AUTO_INCREMENT, contact_id INT NOT NULL, FOREIGN KEY (contact_id) REFERENCES contacts(contact_id), content CHAR(66), date_time TIMESTAMP, PRIMARY KEY(message_id))")
+$result = mysql_query("CREATE TABLE messages (message_id INT NOT NULL AUTO_INCREMENT, contact_id INT NOT NULL, FOREIGN KEY (contact_id) REFERENCES contacts(contact_id), content VARCHAR, date_time TIMESTAMP, read_status BOOLEAN NOT NULL DEFAULT '0', PRIMARY KEY(message_id))")
 or die("There was an error running the query !<br>");
 echo("Table messages created!<br>");
 
@@ -125,7 +125,7 @@ or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
 $mysqlTimestamp = date('Y-m-d H:i:s');
-$result = mysql_query("INSERT INTO messages (contact_id, content, date_time) VALUES ('1','Hallo ich bin Root','" . $mysqlTimestamp . "'),('1','Warum antwortest du nicht','" . $mysqlTimestamp . "'),('1','Dann halt nicht...','" . $mysqlTimestamp . "'),('2','Zurueck zu Origin','" . $mysqlTimestamp . "')")
+$result = mysql_query("INSERT INTO messages (contact_id, content, date_time, read_status) VALUES ('1','Hallo ich bin Root','" . $mysqlTimestamp . "','0'),('1','Warum antwortest du nicht','" . $mysqlTimestamp . "','0'),('1','Dann halt nicht...','" . $mysqlTimestamp . "','0'),('2','Zurueck zu Origin','" . $mysqlTimestamp . "','0')")
 or die("There was an error running the query !<br>");
 echo("Example data ceated!<br>");
 
