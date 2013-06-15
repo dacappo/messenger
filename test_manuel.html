@@ -39,7 +39,7 @@
 <form name="input4" action="compare_contacts.php" method="post">
     User ID: <input type="text" name="id">
     JSON: <input type="text" name="contacts">
-    <input type="submit" value="Sent">
+    <input type="submit" value="Compare">
 </form>
 
 -<h1>Send message</h1>
@@ -55,7 +55,14 @@
 
 <form name="input6" action="receive_messages.php" method="post">
     Contact_ID: <input type="text" name="contact_id">
-    <input type="submit" value="Get">
+    <input type="submit" value="Get Messages">
+</form>
+
+<h1>Check for new messages</h1>
+
+<form name="input6" action="receive_messages.php" method="post">
+    User_ID: <input type="text" name="user_id">
+    <input type="submit" value="Look">
 </form>
 </body>
 </html>

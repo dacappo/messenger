@@ -10,7 +10,13 @@ include "messenger.php";
 
 $user_id = $_POST['user_id'];
 
-if (!isset($user_id)){
+if (!isset($user_id)) {
     echo "Not all required POST parameter set!";
 }
+
+echo check_for_contacts($user_id);
+
+
+
+
 

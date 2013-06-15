@@ -18,7 +18,7 @@ function getContactsForUserID($user_id)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT destination_user_id,nickname FROM contacts WHERE ' . 'origin_user_id="' . $user_id . '"')
+    $result = mysql_query('SELECT contact_id,nickname FROM contacts WHERE ' . 'origin_user_id="' . $user_id . '"')
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
 
     if (mysql_num_rows($result) > 0) {
@@ -33,7 +33,8 @@ function getContactsForUserID($user_id)
     return $values;
 }
 
-function getContactsForBothUserIDs($parties){
+function getContactsForBothUserIDs($parties)
+{
 
     $contact_id = 0;
 
@@ -47,7 +48,7 @@ function getContactsForBothUserIDs($parties){
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($parties) . " <br>");
 
     if (mysql_num_rows($result) <> 0) {
-         $contact_id = mysql_result($result, 0, 0);
+        $contact_id = mysql_result($result, 0, 0);
     }
 
     mysql_close($connection);
@@ -195,13 +196,14 @@ function insertMessageIntoDB($messageData)
     or die("Could not select Database");
 
     $messageSuccessful = mysql_query('INSERT INTO messages (contact_id, content, date_time) VALUES ("' . $messageData[0] . '","' . $messageData[1] . '","' . $messageData[2] . '")')
-    or die("There was an error running the query to create a message!<br> ". mysql_error() . var_dump($messageData));
+    or die("There was an error running the query to create a message!<br> " . mysql_error() . var_dump($messageData));
 
     mysql_close($connection);
     return $messageSuccessful;
 }
 
-function getMessagesFromDB($contact_id, $opposite_contact_id){
+function getMessagesFromDB($contact_id, $opposite_contact_id)
+{
 
     $messages = array();
 
@@ -211,19 +213,45 @@ function getMessagesFromDB($contact_id, $opposite_contact_id){
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $resultMessages = mysql_query('SELECT * FROM messages WHERE contact_id=' . $contact_id .' OR contact_id=' . $opposite_contact_id .' ORDER BY date_time DESC;')
-    or die("There was an error running the query to receive messages!<br> ". mysql_error() . var_dump($contact_id) . var_dump($opposite_contact_id));
+    $resultMessages = mysql_query('SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC;')
+    or die("There was an error running the query to receive messages!<br> " . mysql_error() . var_dump($contact_id) . var_dump($opposite_contact_id));
 
     if (mysql_num_rows($resultMessages) <> 0) {
         for ($i = 0; $i < mysql_num_rows($resultMessages); ++$i) {
             $row = mysql_fetch_assoc($resultMessages);
             array_push($messages, $row);
-            if (!mysql_query('UPDATE messages SET read_status = 1 WHERE message_id="'. $row['message_id'] . '";')){
-                die("Error during updating message" . $row['message_id'] );
+            if (!mysql_query('UPDATE messages SET read_status = 1 WHERE message_id="' . $row['message_id'] . '";')) {
+                die("Error during updating message" . $row['message_id']);
             }
         }
     }
 
     mysql_close($connection);
     return $messages;
+}
+
+function lookForNewMessages($user_id)
+{
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    // Get all contactIDs for user
+    $contact_IDs = getContactsForUserID($user_id);
+    $pending_contact_IDs = array();
+
+    foreach ($contact_IDs as $contact) {
+        $result = mysql_query('SELECT DISTINCT contact_id FROM messages WHERE contact_id=' . $contact[0] . 'AND read_status = 0;')
+        or die("There was an error running the query to look for new messages!<br> " . mysql_error() . var_dump($contact[0]) . var_dump($user_id));
+        //die schleife kann entfertnt werden da distinct aber noch prüfen
+        for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+            $row = mysql_fetch_row($result);
+            $pending_contact_IDs[] = $row[0];
+        }
+    }
+
+    mysql_close($connection);
+    return $pending_contact_IDs;
 }

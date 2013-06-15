@@ -124,14 +124,15 @@ function sendMessage($messageData)
     $successful = false;
     //Parties unused
     $messageParties = getPartiesID($messageData[0]);
-    if (isset($messageParties)){
+    if (isset($messageParties)) {
         $successful = insertMessageIntoDB($messageData);
     }
     return $successful;
 }
 
 //TODO Timestamp integration
-function getMessages($contact_id, $timestamp){
+function getMessages($contact_id, $timestamp)
+{
 
     $parties = getPartiesID($contact_id);
     $opposite_contact_id = getContactsForBothUserIDs($parties);
@@ -144,7 +145,26 @@ function getMessages($contact_id, $timestamp){
     return $messagesJSON;
 }
 
-function createJSONMessages($messages){
+function check_for_contacts($user_id)
+{
+    $contact_IDs = lookForNewMessages($user_id);
+
+    if (!empty($contact_IDs)) {
+        $contactIDsJSON = json_encode($contact_IDs);
+    }
+
+    if (isset($contactIDsJSON)) {
+        return $contactIDsJSON;
+    } elseif (!empty($contact_IDs) && !isset($contactIDsJSON)) {
+        die("Server Error during Parsing");
+    } else {
+        return "OK : no new messages";
+    }
+
+}
+
+function createJSONMessages($messages)
+{
     $JSONString = '[ ';
     $isFirst = true;
     while (empty($messages) == false) {
