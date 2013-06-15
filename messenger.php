@@ -156,7 +156,7 @@ function check_for_contacts($user_id)
     }
 
    //extend JSON with root tag
-    $contactIDsJSON .= '{ "contact_IDs" : ' . $contactIDsJSON . ' }';
+    $contactIDsJSON = '{ "contact_IDs" : ' . $contactIDsJSON . ' }';
 
     if (isset($contactIDsJSON)) {
         return $contactIDsJSON;
