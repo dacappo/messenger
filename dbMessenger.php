@@ -232,15 +232,16 @@ function getMessagesFromDB($contact_id, $opposite_contact_id)
 
 function lookForNewMessages($user_id)
 {
+
+    // Get all contactIDs for user
+    $contact_IDs = getContactsForUserID($user_id);
+    $pending_contact_IDs = array();
+
     //Connect to DB
     $connection = initializeConnectionToDB();
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
-
-    // Get all contactIDs for user
-    $contact_IDs = getContactsForUserID($user_id);
-    $pending_contact_IDs = array();
 
     foreach ($contact_IDs as $contact) {
         $result = mysql_query('SELECT DISTINCT contact_id FROM messages WHERE contact_id=' . $contact[0] . 'AND read_status = 0;')
