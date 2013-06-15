@@ -59,7 +59,7 @@ PRIMARY KEY(contact_id), FOREIGN KEY (destination_user_id) REFERENCES users(id) 
 or die("There was an error running the query! <br>");
 echo("Table contacts created!<br>");
 
-$result = mysql_query("CREATE TABLE messages (message_id INT NOT NULL AUTO_INCREMENT, contact_id INT NOT NULL, FOREIGN KEY (contact_id) REFERENCES contacts(contact_id), content VARCHAR, date_time TIMESTAMP, read_status BOOLEAN NOT NULL DEFAULT '0', PRIMARY KEY(message_id))")
+$result = mysql_query("CREATE TABLE messages (message_id INT NOT NULL AUTO_INCREMENT, contact_id INT NOT NULL, FOREIGN KEY (contact_id) REFERENCES contacts(contact_id), content VARCHAR(10000), date_time TIMESTAMP, read_status BOOLEAN NOT NULL DEFAULT '0', PRIMARY KEY(message_id))")
 or die("There was an error running the query !<br>");
 echo("Table messages created!<br>");
 
