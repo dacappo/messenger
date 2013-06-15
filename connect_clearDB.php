@@ -51,6 +51,6 @@ echo "<br>----------------------------------------------------------------------
 while($row = mysql_fetch_array($result))
 {
     echo("Messages:       ");
-    echo "ID: " . $row[0] . "   Contact ID: " .  $row[1] . "   Content: ". $row[2] . "   Timestamp: " . $row[3] . "   READ Status: ";
+    echo "ID: " . $row[0] . "   Contact ID: " .  $row[1] . "   Content: ". $row[2] . "   Timestamp: " . $row[3] . "   READ Status: " . $row[4];
     echo "<br>";
 }
