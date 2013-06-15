@@ -11,6 +11,8 @@ include "messenger.php";
 $contact_id = $_POST['contact_id'];
 $timestamp = $_POST['timestamp'];
 
+header('Content-Type: application/json');
+
 if (!isset($timestamp)){
     $timestamp = date('Y-m-d H:i:s');
 } elseif (!isset($contact_id)){

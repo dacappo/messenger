@@ -170,7 +170,7 @@ function check_for_contacts($user_id)
 
 function createJSONMessages($messages)
 {
-    $JSONString = '[ ';
+    $JSONString = '{ "messages" : [ ';
     $isFirst = true;
     while (empty($messages) == false) {
         if ($isFirst) {
@@ -188,6 +188,6 @@ function createJSONMessages($messages)
     }
 
     // close JSON
-    $JSONString .= ']';
+    $JSONString .= '] }';
     return $JSONString;
 }

@@ -9,6 +9,7 @@
 include "messenger.php";
 
 $user_id = $_POST['user_id'];
+header('Content-Type: application/json');
 
 if (!isset($user_id)) {
     echo "Not all required POST parameter set!";
