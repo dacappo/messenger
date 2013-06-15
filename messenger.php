@@ -131,7 +131,7 @@ function sendMessage($messageData)
 }
 
 //TODO Timestamp integration
-function getMessages($contact_id, $timestamp)
+function getMessages($contact_id)
 {
 
     $parties = getPartiesID($contact_id);
