@@ -146,7 +146,9 @@ function getMessages($contact_id, $all)
 
 function check_for_contacts($user_id)
 {
-    $contact_IDs = lookForNewMessages($user_id);
+    $pending_contact_IDs = lookForNewMessages($user_id);
+
+    $user_contact_IDs = getOwnCIDFromOppositeCID($pending_contact_IDs);
 
     if (!empty($contact_IDs)) {
         $contactIDsJSON = json_encode($contact_IDs);
