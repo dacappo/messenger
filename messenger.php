@@ -131,14 +131,14 @@ function sendMessage($messageData)
 }
 
 //TODO Timestamp integration
-function getMessages($contact_id)
+function getMessages($contact_id, $all)
 {
 
     $parties = getPartiesID($contact_id);
     $opposite_contact_id = getContactsForBothUserIDs($parties);
 
     //Get messages for the contact owner and the messages from contact to owner
-    $messages = getMessagesFromDB($contact_id, $opposite_contact_id);
+    $messages = getMessagesFromDB($contact_id, $opposite_contact_id, $all);
 
     //Create JSON
     $messagesJSON = createJSONMessages($messages);

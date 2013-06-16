@@ -9,7 +9,7 @@
 include "messenger.php";
 
 $contact_id = $_POST['contact_id'];
-$timestamp = $_POST['timestamp'];
+$all = $_POST['all']; // optional
 
 header('Content-Type: application/json');
 
@@ -19,7 +19,7 @@ if (!isset($timestamp)){
     echo "Not all required POST parameters set";
 }
 // TODO Timestamp benuten
-$messagesJSON = getMessages($contact_id);
+$messagesJSON = getMessages($contact_id, $all);
 
 if (!isset($messagesJSON) || $messagesJSON == ' '){
     echo "NO messages found!" ;

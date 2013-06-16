@@ -202,10 +202,20 @@ function insertMessageIntoDB($messageData)
     return $messageSuccessful;
 }
 
-function getMessagesFromDB($contact_id, $opposite_contact_id)
+/*
+ * If optional parameter $all isset then the latest 10 messages of the given ids are selected
+ * if not only tne new ones are selected.
+ */
+function getMessagesFromDB($contact_id, $opposite_contact_id, $all)
 {
-
     $messages = array();
+
+    if (isset($all)){
+        $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC LIMIT 10;';
+
+    } else {
+        $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' AND read_status = 0 ORDER BY date_time DESC ;';
+    }
 
     //Connect to DB
     $connection = initializeConnectionToDB();
@@ -213,7 +223,7 @@ function getMessagesFromDB($contact_id, $opposite_contact_id)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $resultMessages = mysql_query('SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC;')
+    $resultMessages = mysql_query($query)
     or die("There was an error running the query to receive messages!<br> " . mysql_error() . var_dump($contact_id) . var_dump($opposite_contact_id));
 
     if (mysql_num_rows($resultMessages) <> 0) {
