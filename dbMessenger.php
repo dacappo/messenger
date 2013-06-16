@@ -43,7 +43,7 @@ function getOpponentContactsForUserID($user_id)
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
 
-    $result = mysql_query('SELECT contact_id,nickname FROM contacts WHERE ' . 'destination_user_id="' . $user_id . '"')
+    $result = mysql_query('SELECT contact_id,nickname FROM contacts WHERE ' . 'destination_user_id=' . $user_id . '')
     or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
 
     if (mysql_num_rows($result) > 0) {
@@ -297,7 +297,7 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
-
+    echo var_dump($pending_contact_IDs);
     //encode contactID
     $contactInfo = array();
     foreach ($pending_contact_IDs as $contact_id) {
@@ -305,9 +305,9 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
         or die("SQL Error:" . mysql_error() . " with param" . var_dump($contact_id) . " <br>");
         if (mysql_num_rows($result) > 0) {
             for ($i = 0; $i < mysql_num_rows($result); ++$i) {
-                $origin_id = mysql_result($result, $i, 0);
-                $destination_id = mysql_result($result, $i, 1);
-                $data = array($origin_id, $destination_id);
+                $opponent = mysql_result($result, $i, 0);
+                $own = mysql_result($result, $i, 1);
+                $data = array($opponent, $own);
                 array_push($contactInfo, $data);
             }
         }
@@ -320,11 +320,11 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
 
         if (mysql_num_rows($result) > 0) {
             for ($i = 0; $i < mysql_num_rows($result); ++$i) {
-                array_push($ownContactIDs, mysql_result($result, $i, 0));
+                $ownContactIDs[] =  mysql_result($result, $i, 0);
             }
         }
-
     }
+    echo var_dump($ownContactIDs);
     mysql_close($connection);
     return $ownContactIDs;
 }
