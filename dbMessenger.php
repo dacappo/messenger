@@ -33,6 +33,31 @@ function getContactsForUserID($user_id)
     return $values;
 }
 
+function getOpponentContactsForUserID($user_id)
+{
+
+    $values = array();
+    //Connect to DB
+    $connection = initializeConnectionToDB();
+    $db = selectDB();
+    $selected = mysql_select_db($db, $connection)
+    or die("Could not select Database");
+
+    $result = mysql_query('SELECT contact_id,nickname FROM contacts WHERE ' . 'destination_user_id="' . $user_id . '"')
+    or die("SQL Error:" . mysql_error() . " with param" . var_dump($user_id) . " <br>");
+
+    if (mysql_num_rows($result) > 0) {
+        for ($i = 0; $i < mysql_num_rows($result); ++$i) {
+            $contact_id = mysql_result($result, $i, 0);
+            $contact_nickname = mysql_result($result, $i, 1);
+            $data = array($contact_id, $contact_nickname);
+            array_push($values, $data);
+        }
+    }
+    mysql_close($connection);
+    return $values;
+}
+
 function getContactsForBothUserIDs($parties)
 {
 
@@ -242,7 +267,7 @@ function lookForNewMessages($user_id)
 {
 
     // Get all contactIDs for user
-    $contact_IDs = getContactsForUserID($user_id);
+    $contact_IDs = getOpponentContactsForUserID($user_id);
     $pending_contact_IDs = array();
 
     //Connect to DB
