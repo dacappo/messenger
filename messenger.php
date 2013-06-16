@@ -134,9 +134,9 @@ function sendMessage($messageData)
 function getMessages($contact_id, $all)
 {
     $parties = getPartiesID($contact_id);
-    $opposite_contact_id = getContactsForBothUserIDs($parties);
+    $opposite_contact_id = getOppositeContactID($parties);
 
-    //Get messages for the contact owner and the messages from contact to owner
+    //Get messages for depending on param $all the messages from opponent or both
     $messages = getMessagesFromDB($contact_id, $opposite_contact_id, $all);
 
     //Create JSON

@@ -58,7 +58,7 @@ function getOpponentContactsForUserID($user_id)
     return $values;
 }
 
-function getContactsForBothUserIDs($parties)
+function getOppositeContactID($parties)
 {
 
     $contact_id = 0;
@@ -238,7 +238,7 @@ function getMessagesFromDB($contact_id, $opposite_contact_id, $all)
         $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC LIMIT 15;';
 
     } else { // nur die vom opponent abholen
-        $query = 'SELECT * FROM messages WHERE ( contact_id=' . $opposite_contact_id . ') AND read_status = 0 ORDER BY date_time DESC ;';
+        $query = 'SELECT * FROM messages WHERE contact_id=' . $opposite_contact_id . ' AND read_status = 0 ORDER BY date_time DESC ;';
     }
     //Connect to DB
     $connection = initializeConnectionToDB();
