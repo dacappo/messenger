@@ -315,7 +315,6 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
 
     // find contact id with data
     foreach ($contactInfo as $info) {
-
         $result = mysql_query('SELECT contact_id FROM contacts WHERE origin_user_id=' . $info[1] . ' AND destination_user_id=' . $info[0] . ';')
         or die("SQL Error:" . mysql_error() . " with param" . var_dump($info) . " <br>");
 
