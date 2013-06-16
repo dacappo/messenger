@@ -13,7 +13,8 @@ $body = $_POST['body'];
 $timestamp = $_POST['timestamp'];
 
 if (!isset($timestamp)){
-    $timestamp = date('Y-m-d H:i:s', mktime(2,0,0,0,0,0));
+    $currentTime = mktime(date("h")+2,date("i"),date("s"),date("m"),date("d")+1,date("Y"));
+    $timestamp = date('Y-m-d H:i:s', $currentTime);
 }
 
 if (!isset($contact_id) || !isset($body) || !isset($timestamp)) {
