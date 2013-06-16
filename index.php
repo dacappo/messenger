@@ -288,17 +288,13 @@ function createConversation(inName, inId) {
 
 
     function checkNewMessages() {
-        $.post('test_messages.php', {contact_id: inId}, function(data){
+        $.post('receive_messages.php', {contact_id: inId}, function(data){
             $.each(data.messages, function(i, message) {
                 appendExternMessage(inName,message.timestamp, message.content);
             });
         });
 
     }
-
-
-
-
 
     $('#conversation').remove();
 
