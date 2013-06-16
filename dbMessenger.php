@@ -297,7 +297,7 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
     $db = selectDB();
     $selected = mysql_select_db($db, $connection)
     or die("Could not select Database");
-    echo var_dump($pending_contact_IDs);
+
     //encode contactID
     $contactInfo = array();
     foreach ($pending_contact_IDs as $contact_id) {
@@ -324,7 +324,6 @@ function getOwnCIDFromOppositeCID($pending_contact_IDs)
             }
         }
     }
-    echo var_dump($ownContactIDs);
     mysql_close($connection);
     return $ownContactIDs;
 }
