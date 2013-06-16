@@ -214,7 +214,7 @@ function getMessagesFromDB($contact_id, $opposite_contact_id, $all)
         $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' ORDER BY date_time DESC LIMIT 10;';
 
     } else {
-        $query = 'SELECT * FROM messages WHERE contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ' AND read_status = 0 ORDER BY date_time DESC ;';
+        $query = 'SELECT * FROM messages WHERE (contact_id=' . $contact_id . ' OR contact_id=' . $opposite_contact_id . ') AND read_status = 0 ORDER BY date_time DESC ;';
     }
     echo var_dump($query);
     //Connect to DB
