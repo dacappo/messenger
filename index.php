@@ -15,7 +15,7 @@
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script
 	
 	<!-- Cascading style sheets -->
-	<link rel="stylesheet" type="text/css" media="screen and (min-width: 25cm)" href="stylesheets/overall.css">
+	<link rel="stylesheet" type="text/css" media="screen and (min-device-width : 1025px)" href="stylesheets/overall.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/default.css">
 	<link rel="stylesheet" type="text/css" media="screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1)" href="stylesheets/tablet.css">
 	<!--<link rel="stylesheet" type="text/css" media="screen and (max-width: 10cm)" href="stylesheets/smartphone.css">
@@ -145,6 +145,7 @@ function showLoginScreen() {
         $("#form_login").submit(function(e) {
             e.preventDefault();
             mobileNumber = $("#input_mobile_number").val().toString();
+            $.cookie("mobileNumber", mobileNumber);
             var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
             var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
             $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
@@ -364,8 +365,11 @@ Check server-side session
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 
-	    echo   'userInfo = createUserInfo(mobileNumber);
+	    echo   'userId = $.cookie("userId");
+	            mobileNumber = $.cookie("mobileNumber");
+	            userInfo = createUserInfo(mobileNumber);
 	            contactList = createContactList();
+
   				';
 	} else {
 	   /* echo   'createUserInfo(mobileNumber);

@@ -19,6 +19,7 @@
 				
  		echo 	'userInfo =createUserInfo(mobileNumber);
  		         userId = ' . $userId . ';
+ 		         $.cookie("userId",userId);
 	             contactList = createContactList();
   				';
  	} else {
