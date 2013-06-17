@@ -64,6 +64,39 @@ function createContentElement(inType, inId, inClass, inContent) {
     return element;
 }
 
+function getCookie(c_name)
+{
+    var c_value = document.cookie;
+    var c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1)
+    {
+        c_start = c_value.indexOf(c_name + "=");
+    }
+    if (c_start == -1)
+    {
+        c_value = null;
+    }
+    else
+    {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1)
+        {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start,c_end));
+    }
+    return c_value;
+}
+
+function setCookie(c_name,value,exdays)
+{
+    var exdate=new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_name + "=" + c_value;
+}
+
 
 /*
 some global stuff
@@ -145,7 +178,7 @@ function showLoginScreen() {
         $("#form_login").submit(function(e) {
             e.preventDefault();
             mobileNumber = $("#input_mobile_number").val().toString();
-            $.cookie("mobileNumber", mobileNumber);
+            setCookie("mobileNumber", mobileNumber, 7);
             var encryptedNumber = CryptoJS.SHA256($("#input_mobile_number").val()).toString();
             var encryptedPassword = CryptoJS.SHA256($("#input_password").val()).toString();
             $.post($("#form_login").attr("action"), {number: encryptedNumber, password: encryptedPassword }, function(data){
@@ -365,8 +398,8 @@ Check server-side session
 <?php
 	if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']==true) {
 
-	    echo   'userId = $.cookie("userId");
-	            mobileNumber = $.cookie("mobileNumber");
+	    echo   'userId = getCookie("userId");
+	            mobileNumber = getCookie("mobileNumber");
 	            userInfo = createUserInfo(mobileNumber);
 	            contactList = createContactList();
 
