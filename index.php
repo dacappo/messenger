@@ -15,11 +15,11 @@
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha256.js"></script
 	
 	<!-- Cascading style sheets -->
-	<link rel="stylesheet" type="text/css" href="stylesheets/overall.css">
+	<link rel="stylesheet" type="text/css" media="screen and (min-width: 25cm) href="stylesheets/overall.css">
 	<link rel="stylesheet" type="text/css" " href="stylesheets/default.css">
-	<!--<link rel="stylesheet" type="text/css" media="screen and (min-width: 10cm) and (max-width: 25cm)" href="stylesheets/tablet.css">
-	<link rel="stylesheet" type="text/css" media="screen and (max-width: 10cm)" href="stylesheets/smartphone.css">
-	media="screen and (min-width: 25cm)-->
+	<link rel="stylesheet" type="text/css" media="screen and (min-width: 10cm) and (max-width: 25cm)" href="stylesheets/tablet.css">
+	<!--<link rel="stylesheet" type="text/css" media="screen and (max-width: 10cm)" href="stylesheets/smartphone.css">
+	-->
 
 </head>	 
 <body>
