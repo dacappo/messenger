@@ -17,7 +17,7 @@
 	<!-- Cascading style sheets -->
 	<link rel="stylesheet" type="text/css" media="screen and (min-width: 25cm)" href="stylesheets/overall.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/default.css">
-	<link rel="stylesheet" type="text/css" media="screen and (min-width: 10cm) and (max-width: 25cm)" href="stylesheets/tablet.css">
+	<link rel="stylesheet" type="text/css" media="screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 1)" href="stylesheets/tablet.css">
 	<!--<link rel="stylesheet" type="text/css" media="screen and (max-width: 10cm)" href="stylesheets/smartphone.css">
 	-->
 
