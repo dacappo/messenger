@@ -13,7 +13,7 @@ $body = $_POST['body'];
 $timestamp = $_POST['timestamp'];
 
 if (!isset($timestamp)){
-    $currentTime = mktime(date("h")+2,date("i"),date("s"),date("m"),date("d")+1,date("Y"));
+    $currentTime = mktime(date("H")+2,date("i"),date("s"),date("m"),date("d"),date("Y"));
     $timestamp = date('Y-m-d H:i:s', $currentTime);
 }
 
