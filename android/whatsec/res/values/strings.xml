@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PaXaLu</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_registration_auth">Registration</string>
+    <string name="title_activity_password">Password</string>
+    <string name="title_activity_show_contacts">Contacs</string>
+    <string name="title_activity_start_conversation">Conversation with %1$s</string>
+    <string name="title_activity_send_message_acticity">Send Message</string>
+    <string name="send_Button">Senden</string>
+    <string name="next_Button">Weiter</string>
+    <string name="registration_header">Registrieren</string>
+    <string name="registration_text_first">Geben Sie bitte hier Ihre Handynummer ein</string>
+    <string name="registration_text_second">Geben Sie bitte hier ihren Authentifizierungscode ein, den Sie per SMS erhalten haben:</string>
+    <string name="registration_text_third">Bitte setzen Sie hier ihr Passwort, mit dem Sie sich im Web-Interface einloggen können:</string>
+    <string name="password">Passwort wiederholen: </string>
+    <string name="laden">Anwendung lädt gerade... </string>
+    <string name="contactName"></string>
+    
+
+</resources>
