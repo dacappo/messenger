@@ -48,6 +48,7 @@ $query = 'SELECT * FROM user WHERE ' . 'number=\'' . $controller->number . '\' A
 echo $query . " <br> <br> ";
 
 if ($result = $mysqli->query($query)) {
+    echo "Number of found entires " . $result->num_rows . "<br> <br>";
 
 	/* fetch object array */
 	while ($row = $result->fetch_row()) {

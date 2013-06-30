@@ -1,23 +1,351 @@
 ﻿html, body {
-	position: relative;
+    position:absolute;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+
 	height: 100%;
+    min-height: 600px;
+    min-width:1000px;
 	margin: 0;	
 	
 	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 	background-color: #F0F0F0;
+    background-image: url('../images/map.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background-color: #F0F0F0;
+} /* the new scrollbar will have a flat appearance with the set background color */
+::-webkit-scrollbar-thumb {
+    background-color:#666;
+
+} /* this will style the thumb, ignoring the track */
+::-webkit-scrollbar-button {
+    background-color: #F0F0F0;
+    height: 0px;
+} /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+::-webkit-scrollbar-corner {
+    background-color: #F0F0F0;
+
 }
 
+
 #action_bar {
-	background-color: #111111;	
+    position: absolute;
+    top: 0;
+    min-width: 1000px;
+	background-color: #111111;
 	color: #FFFFFF;
+    box-shadow: 0px 0px 3px #666;
+    z-index: 3;
+
+}
+
+.action_bar_caption_icon {
+    height: 30px;
+    float:left;
+}
+
+.action_bar_user_icon {
+    height: 20px;
+    float: left;
+    margin: 10px 0px 10px 10px;
+}
+
+#action_bar_caption {
+    width: 150px;
+    height: 40px;
+    margin: auto;
+}
+
+#action_bar_user {
+    width: 25%;
+    min-width: 315px;
+    position: absolute;
+    left: 0px;
+    height: 40px;
+}
+
+#action_bar_user_status {
+    float: left;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.action_bar_user_status_number {
+    color: orange;
+}
+
+#main {
+    position: absolute;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    min-width: 1000px;
+    z-index: -0;
+}
+
+#contacts {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 25%;
+    min-width: 250px;
+    box-shadow: 0px 0px 3px #444 ;
+    z-index: 2;
 }
 
 #contact_list {
-	background-color: #F5F5F5;
-	
+    background-color: #222;
+    position: absolute;
+    top: 40px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    overflow:auto;
+}
+
+#contact_list_head {
+    background-color: orange;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+    text-align: center;
+    color: #FFF;
+    font-size: 16px;
+    padding:5px;
+}
+
+.contact_list_icon {
+    margin: 0px;
+    height: 20px;
+}
+
+.contact {
+    height: 40px;
+    width:100%;
+    border-bottom: 1px solid #111111;
+}
+
+.contact:hover {
+    height: 40px;
+    width:100%;
+    border-bottom: 1px solid #111111;
+    background-color: orange;
+}
+
+.contact_icon {
+    height:20px;
+    margin-bottom: 0;
+}
+
+.contact_name {
+    color: #DDDDDD;
+    font-size: 14px;
+    font-weight: 900;
+    padding: 5px;
+}
+
+.notification {
+    position: relative;
+    float: right;
+    margin: 15px;
+    border-radius: 5px;
+    border: 5px solid #66FF00;
 }
 
 #conversation {
+    background-color: #fafafa;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 75%;
+    min-width: 750px;;
+}
+
+#conversation_info {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 40px;
+    background-color: orange;
+}
+
+#conversation_info_title {
+    position: relative;
+    color: #111;
+    font-weight: 400;
+    margin: 10px auto;
+    width: 300px;
+}
+
+.conversation_info_title_icon {
+    height: 20px;
+    float: left;
+    margin: 0px 10px 10px 10px;
+}
+
+#conversation_flow {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: 0;
+    bottom:60px;
+    z-index: 0;
+    overflow: auto;
+}
+
+.conversation_flow_message {
+    position: relative;
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+}
+
+.conversation_flow_extern_message > .conversation_flow_message_title {
+    position: relative;
+    float: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: orange;
+    margin: 10px;
+}
+
+.conversation_flow_intern_message > .conversation_flow_message_title {
+    position: relative;
+    float: left;
+    font-size: 12px;
+    font-weight: 800;
+    color: #333;
+    margin: 10px;
+}
+
+.conversation_flow_message_time {
+    position: relative;
+    float: right;
+    font-size: 12px;
+    font-weight: 800;
+    color: #333;
+    margin: 10px;
+}
+
+.conversation_flow_extern_message > .conversation_flow_message_content {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    color: #111;
+}
+
+.conversation_flow_intern_message > .conversation_flow_message_content {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    color: #777;
+}
+
+.conversation_flow_extern_message {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    padding: 3px;
+    color: #eee;
+    background-color: #ccc;
+}
+
+.conversation_flow_intern_message {
+    position: relative;
+    clear: left;
+    font-size: 14px;
+    font-weight: 300;
+    color: #666;
+    margin: 10px;
+    margin-top: 0px;
+    border-radius: 5px;
+    padding: 3px;
+    color: #eee;
+}
+
+#conversation_input {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+
+}
+
+#conversation_input_wrapper_field {
+    position:absolute;
+    top: 5px;
+    bottom: 5px;
+    right: 200px;
+    left: 5px;
+    border-radius: 10px;
+    border: 2px solid #666666;
+    padding: 2px 5px;
+}
+
+
+#conversation_input_wrapper_button {
+    position: absolute;
+    bottom: 5px;
+    top: 5px;
+    right: 5px;
+    width: 180px;
+}
+
+
+#conversation_input_field {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI";
+}
+
+#conversation_input_button {
+    width: 100%;
+    height: 30px;
+    background: orange;
+    color: #FFF;
+    border-radius: 3px;
+    border-style:none;
+    cursor:pointer;
+    font-size: 14px;
+}
+
+#conversation_input_button:hover {
+    background: #FFB914;
+    color: #FFF;
+    border-style:none;
+    cursor:pointer;
 }
 
 .input_text {
@@ -36,20 +364,19 @@
 
 .button {
 	 float:right;
-     margin: 6px 5px;
-	 padding: 3px 13px;
+     margin: 7px 5px;
+	 padding: 2px 13px;
 	 background: orange; 
 	 color: #FFF; 
 	 border-radius: 3px; 
 	 border-style:none;
      cursor:pointer;
+     font-size: 14px;
 
 }
 
 .button:hover {
-    float:right;
-    margin: 6px 5px;
-    padding: 3px 13px;
+
     background: #FFB914;
     color: #FFF;
     border-radius: 3px;
@@ -75,4 +402,14 @@
 	font-size: 11px;
 	color: #eee;
     text-align: center;
+}
+
+#form_login {
+    padding: 20px;
+    margin: auto;
+    margin-top: 200px;
+    width: 250px;
+    background-color: #FFF;
+    border: 1px solid #EAEAEA;
+
 }

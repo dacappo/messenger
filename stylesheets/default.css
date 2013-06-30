@@ -10,7 +10,7 @@
 }
 
 #action_bar_title {
-	float:left;
+    float: left;
 	padding: 10px;
 	font-weight:800;
 
@@ -18,7 +18,7 @@
 
 
 #action_bar_logo {
-	float:left;
+    float: left;
 	padding: 0px 5px;
 	font-weight:800;
 }
@@ -30,12 +30,7 @@
 }
 
 form {
-	padding: 20px;
-	margin: auto;
-	margin-top: 200px;
-	width: 250px; 
-	background-color: #FFF;
-	border: 1px solid #EAEAEA; 
+
 }
 
 img {
